@@ -1,0 +1,8 @@
+use TrainingDB;
+ create table login(
+ id int IDENTITY PRIMARY KEY,
+ username varchar(20)  NOT NULL,
+ password varchar(20)  NOT NULL,
+ usertype varchar(20)  NOT NULL
+ );
+ select * from login

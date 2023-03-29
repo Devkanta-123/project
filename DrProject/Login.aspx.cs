@@ -22,8 +22,8 @@ namespace DrProject
        
         protected void btn_login_Click(object sender, EventArgs e)
         {
-             SqlConnection  con = new SqlConnection("Data Source=DESKTOP-RLOTTM7\\SQLEXPRESS;database=appointment; user id = konsam ;password = 12345");
-            da = new SqlDataAdapter("select * from  login where username = '" +username.Text+"' and password ='"+password.Text+"' and role = '"+ DropDownList1.SelectedItem.ToString()+"'",con);
+             SqlConnection  con = new SqlConnection("Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF' ");
+            da = new SqlDataAdapter("select * from  login where username = '" +username.Text+"' and password ='"+password.Text+"' and usertype = '"+ DropDownList1.SelectedItem.ToString()+"'",con);
             dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count > 0)
