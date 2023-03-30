@@ -67,7 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin.aspx" />
+    <Content Include="admin\admin.aspx" />
     <Content Include="css\assets\icons\cryptocoins-master\cryptocoins.css" />
     <Content Include="css\assets\icons\feather-icons\feather.min.js" />
     <Content Include="css\assets\icons\flag-icon-css\css\flag-icon.css" />
@@ -314,32 +314,42 @@
     <Content Include="css\style.css" />
     <Content Include="css\style_rtl.css" />
     <Content Include="css\vendors_css.css" />
-    <Content Include="doctor.aspx" />
+    <Content Include="doctor\doctor.aspx" />
     <Content Include="images\404.jpg" />
     <Content Include="images\500.jpg" />
+    <Content Include="images\auth-bg\404.jpg" />
+    <Content Include="images\auth-bg\500.jpg" />
+    <Content Include="images\auth-bg\bg-1.jpg" />
+    <Content Include="images\auth-bg\bg-2.jpg" />
+    <Content Include="images\auth-bg\bg-4.jpg" />
+    <Content Include="images\auth-bg\bg-5.jpg" />
+    <Content Include="images\auth-bg\bg.jpg" />
+    <Content Include="images\auth-bg\dr.jpg" />
+    <Content Include="images\auth-bg\dr2.jpg" />
     <Content Include="images\bg-1.jpg" />
     <Content Include="images\bg-2.jpg" />
     <Content Include="images\bg-4.jpg" />
     <Content Include="images\bg-5.jpg" />
     <Content Include="images\bg.jpg" />
     <Content Include="Login.aspx" />
-    <Content Include="patient.aspx" />
+    <Content Include="patient\patient.aspx" />
+    <Content Include="patient\register.aspx" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin.aspx.cs">
+    <Compile Include="admin\admin.aspx.cs">
       <DependentUpon>admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin.aspx.designer.cs">
+    <Compile Include="admin\admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="doctor.aspx.cs">
+    <Compile Include="doctor\doctor.aspx.cs">
       <DependentUpon>doctor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="doctor.aspx.designer.cs">
+    <Compile Include="doctor\doctor.aspx.designer.cs">
       <DependentUpon>doctor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
@@ -349,12 +359,19 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="patient.aspx.cs">
+    <Compile Include="patient\patient.aspx.cs">
       <DependentUpon>patient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="patient.aspx.designer.cs">
+    <Compile Include="patient\patient.aspx.designer.cs">
       <DependentUpon>patient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patient\register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient\register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test.aspx.cs">
@@ -430,6 +447,10 @@
     <Content Include="css\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="css\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="css\assets\vendor_plugins\bootstrap-wysihtml5\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="images\auth-bg\kjj.pdf" />
+    <Content Include="images\auth-bg\kk.pdf" />
+    <Content Include="images\auth-bg\kl.pdf" />
+    <Content Include="images\auth-bg\lll.pdf" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

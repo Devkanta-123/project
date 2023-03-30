@@ -23,26 +23,26 @@ namespace DrProject
         protected void btn_login_Click(object sender, EventArgs e)
         {
              SqlConnection  con = new SqlConnection("Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF' ");
-            da = new SqlDataAdapter("select * from  login where username = '" +username.Text+"' and password ='"+password.Text+"' and usertype = '"+ DropDownList1.SelectedItem.ToString()+"'",con);
+            da = new SqlDataAdapter("select * from login  where username = '" + username.Text+"' and password ='"+password.Text+"' and usertype = '"+ DropDownList1.SelectedItem.ToString()+"'",con);
             dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
-                Response.Write(" <script> alert('You are loggin as " +dt.Rows[0][3]+ "')</script>");
+               
 
                 if (DropDownList1.SelectedIndex == 0)
                 
-                    Response.Redirect("admin.aspx");
+                    Response.Redirect("admin/admin.aspx");
 
                 else if (DropDownList1.SelectedIndex == 1)
 
 
-                    Response.Redirect("doctor.aspx");
+                    Response.Redirect("doctor/doctor.aspx");
                 
                 else if (DropDownList1.SelectedIndex == 2)
 
 
-                        Response.Redirect("patient.aspx");
+                        Response.Redirect("patient/patient.aspx");
             }
             else
             {

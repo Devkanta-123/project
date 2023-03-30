@@ -9,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-  
-    <title></title>
+    <title>Login Pages</title>
     <link rel="stylesheet" href="css/vendors_css.css" />
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="stylesheet" href="css/skin_color.css"/>	
@@ -22,12 +21,12 @@
 <div class="container h-p10">
 	
 <div class="col-12">
-				<div class="row justify-content-center g-6">
+				<div class="row justify-content-center g-0">
 					<div class="col-lg-5 col-md-5 col-12">
 						<div class="bg-white rounded10 shadow-lg">
 							<div class="content-top-agile p-20 pb-0">
 								<h2 class="text-primary">Let's Get Started</h2>
-								<p class="mb-0">Sign in to continue to Medusind</p>							
+													
 							</div>
 							<div class="p-40">
 								<form id="form1"    runat="server">
@@ -37,8 +36,10 @@
 										<div class="input-group mb-6">
 											<span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
 											    <asp:TextBox ID="username" runat="server"  autocomplete="off" class="form-control ps-15 bg-transparent" placeholder="Username"></asp:TextBox>
+
 										&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="username" Display="Dynamic" ErrorMessage="This feild is required" ForeColor="Red"></asp:RequiredFieldValidator>
 										</div>
+
                                        </div>
 
 									</div>
@@ -50,6 +51,7 @@
 										    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="password" Display="Dynamic" ErrorMessage="This field is required" ForeColor="Red" ValidateRequestMode="Enabled"></asp:RequiredFieldValidator>
 											
 										</div>
+
 									</div>
 
 									 
@@ -59,17 +61,22 @@
 			 
 	<asp:Label runat="server"   class="form-label" >Select User Type</asp:Label>
         <asp:DropDownList ID="DropDownList1"   class="form-select" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-            <asp:ListItem >admin</asp:ListItem>
-            <asp:ListItem >doctor</asp:ListItem>
-            <asp:ListItem >patient</asp:ListItem>
+            <asp:ListItem>admin</asp:ListItem>
+            <asp:ListItem>doctor</asp:ListItem>
+            <asp:ListItem>patient</asp:ListItem>
         </asp:DropDownList>
 			
       
         </div>
-						
+					<div class="text-center">
+						<p class="mt-15 mb-0">Don't have an account? <a href="patient/register.aspx" class="text-warning ms-5">Patient Sign Up</a></p>
+					</div>
+							<br/>
+							
 	<div class="col-12 text-center">
  <asp:Button ID="btn_login" runat="server" Text="Login" class="btn btn-primary mt-10"  OnClick="btn_login_Click"/>
-	</div>				
+	</div>		
+							
 										
 								</div>	
 								</form>	

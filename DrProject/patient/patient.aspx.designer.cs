@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace DrProject
+namespace DrProject.patient
 {
     public partial class patient
     {

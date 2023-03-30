@@ -26561,7 +26561,7 @@ input[type="color"] {
   border-radius: 5px;
   box-shadow: none;
   border-color: #86a4c3;
-  height: auto; }
+}
   .form-control:focus, .form-select:focus {
     box-shadow: none; }
   .form-control::-webkit-input-placeholder, .form-select::-webkit-input-placeholder {

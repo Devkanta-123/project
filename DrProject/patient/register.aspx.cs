@@ -5,11 +5,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DrProject
+namespace DrProject.patient
 {
-    public partial class patient : System.Web.UI.Page
+    public partial class register : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void registerbtn_Click(object sender, EventArgs e)
         {
 
         }

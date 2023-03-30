@@ -1,0 +1,81 @@
+create table patient(
+id int IDENTITY PRIMARY KEY,
+fullname VARCHAR(30) NOT NULL,
+emailid VARCHAR(30) NOT NULL,
+password VARCHAR(10) NOT NULL,
+address VARCHAR(30) NOT NULL,
+phone varchar(10) NOT NULL,
+usertype int not null
+);
+
+
+
+create table role(
+id int identity Primary key,
+usertype varchar(20),
+);
+
+insert into patient(fullname,emailid,password,address,phone,usertype) 
+values('konsam','konsam@gmail.com','konsam','Polo',9089608955,3);
+
+
+
+
+create table doctor (
+id  INT IDENTITY PRIMARY KEY,
+fname VARCHAR(20) NOT NULL,
+lname VARCHAR(20) NOT NULL,
+emailid VARCHAR(20) NOT NULL,
+password VARCHAR(15) NOT NULL,
+designation VARCHAR(20) NOT NULL,
+dept VARCHAR(20) NOT NULL,
+phno VARCHAR(10) NOT NULL,
+DOB DATE NOT NULL,
+address VARCHAR(20) NOT NULL,
+experience VARCHAR(200) NOT NULL,
+usertype int NOT NULL
+);
+
+
+select p.emailid,p.usertype,d.fname,d.usertype,r.usertype  from role r 
+inner join patient p  on  p.usertype = r.id
+inner join doctor d  on  d.usertype = r.id
+
+
+
+
+use TrainingDB
+
+
+select r * from  role r
+
+
+create table login(
+id int IDENTITY PRIMARY KEY,
+username VARCHAR(20) NOT NULL,
+password VARCHAR(20) NOT NULL,
+usertype VARCHAR(20) NOT NULL
+);
+
+
+select * from login
+
+ALTER TABLE login 
+ ADD  userid VARCHAR(12);
+
+select * from patient
+
+select  from p*.,r.id,r.usertype  from role r 
+inner join patient p  on  p.usertype = r.id
+
+select  d.fname,d.lname,l.password  from login l
+inner join doctor d  on   d.id = l.userid 
+
+
+
+select * from doctor
+select * from login
+
+
+
+
