@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-namespace DrProject
+namespace DrProject.doctor
 {
-    public partial class doctor
+    public partial class dashboard
     {
 
         /// <summary>

@@ -77,5 +77,16 @@ select * from doctor
 select * from login
 
 
+**************************************
+ create table admin(
+id int IDENTITY PRIMARY KEY,
+emailid VARCHAR(30) NOT NULL,
+password VARCHAR(10) NOT NULL,
+);
+
+select * from admin
+
+
+
 
 

@@ -80,7 +80,7 @@
 										  </div>
 										</div>
 				            	<div class="text-center">
-									<p class="mt-15 mb-0">Already have an account?<a href="/login.aspx" class="text-danger ms-5"> Sign In</a></p>
+									<p class="mt-15 mb-0">Already have an account?<a href="Patientlogin.aspx" class="text-danger ms-5"> Sign In</a></p>
 								</div>
 					<br/>
 					<br/>

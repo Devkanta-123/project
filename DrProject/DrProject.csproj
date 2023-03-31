@@ -314,7 +314,8 @@
     <Content Include="css\style.css" />
     <Content Include="css\style_rtl.css" />
     <Content Include="css\vendors_css.css" />
-    <Content Include="doctor\doctor.aspx" />
+    <Content Include="doctor\dashboard.aspx" />
+    <Content Include="doctor\DoctorLogin.aspx" />
     <Content Include="images\404.jpg" />
     <Content Include="images\500.jpg" />
     <Content Include="images\auth-bg\404.jpg" />
@@ -331,8 +332,9 @@
     <Content Include="images\bg-4.jpg" />
     <Content Include="images\bg-5.jpg" />
     <Content Include="images\bg.jpg" />
-    <Content Include="Login.aspx" />
-    <Content Include="patient\patient.aspx" />
+    <Content Include="admin\AdminLogin.aspx" />
+    <Content Include="patient\dashboard.aspx" />
+    <Content Include="patient\PatientLogin.aspx" />
     <Content Include="patient\register.aspx" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
@@ -345,26 +347,40 @@
     <Compile Include="admin\admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="doctor\doctor.aspx.cs">
-      <DependentUpon>doctor.aspx</DependentUpon>
+    <Compile Include="admin\AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="doctor\doctor.aspx.designer.cs">
-      <DependentUpon>doctor.aspx</DependentUpon>
+    <Compile Include="admin\AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="doctor\dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="doctor\dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="patient\patient.aspx.cs">
-      <DependentUpon>patient.aspx</DependentUpon>
+    <Compile Include="doctor\DoctorLogin.aspx.cs">
+      <DependentUpon>DoctorLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="patient\patient.aspx.designer.cs">
-      <DependentUpon>patient.aspx</DependentUpon>
+    <Compile Include="doctor\DoctorLogin.aspx.designer.cs">
+      <DependentUpon>DoctorLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patient\dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient\dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patient\PatientLogin.aspx.cs">
+      <DependentUpon>PatientLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient\PatientLogin.aspx.designer.cs">
+      <DependentUpon>PatientLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="patient\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
