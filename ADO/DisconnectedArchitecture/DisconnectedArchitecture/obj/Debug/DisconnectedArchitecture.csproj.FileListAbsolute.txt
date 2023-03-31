@@ -1,0 +1,7 @@
+C:\Banu\Medusind\M_B2\ADO\DisconnectedArchitecture\DisconnectedArchitecture\bin\Debug\DisconnectedArchitecture.exe.config
+C:\Banu\Medusind\M_B2\ADO\DisconnectedArchitecture\DisconnectedArchitecture\bin\Debug\DisconnectedArchitecture.exe
+C:\Banu\Medusind\M_B2\ADO\DisconnectedArchitecture\DisconnectedArchitecture\bin\Debug\DisconnectedArchitecture.pdb
+C:\Banu\Medusind\M_B2\ADO\DisconnectedArchitecture\DisconnectedArchitecture\obj\Debug\DisconnectedArchitecture.csproj.AssemblyReference.cache
+C:\Banu\Medusind\M_B2\ADO\DisconnectedArchitecture\DisconnectedArchitecture\obj\Debug\DisconnectedArchitecture.csproj.CoreCompileInputs.cache
+C:\Banu\Medusind\M_B2\ADO\DisconnectedArchitecture\DisconnectedArchitecture\obj\Debug\DisconnectedArchitecture.exe
+C:\Banu\Medusind\M_B2\ADO\DisconnectedArchitecture\DisconnectedArchitecture\obj\Debug\DisconnectedArchitecture.pdb

@@ -1,0 +1,7 @@
+C:\Banu\Medusind\M_B2\ADO\ConnectedArchitecture\ConnectedArchitecture\bin\Debug\ConnectedArchitecture.exe.config
+C:\Banu\Medusind\M_B2\ADO\ConnectedArchitecture\ConnectedArchitecture\bin\Debug\ConnectedArchitecture.exe
+C:\Banu\Medusind\M_B2\ADO\ConnectedArchitecture\ConnectedArchitecture\bin\Debug\ConnectedArchitecture.pdb
+C:\Banu\Medusind\M_B2\ADO\ConnectedArchitecture\ConnectedArchitecture\obj\Debug\ConnectedArchitecture.csproj.AssemblyReference.cache
+C:\Banu\Medusind\M_B2\ADO\ConnectedArchitecture\ConnectedArchitecture\obj\Debug\ConnectedArchitecture.csproj.CoreCompileInputs.cache
+C:\Banu\Medusind\M_B2\ADO\ConnectedArchitecture\ConnectedArchitecture\obj\Debug\ConnectedArchitecture.exe
+C:\Banu\Medusind\M_B2\ADO\ConnectedArchitecture\ConnectedArchitecture\obj\Debug\ConnectedArchitecture.pdb
