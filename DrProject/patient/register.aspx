@@ -64,6 +64,17 @@
 				 &nbsp;&nbsp;
                  <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="address" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
              </div>
+				 <div class="input-group mb-3">
+				 <span class="input-group-text bg-transparent"><i class="ti-location-arrow">
+                     <asp:DropDownList ID="gender" runat="server">
+                         <asp:ListItem >Male</asp:ListItem>
+                         <asp:ListItem >Female</asp:ListItem>
+                     </asp:DropDownList>
+                     </i></span>
+               
+			
+               
+             </div>
 			</div>
 				 <div class="form-group">
 			<div class="input-group mb-3">

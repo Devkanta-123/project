@@ -17,7 +17,7 @@
 </head>
 
 
-<body class="hold-transition theme-primary bg-img" style="background-image: url(images/auth-bg/dr2.jpg)">
+<body class="hold-transition theme-primary bg-img" style="background-image: url(/images/auth-bg/dr2.jpg)">
 <div class="container h-p10">
 	
 <div class="col-12">
@@ -67,16 +67,10 @@
 								</form>	
 								
 							</div>						
-					
-						
+				
 					</div>
 				</div>
 			</div>
-			</div>
-	
-	
-
-	  
-	  
+			</div>  
 </body>
 </html>
