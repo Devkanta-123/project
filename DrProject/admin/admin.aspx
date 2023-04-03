@@ -57,7 +57,7 @@
 						<div class="text-end me-10">
 					<asp:Label ID ="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary" ></asp:Label>
 							<p class="pt-5 fs-14 mb-0 fw-700 text-primary">
-			
+			       <asp:LinkButton ID="logout" runat="server" OnClick="logout_Click">Logout</asp:LinkButton>
 			                </p>
 							<small class="fs-10 mb-0 text-uppercase text-mute"></small>
 						</div>
@@ -101,6 +101,7 @@
 					<span class="pull-right-container">
 					  <i class="fa fa-angle-right pull-right"></i>
 					</span>
+				    
 				  </a>
 				  <ul class="treeview-menu">
 					<li><a href="index.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Patients Dashboard</a></li>

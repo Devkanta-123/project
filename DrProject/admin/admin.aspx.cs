@@ -39,5 +39,14 @@ namespace DrProject
             Label2.Text = ds.Tables[0].Rows[0]["emailid"].ToString();
 
         }
+
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            if (Session == null)
+            {
+                Response.Redirect("AdminLogin.aspx");           
+            }
+        }
+
     }
 }

@@ -36,7 +36,6 @@
 											<asp:TextBox ID="fullname" runat="server" placeholder="Full Name" AutoComplete="off"  class="form-control ps-15 bg-transparent" ></asp:TextBox>
                                             &nbsp;&nbsp;
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fullname" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
-                                           
 										</div>
 									</div>
             
@@ -59,26 +58,24 @@
 			</div>
              <div class="form-group">
 			<div class="input-group mb-3">
-				 <span class="input-group-text bg-transparent"><i class="ti-location-arrow"></i></span>
+				 <span class="input-group-text bg-transparent"><i class="ti-location-pin"></i></span>
                 <asp:TextBox ID="address" runat="server"  class="form-control ps-15 bg-transparent" placeholder="Address" AutoComplete="off" ></asp:TextBox>
 				 &nbsp;&nbsp;
                  <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="address" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
              </div>
 				 <div class="input-group mb-3">
-				 <span class="input-group-text bg-transparent"><i class="ti-location-arrow">
-                     <asp:DropDownList ID="gender" runat="server">
+			 <span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
+                     <asp:DropDownList ID="gender" runat="server"  class="form-control ps-15 bg-transparent">
                          <asp:ListItem >Male</asp:ListItem>
                          <asp:ListItem >Female</asp:ListItem>
                      </asp:DropDownList>
-                     </i></span>
-               
-			
-               
-             </div>
+                </div>
 			</div>
 				 <div class="form-group">
 			<div class="input-group mb-3">
-				 <span class="input-group-text bg-transparent"><i class="ti-location-arrow"></i></span>
+				 <span class="input-group-text bg-transparent"><i class="ti-image">
+                 
+                 </i></span>
                 <asp:TextBox ID="age" runat="server"  class="form-control ps-15 bg-transparent" placeholder="Age"  TextMode="Number" AutoComplete="off" ></asp:TextBox>
 				 &nbsp;&nbsp;
                  <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="age"  Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -92,6 +89,17 @@
                  <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="phone" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
              </div>
 			</div>
+				<div class="form-group">
+			<div class="input-group mb-3">
+				 <span class="input-group-text bg-transparent"><i class="ti-save-alt"></i></span>
+              	<asp:FileUpload  ID ="profile" runat="server" />
+             </div>
+			</div>
+
+
+			
+
+
 				<div class="row">
 										<div class="col-12">
 										  <div class="checkbox">
@@ -105,27 +113,17 @@
 								</div>
 					<br/>
 					<br/>
-
-					
-									
 										<div class="col-12 text-center">
 										<asp:Button ID="registerbtn" runat="server" Text="Register"   class="btn btn-info margin-top-10" OnClick="registerbtn_Click" />
-										
-										</div>
-							
-									
+										</div>	
 									  </div>
-			
-        </div>
-    </form>
- </div>
- </div>
- </div>
- </div>
- </div>
- </div>
- 
-    
- 
-</body>
-</html>
+						</div>
+					</form>
+				 </div>
+				 </div>
+				 </div>
+				 </div>
+				 </div>
+				 </div>
+				</body>
+				</html>

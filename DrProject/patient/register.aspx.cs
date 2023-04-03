@@ -35,9 +35,6 @@ namespace DrProject.patient
             if (dt.Rows.Count > 0)
             {
                 Response.Write("<script> alert('Email Already Exits')</script>");
-
-
-
             }
             else 
                 {
@@ -58,12 +55,7 @@ namespace DrProject.patient
                 script += Request.Url.AbsoluteUri;
                 script += "'; }";
                 ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
-            }
-          
-
-          
-        }
-
-        
+            }    
+        }  
     }
 }
