@@ -33,21 +33,21 @@ namespace DrProject
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// logout control.
+        /// Image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton logout;
+        protected global::System.Web.UI.WebControls.Image Image1;
 
         /// <summary>
-        /// profile control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image profile;
+        protected global::System.Web.UI.WebControls.Label Label3;
     }
 }

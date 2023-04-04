@@ -21,7 +21,6 @@ namespace DrProject
             if (Session["user"] != null)
             {
                 Response.Redirect("admin.aspx");
-
             }
             else {
                 con.ConnectionString = "Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF' ";
@@ -40,8 +39,6 @@ namespace DrProject
             {
                 Session["user"] = user;
                 Response.Redirect("admin.aspx");
-
-
             }
             else
             {
@@ -52,7 +49,6 @@ namespace DrProject
 
         }
 
-       
         protected void password_TextChanged(object sender, EventArgs e)
         {
 

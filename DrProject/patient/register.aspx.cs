@@ -36,15 +36,13 @@ namespace DrProject.patient
             {
                 Response.Write("<script> alert('Email Already Exits')</script>");
             }
-            else 
+            else if(profile.HasFile)
                 {
-                cmd = new SqlCommand("insert into patient " + " (fullname,emailid,password,address,age,phone) values(@fullname,@emailid,@password,@address,@age,@phone)", con);
-                cmd.Parameters.AddWithValue("@fullname", fullname.Text);
-                cmd.Parameters.AddWithValue("@emailid", emailid.Text);
-                cmd.Parameters.AddWithValue("@password", password.Text);
-                cmd.Parameters.AddWithValue("@address", address.Text);
-                cmd.Parameters.AddWithValue("@age", age.Text);
-                cmd.Parameters.AddWithValue("@phone", phone.Text);
+                string filename = profile.PostedFile.FileName;
+                string filepath = "images/" + profile.FileName;
+                profile.PostedFile.SaveAs(Server.MapPath("images/") + filename);
+                cmd = new SqlCommand("insert into patient " + " (fullname,emailid,password,address,age,phone,profile) values('"+fullname.Text+"','"+emailid.Text+"','"+password.Text+"','"+address.Text+"','"+age.Text+"','"+phone.Text+"','"+filepath+"')", con);
+           
                  cmd.ExecuteNonQuery();
                  con.Close();
                 string message = "Your details have been saved successfully.";

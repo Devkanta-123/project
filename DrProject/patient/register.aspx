@@ -111,12 +111,12 @@
 				            	<div class="text-center">
 									<p class="mt-15 mb-0">Already have an account?<a href="Patientlogin.aspx" class="text-danger ms-5"> Sign In</a></p>
 								</div>
-					<br/>
-					<br/>
+					           <br/>
+					           <br/>
 										<div class="col-12 text-center">
 										<asp:Button ID="registerbtn" runat="server" Text="Register"   class="btn btn-info margin-top-10" OnClick="registerbtn_Click" />
 										</div>	
-									  </div>
+							</div>
 						</div>
 					</form>
 				 </div>

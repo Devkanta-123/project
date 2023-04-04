@@ -52,44 +52,35 @@
         <ul class="nav navbar-nav">			
 			<!-- User Account-->
 			<li class="dropdown user user-menu">
+			
+			
 				<a href="#" class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent p-0 no-shadow" data-bs-toggle="dropdown" title="User">
 					<div class="d-flex pt-1">
-						<div class="text-end me-10">
-					<asp:Label ID ="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary" ></asp:Label>
-							<p class="pt-5 fs-14 mb-0 fw-700 text-primary">
-			       <asp:LinkButton ID="logout" runat="server" OnClick="logout_Click">Logout</asp:LinkButton>
-			                </p>
-							<small class="fs-10 mb-0 text-uppercase text-mute"></small>
+						<div class="text-end me-15">
+							<div class="text-end me-10">
+					      <asp:Label ID ="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary" ></asp:Label>
+							</div>
+							
+
 						</div>
-						 <asp:Image ID="profile" runat="server" class="avatar rounded-10 bg-primary-light h-40 w-40" />
+						
+						<div class="d-flex justify-content-between align-items-center">
+                  <asp:Image ID="Image1" runat="server" class="me-10 avatar rounded-circle"  />  
+										
+							</div>
 					</div>
 				</a>
-				<ul class="dropdown-menu animated flipInX">
-				  <li class="user-body">
-					 <a class="dropdown-item" href="extra_profile.html"><i class="ti-user text-muted me-2"></i> Profile</a>
-					 <a class="dropdown-item" href="auth_login.html"><i class="ti-lock text-muted me-2"></i> Logout</a>
-				  </li>
-				</ul>
 			</li>	
-			<li class="btn-group nav-item d-lg-inline-flex d-none">
-				<a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen btn-warning-light" title="Full Screen">
-					<i class="icon-Position"></i>
-			    </a>
-			</li>
-		  			  
+			  
           <!-- Control Sidebar Toggle Button -->
-          <li class="btn-group nav-item">
-              <a href="#" data-toggle="control-sidebar" title="Setting" class="waves-effect full-screen waves-light btn-danger-light">
-			  	<i class="icon-Settings1"><span class="path1"></span><span class="path2"></span></i>
-			  </a>
-          </li>
+        
 			
         </ul>
       </div>
     </nav>
   </header>
 		<aside>
- <section class="sidebar position-relative">
+     <section class="sidebar position-relative">
 	  	<div class="multinav">
 		  <div class="multinav-scroll" style="height: 100%;">	
 			  <!-- sidebar menu-->
@@ -467,11 +458,79 @@
 				</li>	 	     
 			  </ul>
 			  
-			 
+			   <div class="sidebar-widgets">
+				  
+				<div class="copyright text-center m-25">
+					<p><strong class="d-block">Doclinic Dashboard</strong> © <script>document.write(new Date().getFullYear())</script> All Rights Reserved</p>
+				</div>
+			  </div>
 		  </div>
 		</div>
     </section>
   </aside>
+		 <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Main content -->
+		<section class="content">
+			
+			<div class="row">
+				<div class="col-xxxl-9 col-xl-8 col-12">
+					
+						<!-- card -->
+					<div class="row">
+						<div class="col-lg-4 col-12">
+							<div class="box">
+								<div class="box-body">
+									<div class="d-flex align-items-center">
+										<div class="me-15">
+											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-20.svg" alt="" class="w-120" />
+										</div>
+										<div>
+											<h4 class="mb-0">Total Patients</h4>
+											<asp:Label ID="Label3" runat="server" Text="1234" class="mb-3" ></asp:Label>
+                                          
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+							<div class="col-lg-4 col-12">
+							<div class="box">
+								<div class="box-body">
+									<div class="d-flex align-items-center">
+										<div class="me-15">
+											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-18.svg" alt="" class="w-120" />
+										</div>
+										<div>
+											<h4 class="mb-0">Total Staffs</h4>
+											<h3 class="mb-0">145</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-12">
+							<div class="box">
+								<div class="box-body">
+									<div class="d-flex align-items-center">
+										<div class="me-15">
+											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-19.svg" alt="" class="w-120" />
+										</div>
+										<div>
+											<h4 class="mb-0">Total Surgery</h4>
+											<h3 class="mb-0">245</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					</div>
+					</div>
+			</section>
+		  </div>
+		  </div>
 	</div>
 	</div>
 
