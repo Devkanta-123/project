@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="admin.aspx.cs" Inherits="DrProject.admin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="admin.aspx.cs" Inherits="DrProject.admin" %>
 
 <!DOCTYPE html>
 
@@ -464,6 +464,13 @@
 					<p><strong class="d-block">Doclinic Dashboard</strong> © <script>document.write(new Date().getFullYear())</script> All Rights Reserved</p>
 				</div>
 			  </div>
+		      
+		      
+		      
+		      
+		      
+		      
+		      
 		  </div>
 		</div>
     </section>
@@ -471,7 +478,7 @@
 		 <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Main content -->
-		<section class="content">
+	
 			
 			<div class="row">
 				<div class="col-xxxl-9 col-xl-8 col-12">
@@ -533,21 +540,120 @@
 	<div class="modal center-modal fade" id="modal-center" tabindex="-1">
 	  <div class="modal-dialog">
 		<div class="modal-content">
-		  <div class="modal-header">
-			<h5 class="modal-title">Modal title</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		  </div>
 		  <div class="modal-body">
-			<div class="input-group mb-3">
-                <span class="input-group-text bg-transparent"><i class="ti-email"></i></span>
-                <asp:TextBox ID="emailid" runat="server"  class="form-control ps-15 bg-transparent" placeholder="Email ID" AutoComplete="off" ></asp:TextBox>
-				 &nbsp;&nbsp;
-                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="emailid" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
-            </div>
-		  </div>
+			<h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Personal Info</h4>
+			          	<div class="row">
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">First Name</label>
+										<asp:TextBox ID="fname" runat="server"  class="form-control" placeholder="First Name..." AutoComplete="off" ></asp:TextBox>
+				                 &nbsp;&nbsp;
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fname" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator> 									
+									</div>
+								  </div>
+
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">Last Name</label>
+										<asp:TextBox ID="lname" runat="server"  class="form-control" placeholder="last Name..." AutoComplete="off" ></asp:TextBox>
+				                 &nbsp;&nbsp;
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="lname" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>					  
+									</div>
+								  </div>
+		               </div>
+			   <div class="row">
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">E-mail</label>
+										<asp:TextBox ID="emailid" runat="server"  class="form-control" placeholder="E-MailId..." AutoComplete="off" ></asp:TextBox>
+				                 &nbsp;&nbsp;
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="emailid" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+
+									 
+									</div>
+								  </div>
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">Password</label>
+										<asp:TextBox ID="password" runat="server"  class="form-control" placeholder="Password..." AutoComplete="off" ></asp:TextBox>
+				                 &nbsp;&nbsp;
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="password" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+									 
+									</div>
+								  </div>
+								</div>
+
+			  <div class="row">
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">Designation</label>
+										<asp:TextBox ID="designation" runat="server"  class="form-control" placeholder="Designation..." AutoComplete="off" ></asp:TextBox>
+				                 &nbsp;&nbsp;
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="designation" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+									 
+									</div>
+								  </div>
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">Phone No</label>
+										<asp:TextBox ID="phno" runat="server"  class="form-control" placeholder="Phone No..." AutoComplete="off" ></asp:TextBox>
+				                 &nbsp;&nbsp;
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="phno" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+								
+									</div>
+								  </div>
+
+		               </div>
+			   <div class="row">
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">DOB</label>
+						        <asp:TextBox ID="dob" runat="server" type="date"   class="form-control" ></asp:TextBox>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="dob" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+									</div>
+								  </div>
+				    <div class="col-md-6">
+									<div class="form-group">
+											  <label class="form-label">Department</label>
+			<asp:DropDownList ID="DropDownList1" runat="server" class="form-control"  >
+                  <asp:ListItem>Ortho</asp:ListItem>
+                  <asp:ListItem>Medicine</asp:ListItem>
+				<asp:ListItem>Neuro</asp:ListItem>
+                  <asp:ListItem>Dental</asp:ListItem>
+              </asp:DropDownList>
+
+		               </div>
+		               </div>
+		               </div>
+
+			   <div class="row">
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">Address</label>
+										<asp:TextBox ID="address" runat="server"  class="form-control" placeholder="Address..." AutoComplete="off" ></asp:TextBox>
+				                 &nbsp;&nbsp;
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="address" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+									  
+									</div>
+								  </div>
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">Experience</label>
+										<asp:TextBox ID="experience" runat="server"  class="form-control" placeholder="Experience..." AutoComplete="off" ></asp:TextBox>
+				                 &nbsp;&nbsp;
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="experience" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+									  
+									</div>
+								  </div>
+
+		               </div>
+			                   <div class="form-group">
+								  <label class="form-label">Select Profile</label>
+								 <asp:FileUpload ID="profile" runat="server" />
+								</div>
 		  <div class="modal-footer modal-footer-uniform">
 			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary float-end">Save changes</button>
+		<asp:Button ID="regt_doc" runat="server" Text="Save"  class="btn btn-primary float-end"/>
 		  </div>
 		</div>
 	  </div>
@@ -556,11 +662,13 @@
 
 					</div>
 					</div>
-			</section>
+					</div>
+					</div>
+					</div>
+		
 		  </div>
 		  </div>
-	</div>
-	</div>
+
 
     </form>
 

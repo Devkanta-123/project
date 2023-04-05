@@ -21,20 +21,28 @@ values('konsam','konsam@gmail.com','konsam','Polo',9089608955,3);
 
 
 
-create table doctor (
+ create table doctor (
 id  INT IDENTITY PRIMARY KEY,
 fname VARCHAR(20) NOT NULL,
 lname VARCHAR(20) NOT NULL,
 emailid VARCHAR(20) NOT NULL,
 password VARCHAR(15) NOT NULL,
 designation VARCHAR(20) NOT NULL,
-dept VARCHAR(20) NOT NULL,
+dept_id int NOT NULL,
 phno VARCHAR(10) NOT NULL,
 DOB DATE NOT NULL,
 address VARCHAR(20) NOT NULL,
 experience VARCHAR(200) NOT NULL,
-usertype int NOT NULL
+profile   VARCHAR(200) NOT NULL
+FOREIGN KEY (dept_id) REFERENCES app_dept(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
+create table app_dept(
+id INT identity PRIMARY KEY,
+dept_name VARCHAR(30)
+);
+
 
 
 select p.emailid,p.usertype,d.fname,d.usertype,r.usertype  from role r 

@@ -116,3 +116,7 @@ C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.csproj.CopyCompl
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.dll
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.pdb
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.csprojAssemblyReference.cache
+C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.csproj.AssemblyReference.cache
+C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.csproj.CoreCompileInputs.cache
+C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.dll
+C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.pdb

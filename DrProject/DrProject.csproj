@@ -316,6 +316,7 @@
     <Content Include="css\vendors_css.css" />
     <Content Include="doctor\dashboard.aspx" />
     <Content Include="doctor\DoctorLogin.aspx" />
+    <Content Include="drop.aspx" />
     <Content Include="images\1.jpg" />
     <Content Include="images\150x100.png" />
     <Content Include="images\404.jpg" />
@@ -639,6 +640,13 @@
     </Compile>
     <Compile Include="doctor\DoctorLogin.aspx.designer.cs">
       <DependentUpon>DoctorLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="drop.aspx.cs">
+      <DependentUpon>drop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="drop.aspx.designer.cs">
+      <DependentUpon>drop.aspx</DependentUpon>
     </Compile>
     <Compile Include="patient\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
