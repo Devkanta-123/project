@@ -65,7 +65,7 @@
 						</div>
 						
 						<div class="d-flex justify-content-between align-items-center">
-                  <asp:Image ID="Image1" runat="server" class="me-10 avatar rounded-circle"  />  
+	                     <img src="/images/admin.png" alt="" class="me-10 avatar rounded-circle"  />
 										
 							</div>
 					</div>
@@ -502,8 +502,11 @@
 											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-18.svg" alt="" class="w-120" />
 										</div>
 										<div>
-											<h4 class="mb-0">Total Staffs</h4>
-											<h3 class="mb-0">145</h3>
+											<h4 class="mb-0">Total Doctor</h4>
+										<asp:Label ID="Label4" runat="server" Text="1234" class="mb-3" ></asp:Label>
+											<br/>
+											
+											<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">Add </button>
 										</div>
 									</div>
 								</div>
@@ -517,13 +520,38 @@
 											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-19.svg" alt="" class="w-120" />
 										</div>
 										<div>
-											<h4 class="mb-0">Total Surgery</h4>
+											<h4 class="mb-0">Total Doctor</h4>
+											
 											<h3 class="mb-0">245</h3>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
+			
+	<div class="modal center-modal fade" id="modal-center" tabindex="-1">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Modal title</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			<div class="input-group mb-3">
+                <span class="input-group-text bg-transparent"><i class="ti-email"></i></span>
+                <asp:TextBox ID="emailid" runat="server"  class="form-control ps-15 bg-transparent" placeholder="Email ID" AutoComplete="off" ></asp:TextBox>
+				 &nbsp;&nbsp;
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="emailid" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+            </div>
+		  </div>
+		  <div class="modal-footer modal-footer-uniform">
+			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary float-end">Save changes</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
 					</div>
 
 					</div>
@@ -536,16 +564,15 @@
 
     </form>
 
-   <script src="js/vendors.min.js"></script>
-	<script src="js/pages/chat-popup.js"></script>
+   <script src="/js/vendors.min.js"></script>
+	<script src="/js/pages/chat-popup.js"></script>
     <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
 	
 	<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
 	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
 	
 
-	<script src="js/template.js"></script>
-	<script src="js/pages/dashboard3.js"></script>
-    	
+
+
 </body>
 </html>

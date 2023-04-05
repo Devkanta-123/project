@@ -33,12 +33,9 @@ namespace DrProject.patient
                 if (ds.Tables[0].Rows[0]["profile"].ToString().Length > 1)
                 {
                     profile.ImageUrl = ds.Tables[0].Rows[0]["profile"].ToString();
-              
-
                 }
                 else {
-                    profile.ImageUrl = "/images/default.jpg";
-                
+                    profile.ImageUrl = "/images/default.jpg"; 
                 }
             }
         }
@@ -55,8 +52,7 @@ namespace DrProject.patient
         protected void logout_Click(object sender, EventArgs e)
         {
                 Session.Abandon();
-                Response.Redirect("PatientLogin.aspx");
-          
+                Response.Redirect("PatientLogin.aspx"); 
         }
         
     }
