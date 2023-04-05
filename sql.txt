@@ -6,3 +6,7 @@ use TrainingDB;
  usertype varchar(20)  NOT NULL
  );
  select * from login
+
+
+
+konsam
