@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="admin.aspx.cs" Inherits="DrProject.admin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="admin.aspx.cs" Inherits="DrProject.admin" %>
 
 <!DOCTYPE html>
 
@@ -127,6 +127,7 @@
 				  <a href="reports.html">
 					<i class="icon-Settings-1"><span class="path1"></span><span class="path2"></span></i>
 					<span>Reports</span>
+                    
 				  </a>
 				</li>				
 				<li class="treeview">
@@ -474,6 +475,7 @@
 		  </div>
 		</div>
     </section>
+
   </aside>
 		 <div class="content-wrapper">
 	  <div class="container-full">
@@ -614,12 +616,9 @@
 								  </div>
 				    <div class="col-md-6">
 									<div class="form-group">
-											  <label class="form-label">Department</label>
-			<asp:DropDownList ID="DropDownList1" runat="server" class="form-control"  >
-                  <asp:ListItem>Ortho</asp:ListItem>
-                  <asp:ListItem>Medicine</asp:ListItem>
-				<asp:ListItem>Neuro</asp:ListItem>
-                  <asp:ListItem>Dental</asp:ListItem>
+			<label class="form-label">Department</label>
+			<asp:DropDownList ID="department" runat="server" class="form-control"  >
+             
               </asp:DropDownList>
 
 		               </div>
@@ -653,7 +652,8 @@
 								</div>
 		  <div class="modal-footer modal-footer-uniform">
 			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-		<asp:Button ID="regt_doc" runat="server" Text="Save"  class="btn btn-primary float-end"/>
+			
+		<asp:Button  ID="regdoc" runat="server" Text="Save"   OnClick="regtDoc_Click" class="btn btn-primary float-end"/>
 		  </div>
 		</div>
 	  </div>

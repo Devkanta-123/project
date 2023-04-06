@@ -391,6 +391,7 @@
     <Content Include="images\card\img4.jpg" />
     <Content Include="images\check-1.png" />
     <Content Include="images\check-2.png" />
+    <Content Include="images\default.jpg" />
     <Content Include="images\front-end-img\courses\1.jpg" />
     <Content Include="images\front-end-img\courses\11f.jpg" />
     <Content Include="images\front-end-img\courses\13.jpg" />
@@ -757,6 +758,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="doctor\profiles\" />
+    <Folder Include="includes\" />
     <Folder Include="patient\images\" />
   </ItemGroup>
   <PropertyGroup>

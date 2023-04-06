@@ -11,7 +11,7 @@ namespace DrProject.doctor
 {
 
 
-    public partial class doctordashboard
+    public partial class dashboard
     {
 
         /// <summary>

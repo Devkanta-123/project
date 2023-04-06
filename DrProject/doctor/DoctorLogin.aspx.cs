@@ -22,7 +22,7 @@ namespace DrProject.doctor
         {
             if (Session["user"] != null)
             {
-                Response.Redirect("doctordashboard.aspx");
+                Response.Redirect("dashboard.aspx");
 
             }
             else
@@ -46,7 +46,7 @@ namespace DrProject.doctor
             if (ds.Tables[0].Rows.Count > 0)
             {
                 Session["user"] = user;
-                Response.Redirect("doctordashboard.aspx");
+                Response.Redirect("dashboard.aspx");
 
 
             }

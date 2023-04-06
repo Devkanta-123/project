@@ -1,12 +1,12 @@
 $(document).ready(function () {
     $(".tst1").on("click", function () {
         $.toast({
-            heading: 'Welcome to my Doclinic',
-            text: 'Use the predefined ones, or specify a custom position object.',
+            heading: 'Save Successfully',
+            text: 'Hello Konsam',
             position: 'top-right',
             loaderBg: '#ff6849',
             icon: 'info',
-            hideAfter: 3000,
+            hideAfter: 2000,
             stack: 6
         });
 

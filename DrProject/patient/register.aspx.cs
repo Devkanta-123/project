@@ -34,7 +34,9 @@ namespace DrProject.patient
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
-                Response.Write("<script> alert('Email Already Exits')</script>");
+                Response.Write(" <script> alert(' Email Alredy Exists')</script>");
+              
+                Response.Redirect("register.aspx");
             }
             else if(profile.HasFile)
                 {
@@ -45,6 +47,7 @@ namespace DrProject.patient
            
                  cmd.ExecuteNonQuery();
                  con.Close();
+
                 string message = "Your details have been saved successfully.";
                 string script = "window.onload = function(){ alert('";
                 script += message;

@@ -5,9 +5,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title> Patient Register Pages</title>
-        <link rel="stylesheet" href="/css/vendors_css.css" />
-	<link rel="stylesheet" href="/css/style.css" />
-	<link rel="stylesheet" href="/css/skin_color.css"/>	
+        <link rel="stylesheet" href="~/css/vendors_css.css" />
+	<link rel="stylesheet" href="~/css/style.css" />
+	<link rel="stylesheet" href="~/css/skin_color.css" />
+	  <script src="~/js/sweetalert.js">
+
+	  </script>
+	  <script>
+	
+        function alertme() {
+            Swal.fire(
+                'Good job!',
+                'You clicked the button!',
+                'success'
+            )
+
+        }
+    </script>
 
 </head>
 
@@ -95,11 +109,6 @@
               	<asp:FileUpload  ID ="profile" runat="server" />
              </div>
 			</div>
-
-
-			
-
-
 				<div class="row">
 										<div class="col-12">
 										  <div class="checkbox">
@@ -114,8 +123,9 @@
 					           <br/>
 					           <br/>
 										<div class="col-12 text-center">
-										<asp:Button ID="registerbtn" runat="server" Text="Register"   class="btn btn-info margin-top-10" OnClick="registerbtn_Click" />
+										<asp:Button ID="registerbtn" runat="server" Text="Register"   class="tst1 btn btn-info" OnClick="registerbtn_Click" />
 										</div>	
+					
 							</div>
 						</div>
 					</form>
@@ -125,5 +135,9 @@
 				 </div>
 				 </div>
 				 </div>
+	
+    <script src="~/js/pages/toastr.js"></script>
+	<script src="~/css/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+
 				</body>
 				</html>

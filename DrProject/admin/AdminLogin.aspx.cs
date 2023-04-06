@@ -49,7 +49,8 @@ namespace DrProject
 
         }
 
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+      
+        protected void password_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -177,13 +177,13 @@ namespace DrProject
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
 
         /// <summary>
-        /// dept control.
+        /// department control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dept;
+        protected global::System.Web.UI.WebControls.DropDownList department;
 
         /// <summary>
         /// address control.
@@ -222,12 +222,21 @@ namespace DrProject
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
 
         /// <summary>
-        /// regt_doc control.
+        /// profile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button regt_doc;
+        protected global::System.Web.UI.WebControls.FileUpload profile;
+
+        /// <summary>
+        /// regdoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button regdoc;
     }
 }
