@@ -35,14 +35,15 @@ namespace DrProject
 
                 con.Close();
                 callData();
-
+                countdoctor();
+                getrecentpatient();
             }
         }
         public void getDept()
         {
             con = new SqlConnection(cnstr);
             con.Open();
-            SqlCommand de = new SqlCommand("select * from [dbo].[app_dept]",con);
+            SqlCommand de = new SqlCommand("select * from  [dbo].[app_dept]  where status = 'active' ", con);
             de.CommandType = CommandType.Text;
             department.DataSource = de.ExecuteReader();
             department.DataTextField = "dept_name";
@@ -64,11 +65,34 @@ namespace DrProject
             Label2.Text = ds.Tables[0].Rows [0]["emailid"].ToString();
 
         }
+        public void getrecentpatient()
+        {
+
+            con = new SqlConnection(cnstr);
+            con.Open();
+            cmd.CommandText = " select id,fullname from patient ";
+            cmd.Connection = con;
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            fetchpatient.DataSource = dt;
+            fetchpatient.DataBind();
+
+
+        }
+        public void countdoctor()
+        {
+            con = new SqlConnection(cnstr);
+            con.Open();
+            SqlCommand dr = new SqlCommand("select COUNT(*) from doctor",con);
+            int? RowCount = (int?)dr.ExecuteScalar();
+            Label4.Text = RowCount.ToString();
+        }
 
         protected void logout_Click(object sender, EventArgs e)
         {
             if (Session == null)
             {
+                Session.Abandon();
                 Response.Redirect("AdminLogin.aspx");           
             }
         }
@@ -101,7 +125,6 @@ namespace DrProject
 
                     cmd.ExecuteNonQuery();
                     con.Close();
-
                     string message = "Your details have been saved successfully.";
                     string script = "window.onload = function(){ alert('";
                     script += message;

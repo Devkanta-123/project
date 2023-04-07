@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\admin.aspx" />
+    <Content Include="admin\sidepanel.html" />
     <Content Include="css\assets\icons\cryptocoins-master\cryptocoins.css" />
     <Content Include="css\assets\icons\feather-icons\feather.min.js" />
     <Content Include="css\assets\icons\flag-icon-css\css\flag-icon.css" />
