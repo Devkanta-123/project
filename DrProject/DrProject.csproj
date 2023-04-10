@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="admin\admin.aspx" />
     <Content Include="admin\sidepanel.html" />
+    <Content Include="alert.aspx" />
     <Content Include="css\assets\icons\cryptocoins-master\cryptocoins.css" />
     <Content Include="css\assets\icons\feather-icons\feather.min.js" />
     <Content Include="css\assets\icons\flag-icon-css\css\flag-icon.css" />
@@ -317,6 +318,7 @@
     <Content Include="css\vendors_css.css" />
     <Content Include="doctor\dashboard.aspx" />
     <Content Include="doctor\DoctorLogin.aspx" />
+    <Content Include="doctor\sidepanel.html" />
     <Content Include="drop.aspx" />
     <Content Include="images\1.jpg" />
     <Content Include="images\150x100.png" />
@@ -606,6 +608,7 @@
     <Content Include="js\pages\widget-inline-charts.js" />
     <Content Include="js\pages\widget-morris-charts.js" />
     <Content Include="js\pages\widgets.js" />
+    <Content Include="js\sweetalert.js" />
     <Content Include="js\template.js" />
     <Content Include="js\vendors.min.js" />
     <Content Include="patient\dashboard.aspx" />
@@ -613,6 +616,7 @@
     <Content Include="patient\register.aspx" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\admin.aspx.cs">
@@ -628,6 +632,13 @@
     </Compile>
     <Compile Include="admin\AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="alert.aspx.cs">
+      <DependentUpon>alert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="alert.aspx.designer.cs">
+      <DependentUpon>alert.aspx</DependentUpon>
     </Compile>
     <Compile Include="doctor\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
@@ -678,6 +689,13 @@
     </Compile>
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -759,7 +777,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="doctor\profiles\" />
-    <Folder Include="includes\" />
     <Folder Include="patient\images\" />
   </ItemGroup>
   <PropertyGroup>

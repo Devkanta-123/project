@@ -34,9 +34,9 @@ namespace DrProject.patient
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
-                Response.Write(" <script> alert(' Email Alredy Exists')</script>");
-              
-                Response.Redirect("register.aspx");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert",
+               "Swal.fire('Email Already Taken ', 'Try others...!', 'error')", true);
+            
             }
             else if(profile.HasFile)
                 {
@@ -47,15 +47,10 @@ namespace DrProject.patient
            
                  cmd.ExecuteNonQuery();
                  con.Close();
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert",
+               "Swal.fire('Register Succesfull', 'Now You can Login In...!', 'success')", true);
+             
 
-                string message = "Your details have been saved successfully.";
-                string script = "window.onload = function(){ alert('";
-                script += message;
-                script += "');";
-                script += "window.location = '";
-                script += Request.Url.AbsoluteUri;
-                script += "'; }";
-                ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
             }    
         }  
     }

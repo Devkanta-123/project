@@ -70,14 +70,12 @@ namespace DrProject
 
             con = new SqlConnection(cnstr);
             con.Open();
-            cmd.CommandText = " select id,fullname from patient ";
+            cmd.CommandText = " select  TOP 3  fullname AS FULL_NAME,emailid AS Email_ID ,address AS ADDRESS,phone AS PHN ,age as AGE  from patient order by id DESC";
             cmd.Connection = con;
             da.SelectCommand = cmd;
             da.Fill(dt);
             fetchpatient.DataSource = dt;
             fetchpatient.DataBind();
-
-
         }
         public void countdoctor()
         {
@@ -125,7 +123,7 @@ namespace DrProject
 
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    string message = "Your details have been saved successfully.";
+                    string message = "Doctor added successfully.";
                     string script = "window.onload = function(){ alert('";
                     script += message;
                     script += "');";
@@ -135,6 +133,11 @@ namespace DrProject
                     ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
                 }
             }
+
+        }
+
+        protected void fetchpatient_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

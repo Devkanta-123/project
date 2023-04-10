@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="/css/style.css"/>
 	<link rel="stylesheet" href="/css/skin_color.css"/>
 	  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico"/>
+
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
 
@@ -143,7 +144,7 @@
 								</div>
 							</div>
 						</div>
-							<div class="col-12">
+					<div class="col-12">
 						  <div class="box">
 							<div class="box-header with-border">
 							  <h4 class="box-title">Admitted Patient</h4>
@@ -154,22 +155,16 @@
 							  </div>
 							</div>
 							<div class="box-body no-padding">
-								<div class="table-responsive">
-								  	<table class="table mb-0">
-										<tbody>
-											<tr class="bg-info-light">
-											 
-											</tr>
-											<asp:GridView ID="fetchpatient" runat="server">
+							
+								  
+										
+											<asp:GridView ID="fetchpatient"  runat="server" class="table mb-0 table-responsive" OnSelectedIndexChanged="fetchpatient_SelectedIndexChanged">
                                                 </asp:GridView>
-											
-											
-											<tr>
 											 
-											</tr>
-										</tbody>
-									</table>
-								</div>
+											
+											
+			
+							
 							</div>		
 							  
 							<div class="box-footer bg-light py-10 with-border">
@@ -315,7 +310,7 @@
    <script src="/js/vendors.min.js"></script>
 	<script src="/js/pages/chat-popup.js"></script>
     <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
-	
+		
 	<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
 	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
 	

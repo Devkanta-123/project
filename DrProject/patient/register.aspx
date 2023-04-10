@@ -8,21 +8,8 @@
         <link rel="stylesheet" href="~/css/vendors_css.css" />
 	<link rel="stylesheet" href="~/css/style.css" />
 	<link rel="stylesheet" href="~/css/skin_color.css" />
-	  <script src="~/js/sweetalert.js">
-
-	  </script>
-	  <script>
-	
-        function alertme() {
-            Swal.fire(
-                'Good job!',
-                'You clicked the button!',
-                'success'
-            )
-
-        }
-    </script>
-
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	 
 </head>
 
    

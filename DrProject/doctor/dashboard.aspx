@@ -30,7 +30,8 @@
 		  </div>
 		</a>	
 	</div>  
-    <!-- Header Navbar -->
+
+			      <!-- Header Navbar -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
 	  <div class="app-menu">
@@ -42,42 +43,116 @@
 			</li>
 			<li class="btn-group d-lg-inline-flex d-none">
 				<div class="app-menu">
-					
+					<div class="search-bx mx-5">
+						
+					</div>
 				</div>
 			</li>
 		</ul> 
 	  </div>
 		
       <div class="navbar-custom-menu r-side">
-         <ul class="nav navbar-nav">			
-		
+        <ul class="nav navbar-nav">			
+			<!-- User Account-->
 			<li class="dropdown user user-menu">
 				<a href="#" class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent p-0 no-shadow" data-bs-toggle="dropdown" title="User">
 					<div class="d-flex pt-1">
-						<div class="text-end me-15">
-							<div class="text-end me-10">
-					      <asp:Label ID ="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary" ></asp:Label>
-							</div>
-							<div class="text-end me-10">
-								<asp:Label ID ="Label3" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-success" ></asp:Label>
-							</div>
-
+						<div class="text-end me-10">
+							
+						   <asp:Label ID ="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-700 text-primary" ></asp:Label>
+						
 						</div>
 						
-						<div class="d-flex justify-content-between align-items-center">
-                  <asp:Image ID="profile" runat="server" class="me-10 avatar rounded-circle"  />  
-										
-							</div>
 					</div>
 				</a>
+				<ul class="dropdown-menu animated flipInX">
+				  <li class="user-body">
+					 <button type="button" class="btn btn-primary  btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">
+				Profile
+				  </button>
+					 <asp:LinkButton ID="logout" runat="server" class="pt-5 fs-10 mb-0 fw-800 text-danger" OnClick="logout_Click">Logout</asp:LinkButton>
+				  </li>
+				</ul>
+			</li>	
+			
+	
+		  <li class="dropdown notifications-menu">
+			<a href="#" class="waves-effect waves-light dropdown-toggle btn-info-light" data-bs-toggle="dropdown" title="Notifications">
+			  <i class="ti-bell"><span class="path1"></span><span class="path2"></span></i>
+			</a>
+			<ul class="dropdown-menu animated bounceIn">
+			  <li class="header">
+				<div class="p-20">
+					<div class="flexbox">
+						
+						<div>
+							<a href="#" class="text-warning">Today's Appointment</a>
+						</div>
+					</div>
+				</div>
+			  </li>
+			  <li>
+			<asp:GridView ID="fetchpatient" runat="server"  class="table mb-0  table-responsive">
+                                                </asp:GridView>
 				
-			</li> 
- <asp:LinkButton ID="logout" runat="server" class="pt-5 fs-10 mb-0 fw-800 text-danger" OnClick="logout_Click">Logout</asp:LinkButton>
+			  </li>
+			  <li class="footer">
+				  <a href="#">View all</a>
+			  </li>
+			</ul>
+		  </li>			  
+        
+			
         </ul>
-
       </div>
     </nav>
   </header>
+		  <!-- Control Sidebar Toggle Button -->
+       <div class="modal center-modal fade" id="modal-center" tabindex="-1">
+	               <div class="modal-dialog">
+	 
+
+			  	  <div class="col-lg-10 col-12">
+				  <div class="box box-widget widget-user">
+					<div class="widget-user-header bg-img" style="background: url(../images/gallery/creative/img-8.jpg) center center;" data-overlay="5">
+					 <asp:Label ID ="Label3" runat="server" class="widget-user-username text-white" ></asp:Label>
+				
+					</div>
+					<div class="widget-user-image">
+					 <asp:Image ID="profile" runat="server"  class="rounded-circle bg-warning-light"/> 
+					
+					</div>
+					<div class="box-footer">
+					  <div class="row mt-30">
+						<div class="col-sm-4">
+						  <div class="description-block">
+						<span class="description-text">PHNO</span>
+					   <asp:Label ID ="Label1" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-warning" ></asp:Label>
+						  </div>
+						</div>
+						<div class="col-sm-4">
+						  <div class="description-block">
+					      <span class="description-text">ADDRESS</span> </br>
+						  <asp:Label ID ="Label4" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-warning" ></asp:Label>
+						  </div>
+						</div>
+
+						<div class="col-sm-4">
+						  <div class="description-block">
+							   <span class="description-text">EXPERIENCE</span> </br>
+						  <asp:Label ID ="expe" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-warning" ></asp:Label>
+						  </div>
+						</div>
+						    
+						
+					  </div>
+					</div>
+				  </div>
+			  </div>
+	
+	</div>
+	</div>
+
 		<aside>
  <section class="sidebar position-relative">
 	  	<div class="multinav">
@@ -216,266 +291,95 @@
 							<li><a href="ui_timeline.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Timeline</a></li>
 							<li><a href="ui_timeline_horizontal.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Horizontal Timeline</a></li>
 						</ul>
-					</li>
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Components
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="component_bootstrap_switch.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bootstrap Switch</a></li>
-							<li><a href="component_date_paginator.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Date Paginator</a></li>
-							<li><a href="component_media_advanced.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Advanced Medias</a></li>
-							<li><a href="component_rangeslider.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Range Slider</a></li>
-							<li><a href="component_rating.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Ratings</a></li>
-							<li><a href="component_animations.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Animations</a></li>
-							<li><a href="extension_fullscreen.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Fullscreen</a></li>
-							<li><a href="extension_pace.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Pace</a></li>
-							<li><a href="component_nestable.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Nestable</a></li>
-							<li><a href="component_portlet_draggable.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Draggable Portlets</a></li>	
-						</ul>
-					</li>  
-				  </ul>
-				</li>			
-				<li class="treeview">
-				  <a href="#">
-					<i class="icon-Box2"><span class="path1"></span><span class="path2"></span></i>
-					<span>Forms, Tables & Charts</span>
-					<span class="pull-right-container">
-					  <i class="fa fa-angle-right pull-right"></i>
-					</span>
-				  </a>					
-				  <ul class="treeview-menu">					
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Forms
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="forms_advanced.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Form Elements</a></li>
-							<li><a href="forms_general.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Form Layout</a></li>
-							<li><a href="forms_wizard.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Form Wizard</a></li>	
-							<li><a href="forms_validation.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Form Validation</a></li>
-							<li><a href="forms_mask.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Formatter</a></li>
-							<li><a href="forms_xeditable.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Xeditable Editor</a></li>
-							<li><a href="forms_dropzone.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Dropzone</a></li>
-							<li><a href="forms_code_editor.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Code Editor</a></li>
-							<li><a href="forms_editors.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Editor</a></li>
-							<li><a href="forms_editor_markdown.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Markdown</a></li>
-						</ul>
-					</li> 		
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Tables
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="tables_simple.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Simple tables</a></li>
-							<li><a href="tables_data.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Data tables</a></li>
-							<li><a href="tables_editable.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Editable Tables</a></li>
-							<li><a href="tables_color.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Table Color</a></li>
-						</ul>
-					</li> 
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Charts
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="charts_chartjs.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>ChartJS</a></li>
-							<li><a href="charts_flot.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Flot</a></li>
-							<li><a href="charts_inline.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Inline charts</a></li>
-							<li><a href="charts_morris.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Morris</a></li>
-							<li><a href="charts_peity.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Peity</a></li>
-							<li><a href="charts_chartist.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Chartist</a></li>
-							<li><a href="charts_c3_axis.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Axis Chart</a></li>
-							<li><a href="charts_c3_bar.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bar Chart</a></li>
-							<li><a href="charts_c3_data.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Data Chart</a></li>
-							<li><a href="charts_c3_line.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Line Chart</a></li>
-							<li><a href="charts_echarts_basic.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Basic Charts</a></li>
-							<li><a href="charts_echarts_bar.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bar Chart</a></li>
-							<li><a href="charts_echarts_pie_doughnut.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Pie & Doughnut Chart</a></li>
-						</ul>
-					</li>
-				  </ul>
-				</li>				 
-				<li class="treeview">
-				  <a href="#">
-					<i class="icon-Globe"><span class="path1"></span><span class="path2"></span></i>
-					<span>Apps & Widgets</span>
-					<span class="pull-right-container">
-					  <i class="fa fa-angle-right pull-right"></i>
-					</span>
-				  </a>
-				  <ul class="treeview-menu">					
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Apps
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="extra_calendar.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Calendar</a></li>
-							<li><a href="contact_app.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Contact List</a></li>
-							<li><a href="contact_app_chat.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Chat</a></li>
-							<li><a href="extra_taskboard.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Todo</a></li>
-							<li><a href="mailbox.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Mailbox</a></li>
-						</ul>
-					</li>										
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Widgets
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li class="treeview">
-								<a href="#">
-									<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Custom
-									<span class="pull-right-container">
-										<i class="fa fa-angle-right pull-right"></i>
-									</span>
-								</a>
-								<ul class="treeview-menu">
-									<li><a href="widgets_blog.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Blog</a></li>
-									<li><a href="widgets_chart.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Chart</a></li>
-									<li><a href="widgets_list.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>List</a></li>
-									<li><a href="widgets_social.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Social</a></li>
-									<li><a href="widgets_statistic.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Statistic</a></li>
-									<li><a href="widgets_weather.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Weather</a></li>
-									<li><a href="widgets.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Widgets</a></li>
-									<li><a href="email_index.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Emails</a></li>	
-								</ul>
-							</li>											  	
-							<li class="treeview">
-								<a href="#">
-									<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Maps
-									<span class="pull-right-container">
-										<i class="fa fa-angle-right pull-right"></i>
-									</span>
-								</a>
-								<ul class="treeview-menu">
-									<li><a href="map_google.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Google Map</a></li>
-									<li><a href="map_vector.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vector Map</a></li>
-								</ul>
-							</li>					  	
-							<li class="treeview">
-								<a href="#">
-									<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Modals
-									<span class="pull-right-container">
-										<i class="fa fa-angle-right pull-right"></i>
-									</span>
-								</a>
-								<ul class="treeview-menu">
-									<li><a href="component_modals.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Modals</a></li>
-									<li><a href="component_sweatalert.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Sweet Alert</a></li>
-									<li><a href="component_notification.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Toastr</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>					
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Ecommerce
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="ecommerce_products.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Products</a></li>
-							<li><a href="ecommerce_cart.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Products Cart</a></li>
-							<li><a href="ecommerce_products_edit.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Products Edit</a></li>
-							<li><a href="ecommerce_details.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Product Details</a></li>
-							<li><a href="ecommerce_orders.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Product Orders</a></li>
-							<li><a href="ecommerce_checkout.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Products Checkout</a></li>
-						</ul>
-					</li>
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Sample Pages
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="invoice.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Invoice</a></li>
-							<li><a href="invoicelist.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Invoice List</a></li>	
-							<li><a href="extra_app_ticket.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Support Ticket</a></li>
-							<li><a href="extra_profile.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>User Profile</a></li>
-							<li><a href="contact_userlist_grid.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Userlist Grid</a></li>
-							<li><a href="contact_userlist.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Userlist</a></li>	
-							<li><a href="sample_faq.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>FAQs</a></li>
-							<li><a href="sample_blank.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Blank</a></li>
-							<li><a href="sample_coming_soon.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Coming Soon</a></li>
-							<li><a href="sample_custom_scroll.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Custom Scrolls</a></li>
-							<li><a href="sample_gallery.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Gallery</a></li>
-							<li><a href="sample_lightbox.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lightbox Popup</a></li>
-							<li><a href="sample_pricing.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Pricing</a></li>
-						</ul>
-					</li>
-				  </ul>
-				</li>	 
-				<li class="treeview">
-				  <a href="#">
-					<i class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></i>
-					<span>Authentication</span>
-					<span class="pull-right-container">
-					  <i class="fa fa-angle-right pull-right"></i>
-					</span>
-				  </a>
-				  <ul class="treeview-menu">
-					<li><a href="auth_login.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Login</a></li>
-					<li><a href="auth_register.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Register</a></li>
-					<li><a href="auth_lockscreen.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lockscreen</a></li>
-					<li><a href="auth_user_pass.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Recover password</a></li>	
-				  </ul>
-				</li>
-				<li class="treeview">
-				  <a href="#">
-					<i class="icon-Warning-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
-					<span>Miscellaneous</span>
-					<span class="pull-right-container">
-					  <i class="fa fa-angle-right pull-right"></i>
-					</span>
-				  </a>
-				  <ul class="treeview-menu">
-					<li><a href="error_404.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Error 404</a></li>
-					<li><a href="error_500.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Error 500</a></li>
-					<li><a href="error_maintenance.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Maintenance</a></li>	
-				  </ul>
-				</li>	 	     
-			  </ul>
-			  
+					</li>	  
 			 
 		  </div>
 		</div>
     </section>
   </aside>
+		 <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+		
+		<section class="content">
+
+		  <div class="row">
+	
+			<div class="col-xl-4 col-12">
+			  <div class="info-box bg-info">
+				<span class="info-box-icon push-bottom rounded"><span class="icon-User"><span class="path1"></span><span class="path2"></span></span></span>
+
+				<div class="info-box-content">
+				  <span class="info-box-text">New Clients</span>
+				  <span class="info-box-number">450</span>
+
+				  <div class="progress">
+					<div class="progress-bar" style="width: 45%"></div>
+				  </div>
+				  <span class="progress-description">
+						45% Increase in 28 Days
+					  </span>
+				</div>
+				<!-- /.info-box-content -->
+			  </div>
+			  <!-- /.info-box -->
+			</div>
+			<!-- /.col -->
+			<div class="col-xl-4 col-12">
+			  <div class="info-box bg-success">
+				<span class="info-box-icon push-bottom rounded-circle"><span class="icon-Smile"><span class="path1"></span><span class="path2"></span></span></span>
+
+				<div class="info-box-content">
+				  <span class="info-box-text">Total Visits</span>
+				  <span class="info-box-number">15,489</span>
+
+				  <div class="progress">
+					<div class="progress-bar" style="width: 40%"></div>
+				  </div>
+				  <span class="progress-description">
+						40% Increase in 28 Days
+					  </span>
+				</div>
+				<!-- /.info-box-content -->
+			  </div>
+			  <!-- /.info-box -->
+			</div>
+			<!-- /.col -->
+			<div class="col-xl-4 col-12">
+			  <div class="info-box box-inverse bg-img" style="background-image: url(../images/gallery/creative/img-10.jpg);" data-overlay="5">
+				<span class="info-box-icon push-bottom rounded"><span class="icon-Cloud-download"><span class="path1"></span><span class="path2"></span></span></span>
+
+				<div class="info-box-content">
+				  <span class="info-box-text">Downloads</span>
+				  <span class="info-box-number">55,005</span>
+
+				  <div class="progress">
+					<div class="progress-bar" style="width: 85%"></div>
+				  </div>
+				  <span class="progress-description">
+						85% Increase in 28 Days
+					  </span>
+				</div>
+				<!-- /.info-box-content -->
+			  </div>
+			  <!-- /.info-box -->
+			</div>
+			<!-- /.col -->
+		  </div>
+		
+			</section>
+	</div>
 	</div>
 	</div>
 
     </form>
-
-   <script src="js/vendors.min.js"></script>
-	<script src="js/pages/chat-popup.js"></script>
+   <script src="/js/vendors.min.js"></script>
+	<script src="/js/pages/chat-popup.js"></script>
     <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
-	
-	<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
-	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
-	
-
-	<script src="js/template.js"></script>
-	<script src="js/pages/dashboard3.js"></script>
+	<script src="/js/pages/chart-widgets.js"></script>
+    <script src="/js/pages/chartjs-int.js"></script>
     	
 </body>
 </html>
