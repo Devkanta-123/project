@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 
 
 namespace DrProject.patient
@@ -40,10 +41,11 @@ namespace DrProject.patient
             }
             else if(profile.HasFile)
                 {
+                string strpass = encryptpass(password.Text);
                 string filename = profile.PostedFile.FileName;
                 string filepath = "images/" + profile.FileName;
                 profile.PostedFile.SaveAs(Server.MapPath("images/") + filename);
-                cmd = new SqlCommand("insert into patient " + " (fullname,emailid,password,address,age,phone,profile) values('"+fullname.Text+"','"+emailid.Text+"','"+password.Text+"','"+address.Text+"','"+age.Text+"','"+phone.Text+"','"+filepath+"')", con);
+                cmd = new SqlCommand("insert into patient " + " (fullname,emailid,password,address,age,phone,profile) values('"+fullname.Text+"','"+emailid.Text+"','"+ strpass + "','"+address.Text+"','"+age.Text+"','"+phone.Text+"','"+filepath+"')", con);
            
                  cmd.ExecuteNonQuery();
                  con.Close();
@@ -52,6 +54,14 @@ namespace DrProject.patient
              
 
             }    
-        }  
+        }
+        public string encryptpass(string password)
+        {
+            string msg = string.Empty;
+            byte[] encode = new byte[password.Length];
+            encode = Encoding.UTF8.GetBytes(password);
+            msg = Convert.ToBase64String(encode);
+            return msg;
+        }
     }
 }

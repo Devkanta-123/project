@@ -23,7 +23,7 @@ namespace DrProject
                 Response.Redirect("admin.aspx");
             }
             else {
-                con.ConnectionString = "Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF' ";
+                con.ConnectionString = "Data Source = 192.168.10.18; database = TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF' ";
                 con.Close();
             }
         }
@@ -42,8 +42,8 @@ namespace DrProject
             }
             else
             {
-                Response.Write(" <script> alert(' Inavlid Credentials')</script>");
-                
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert",
+                "Swal.fire('Invalid Credentials', 'Try again..!', 'error')", true);
             }
 
 

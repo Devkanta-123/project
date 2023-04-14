@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/vendors_css.css" />
 	<link rel="stylesheet" href="/css/style.css" />
 	<link rel="stylesheet" href="/css/skin_color.css"/>	
+		 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="hold-transition theme-primary bg-img" style="background-image: url(/images/auth-bg/dr2.jpg)">
 <div class="container h-p10">

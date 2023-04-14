@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="admin.aspx.cs" Inherits="DrProject.admin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="admin.aspx.cs" Inherits="DrProject.Admin" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="/css/style.css"/>
 	<link rel="stylesheet" href="/css/skin_color.css"/>
 	  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico"/>
-
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
 
@@ -22,7 +21,7 @@
 		  <header class="main-header">
 	<div class="d-flex align-items-center logo-box justify-content-start">	
 		<!-- Logo -->
-		<a href="index.html" class="logo">
+		<a href="admin.aspx" class="logo">
 		  <!-- logo-->
 		 
 		  <div class="logo-lg">
@@ -80,7 +79,9 @@
       </div>
     </nav>
   </header>
-<!-- #include file = "sidepanel.html"-->
+
+
+		<!--#include file = "panel.html" -->
 
 		 <div class="content-wrapper">
 	  <div class="container-full">
@@ -116,13 +117,11 @@
 											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-18.svg" alt="" class="w-120" />
 										</div>
 										<div>
-											<h4 class="mb-0">Total Doctor  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">+</button>
-                                                
-                                            </h4>
-										<asp:Label ID="Label4" runat="server" Text="" class="mb-3" ></asp:Label>
+											<h5 class="mb-0">Total Doctor  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">+</button></h5>
+										<asp:Label ID="Label4" runat="server"  class="mb-3"  Font-Size="Large"></asp:Label>
 											<br/>
 											
-
+										
 										</div>
 									</div>
 								</div>
@@ -136,15 +135,17 @@
 											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-19.svg" alt="" class="w-120" />
 										</div>
 										<div>
-											<h4 class="mb-0">Total Doctor</h4>
+											<h4 class="mb-0">Department</h4>
 											
-											<h3 class="mb-0">245</h3>
+											<asp:Label ID="Label1" runat="server"  class="mb-3"  Font-Size="Large"></asp:Label>
+												
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					<div class="col-12">
+
+								<div class="col-12">
 						  <div class="box">
 							<div class="box-header with-border">
 							  <h4 class="box-title">Admitted Patient</h4>
@@ -156,24 +157,23 @@
 							</div>
 							<div class="box-body no-padding">
 							
-								  
+								  	
 										
-											<asp:GridView ID="fetchpatient"  runat="server" class="table mb-0 table-responsive" OnSelectedIndexChanged="fetchpatient_SelectedIndexChanged">
+										
+											<asp:GridView ID="fetchpatient" runat="server"  class="table mb-0  table-responsive">
                                                 </asp:GridView>
-											 
 											
-											
-			
-							
-							</div>		
+								</div>
+								
 							  
 							<div class="box-footer bg-light py-10 with-border">
 							  
 							</div>
 						  </div>
 						</div>
-
+	
 			
+
 	<div class="modal center-modal fade" id="modal-center" tabindex="-1">
 	  <div class="modal-dialog">
 		<div class="modal-content">
@@ -279,7 +279,16 @@
 									  
 									</div>
 								  </div>
-
+				 
+				     <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">Status</label>
+						<asp:DropDownList ID="status" runat="server"  class="form-control" >
+                        <asp:ListItem>active</asp:ListItem>
+                        <asp:ListItem>nonactive</asp:ListItem>
+                    </asp:DropDownList>
+									</div>
+								  </div>
 		               </div>
 			                   <div class="form-group">
 								  <label class="form-label">Select Profile</label>
@@ -310,7 +319,7 @@
    <script src="/js/vendors.min.js"></script>
 	<script src="/js/pages/chat-popup.js"></script>
     <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
-		
+	
 	<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
 	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
 	
