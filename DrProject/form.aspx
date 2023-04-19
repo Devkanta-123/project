@@ -79,6 +79,15 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
+      
+        <asp:TextBox ID="input_date_travel_strat" runat="server" Type="date"></asp:TextBox>
+<asp:Button ID="Button1" Text="Submit" OnClick="Button_Click" runat="server" />
+<br />
+<asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="The date must be greater than today" ForeColor="Red"
+    ControlToValidate="input_date_travel_strat" Operator="GreaterThanEqual" Type="Date" Display="Dynamic" />
+        <p>
+            
+        </p>
     </form>
     
    

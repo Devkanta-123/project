@@ -70,9 +70,9 @@
     <Content Include="admin\add_dept.aspx" />
     <Content Include="admin\admin.aspx" />
     <Content Include="admin\AdminLogin.aspx" />
+    <Content Include="admin\dataTables.aspx" />
+    <Content Include="admin\doctor.aspx" />
     <Content Include="admin\panel.html" />
-    <Content Include="admin\scripts\jquery-1.3.2.min.js" />
-    <Content Include="admin\scripts\jquery.blockUI.js" />
     <Content Include="alert.aspx" />
     <Content Include="css\assets\icons\cryptocoins-master\cryptocoins.css" />
     <Content Include="css\assets\icons\feather-icons\feather.min.js" />
@@ -320,8 +320,20 @@
     <Content Include="css\style.css" />
     <Content Include="css\style_rtl.css" />
     <Content Include="css\vendors_css.css" />
+    <Content Include="datalist.aspx" />
     <Content Include="doctor\dashboard.aspx" />
     <Content Include="doctor\DoctorLogin.aspx" />
+    <Content Include="doctor\profiles\1.jpg" />
+    <Content Include="doctor\profiles\avatar-15.png" />
+    <Content Include="doctor\profiles\avatar.png" />
+    <Content Include="doctor\profiles\avatar04.png" />
+    <Content Include="doctor\profiles\avatar2.png" />
+    <Content Include="doctor\profiles\avatar3.png" />
+    <Content Include="doctor\profiles\avatar5.png" />
+    <Content Include="doctor\profiles\bg-4.jpg" />
+    <Content Include="doctor\profiles\bg.jpg" />
+    <Content Include="doctor\profiles\dr.jfif" />
+    <Content Include="doctor\profiles\kk.jpg" />
     <Content Include="doctor\sidepanel.html" />
     <Content Include="form.aspx" />
     <Content Include="images\1.jpg" />
@@ -543,6 +555,7 @@
     <Content Include="images\user6-128x128.jpg" />
     <Content Include="images\user7-128x128.jpg" />
     <Content Include="images\weight.png" />
+    <Content Include="js\jquery-3.6.4.min.js" />
     <Content Include="js\pages\advanced-form-element.js" />
     <Content Include="js\pages\app-contact.js" />
     <Content Include="js\pages\app-ticket.js" />
@@ -615,6 +628,7 @@
     <Content Include="js\template.js" />
     <Content Include="js\vendors.min.js" />
     <Content Include="patient\dashboard.aspx" />
+    <Content Include="patient\doctorlist.aspx" />
     <Content Include="patient\PatientLogin.aspx" />
     <Content Include="patient\register.aspx" />
     <Content Include="test.aspx" />
@@ -642,12 +656,33 @@
     <Compile Include="admin\AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\dataTables.aspx.cs">
+      <DependentUpon>dataTables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\dataTables.aspx.designer.cs">
+      <DependentUpon>dataTables.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\doctor.aspx.cs">
+      <DependentUpon>doctor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\doctor.aspx.designer.cs">
+      <DependentUpon>doctor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="alert.aspx.cs">
       <DependentUpon>alert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="alert.aspx.designer.cs">
       <DependentUpon>alert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="datalist.aspx.cs">
+      <DependentUpon>datalist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="datalist.aspx.designer.cs">
+      <DependentUpon>datalist.aspx</DependentUpon>
     </Compile>
     <Compile Include="doctor\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
@@ -676,6 +711,13 @@
     </Compile>
     <Compile Include="patient\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patient\doctorlist.aspx.cs">
+      <DependentUpon>doctorlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient\doctorlist.aspx.designer.cs">
+      <DependentUpon>doctorlist.aspx</DependentUpon>
     </Compile>
     <Compile Include="patient\PatientLogin.aspx.cs">
       <DependentUpon>PatientLogin.aspx</DependentUpon>
@@ -779,7 +821,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dept_pics\" />
-    <Folder Include="doctor\profiles\" />
     <Folder Include="patient\images\" />
   </ItemGroup>
   <PropertyGroup>

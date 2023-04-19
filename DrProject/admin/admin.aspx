@@ -11,6 +11,9 @@
 	<link rel="stylesheet" href="/css/style.css"/>
 	<link rel="stylesheet" href="/css/skin_color.css"/>
 	  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css"/>
+
+		
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
 
@@ -160,17 +163,34 @@
 								  	
 										
 										
-											<asp:GridView ID="fetchpatient" runat="server"  class="table mb-0  table-responsive">
-                                                </asp:GridView>
+											
 											
 								</div>
-								
-							  
-							<div class="box-footer bg-light py-10 with-border">
-							  
-							</div>
+				
 						  </div>
 						</div>
+				<asp:GridView ID="fetchpatient"  AutoGenerateColumns="false"  CssClass="datatbemp" Width="60%" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+				<AlternatingRowStyle BackColor="White" />
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+
+                                                </asp:GridView>
+							  
+							  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".datatbemp").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
+        });
+    </script>
 	
 			
 
@@ -245,8 +265,11 @@
 								  <div class="col-md-6">
 									<div class="form-group">
 									  <label class="form-label">DOB</label>
+										
 						        <asp:TextBox ID="dob" runat="server" type="date"   class="form-control" ></asp:TextBox>
 										<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="dob" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+										<asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="DOB must be Lesser than current dates.." ForeColor="Red"
+    ControlToValidate="dob" Operator="LessThan" Type="Date" Display="Dynamic" />
 									</div>
 								  </div>
 				    <div class="col-md-6">
@@ -320,8 +343,7 @@
 	<script src="/js/pages/chat-popup.js"></script>
     <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
 	
-	<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
-	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
+	t>
 	
 
 

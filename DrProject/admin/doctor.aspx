@@ -1,16 +1,27 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="add_dept.aspx.cs" Inherits="DrProject.admin.add_dept" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="doctor.aspx.cs" Inherits="DrProject.admin.doctor" %>
 
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
     	<link rel="stylesheet" href="/css/vendors_css.css" />
+    <%--	<link rel="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/>
+	<script src="~/js/jquery-3.6.4.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+	
+        <script>
+            $(document).ready(function () {
+                $("#GridView1").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+        });
+        </script>--%>
+	
 	  
 	<!-- Style-->  
 	<link rel="stylesheet" href="/css/style.css"/>
 	<link rel="stylesheet" href="/css/skin_color.css"/>
 	  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico"/>
-
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
 
@@ -135,7 +146,7 @@
 											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-19.svg" alt="" class="w-120" />
 										</div>
 										<div>
-											<h5 class="mb-0"> Department  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">+</button></h5>
+											<h4 class="mb-0">Department</h4>
 											
 											<asp:Label ID="Label1" runat="server"  class="mb-3"  Font-Size="Large"></asp:Label>
 												
@@ -143,89 +154,88 @@
 									</div>
 								</div>
 							</div>
-						</div>
-
-								<div class="col-12">
-						  <div class="box">
-							<div class="box-header with-border">
-							  <h4 class="box-title">Admitted Patient</h4>
-							  <div class="box-controls pull-right">
-								<div class="lookup lookup-circle lookup-right">
-								
-								</div>
-							  </div>
-							</div>
-							<div class="box-body no-padding">
-							
-								  	
-										
-										
-											<asp:GridView ID="fetchpatient" runat="server"  class="table mb-0  table-responsive">
-                                                </asp:GridView>
-											
-								</div>
-								
-							  
-							<div class="box-footer bg-light py-10 with-border">
-							  
-							</div>
-						  </div>
-						</div>
-	
+					
 			
 
-	<div class="modal center-modal fade" id="modal-center" tabindex="-1">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-		  <div class="modal-body">
-			
-			          	      <div class="row">
-								  <div class="col-md-6">
-									<div class="form-group">
-									  <label class="form-label">Dept Name</label>
-										<asp:TextBox ID="dname" runat="server"  class="form-control" placeholder="Department Name..." AutoComplete="off" ></asp:TextBox>
-				                 &nbsp;&nbsp;
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dname" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator> 									
-									</div>
-								  </div>
-									  <div class="col-md-6">
-									<div class="form-group">
-									  <label class="form-label">Status</label>
-						<asp:DropDownList ID="dept_status" runat="server"  class="form-control" >
-                        <asp:ListItem>active</asp:ListItem>
-                        <asp:ListItem>nonactive</asp:ListItem>
-                    </asp:DropDownList>
-									</div>
-								  </div>
-								
-			                   <div class="form-group">
-								  <label class="form-label">Picture</label>
-								 <asp:FileUpload ID="dept_pic" runat="server" />
-								</div>
-		               </div>
-			  <div class="modal-footer modal-footer-uniform">
-			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-			
-		<asp:Button  ID="regdept" runat="server" Text="Save"   OnClick="regtDept_Click" class="btn btn-primary float-end"/>
-		  </div>
-			    
-				 
-		               </div>
-
-		 
-		</div>
-	
-	</div>
-					</div>
 
 					</div>
 					</div>
 					</div>
 					</div>
+		  
+			  <div class="box">
+				
+				<!-- /.box-header -->
+				<div class="box-body">
+					<div class="">
+					
+	<asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+						       <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowDataBound="OnRowDataBound"
+                    DataKeyNames="id" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+                    PageSize="2" AllowPaging="true" OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
+                OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-10 w-p100 table-responsive  ">
+                    <Columns>
+                        <asp:TemplateField HeaderText="First Name" ItemStyle-Width="150">
+                            <ItemTemplate>
+                                <asp:Label ID="lblName" runat="server"   Text='<%# Eval("fname") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtName" runat="server" class="form-control"   autocomplete="off"  Text ='<%# Eval("fname") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Last Name" ItemStyle-Width="150">
+                            <ItemTemplate>
+                                <asp:Label ID="lblCountry" runat="server"  Text='<%# Eval("lname") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtLname" runat="server" class="form-control"   autocomplete="off"  Text='<%# Eval("lname") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Emailid" ItemStyle-Width="150">
+                            <ItemTemplate>
+                                <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("emailid") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtEmail" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("emailid") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+							 
+                        </asp:TemplateField>
+						  <asp:TemplateField HeaderText="Desination" ItemStyle-Width="150">
+                            <ItemTemplate>
+                                <asp:Label ID="lblDesignation" runat="server" Text='<%# Eval("designation") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="Designation" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("designation") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+							 
+                        </asp:TemplateField>
+
+
+                        <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true"
+                            ItemStyle-Width="150" />
+                    </Columns>
+                </asp:GridView>
+               
+            </ContentTemplate>
+        </asp:UpdatePanel>
+						
+				
+					</div>              
+				</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box -->          
+			</div>
+
 					</div>
 		
 		  </div>
 		  </div>
+		
+
 
 
     </form>

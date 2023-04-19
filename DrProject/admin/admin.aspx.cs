@@ -22,9 +22,12 @@ namespace DrProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CompareValidator1.ValueToCompare = DateTime.Today.ToShortDateString();
+
             if (!IsPostBack)
             {
                 getDept();
+                FillEmployee();
             }
 
             if (Session["user"] == null)
@@ -38,7 +41,7 @@ namespace DrProject
                 callData();
                 countdoctor();
                 countdept();
-                getrecentpatient();
+           
 
             }
         }
@@ -55,19 +58,31 @@ namespace DrProject
             department.Items.Insert(0, new ListItem("Select Department", "0"));
 
         }
-        public void getrecentpatient()
+        private void FillEmployee()
         {
+            using (SqlConnection con = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF' "))
+            {
+                using (SqlCommand cmd = new SqlCommand("select fullname,emailid from patient"))
+                {
+                    SqlDataAdapter dt = new SqlDataAdapter();
+                    try
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        dt.SelectCommand = cmd;
 
-            con = new SqlConnection(cnstr);
-            con.Open();
-            cmd.CommandText = " select id,fullname from patient ";
-            cmd.Connection = con;
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-            fetchpatient.DataSource = dt;
-            fetchpatient.DataBind();
+                        DataTable dTable = new DataTable();
+                        dt.Fill(dTable);
 
-
+                        fetchpatient.DataSource = dTable;
+                        fetchpatient.DataBind();
+                    }
+                    catch (Exception)
+                    {
+                        //     
+                    }
+                }
+            }
         }
 
         public void callData()
@@ -139,7 +154,7 @@ namespace DrProject
                     string filepath = "~/doctor/profiles/" + profile.FileName;
                     profile.PostedFile.SaveAs(Server.MapPath("~/doctor/profiles/") + filename);
                     cmd = new SqlCommand("insert into doctor " + " (fname,lname,emailid,password,designation,dept,phno,dob,address,experience,profile,status) " +
-                     "values('" + fname.Text + "','" + lname.Text + "','" + emailid.Text + "','" + strpass + "','" + designation.Text + "','" + department.Text + "','" + phno.Text + "','" + dob.Text + "','" + address.Text + "','" + experience.Text + "','" + filepath + "','" + status.Text + "')", con);
+                     "values('" + fname.Text + "','" + lname.Text + "','" + emailid.Text + "','" + strpass +  "','" + designation.Text + "','" + department.Text + "','" + phno.Text + "','" + dob.Text + "','" + address.Text + "','" + experience.Text + "','" + filepath + "','" + status.Text + "')", con);
 
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -156,7 +171,6 @@ namespace DrProject
             }
 
         }
-
         public string encryptpass(string password)
         {
             string msg = string.Empty;
@@ -165,6 +179,8 @@ namespace DrProject
             msg = Convert.ToBase64String(encode);
             return msg;
         }
+
+
 
     }
 }

@@ -49,6 +49,7 @@
 				</div>
 			</li>
 		</ul> 
+
 	  </div>
 		
       <div class="navbar-custom-menu r-side">
@@ -202,97 +203,11 @@
 					<span>Reports</span>
 				  </a>
 				</li>				
-				<li class="treeview">
-				  <a href="#">
-					<i class="icon-Diagnostics"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
-					<span>Doctors</span>
-					<span class="pull-right-container">
-					  <i class="fa fa-angle-right pull-right"></i>
-					</span>
-				  </a>
-				  <ul class="treeview-menu">
-					<li><a href="doctor_list.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Doctors</a></li>
-					<li><a href="doctors.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Doctor Details</a></li>
-				  </ul>
-				</li>
-				<li class="header">Components</li>
-				<li class="treeview">
-				  <a href="#">
-					<i class="icon-Library"><span class="path1"></span><span class="path2"></span></i>
-					<span>Features</span>
-					<span class="pull-right-container">
-					  <i class="fa fa-angle-right pull-right"></i>
-					</span>
-				  </a>
-				  <ul class="treeview-menu">											
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Card
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="box_cards.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>User Card</a></li>
-							<li><a href="box_advanced.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Advanced Card</a></li>
-							<li><a href="box_basic.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Basic Card</a></li>
-							<li><a href="box_color.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Card Color</a></li>
-							<li><a href="box_group.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Card Group</a></li>
-						</ul>
-					</li>												
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>BS UI
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="ui_grid.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Grid System</a></li>
-							<li><a href="ui_badges.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Badges</a></li>
-							<li><a href="ui_border_utilities.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Border</a></li>
-							<li><a href="ui_buttons.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Buttons</a></li>	
-							<li><a href="ui_color_utilities.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Color</a></li>
-							<li><a href="ui_dropdown.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Dropdown</a></li>
-							<li><a href="ui_dropdown_grid.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Dropdown Grid</a></li>
-							<li><a href="ui_progress_bars.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Progress Bars</a></li>
-						</ul>
-					</li>										
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Icons
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="icons_fontawesome.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Font Awesome</a></li>
-							<li><a href="icons_glyphicons.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Glyphicons</a></li>
-							<li><a href="icons_material.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Material Icons</a></li>	
-							<li><a href="icons_themify.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Themify Icons</a></li>
-							<li><a href="icons_simpleline.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Simple Line Icons</a></li>
-							<li><a href="icons_cryptocoins.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Cryptocoins Icons</a></li>
-							<li><a href="icons_flag.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Flag Icons</a></li>
-							<li><a href="icons_weather.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Weather Icons</a></li>
-						</ul>
-					</li>									
-					<li class="treeview">
-						<a href="#">
-							<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Custom UI
-							<span class="pull-right-container">
-								<i class="fa fa-angle-right pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="ui_ribbons.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Ribbons</a></li>
-							<li><a href="ui_sliders.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Sliders</a></li>
-							<li><a href="ui_typography.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Typography</a></li>
-							<li><a href="ui_tab.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Tabs</a></li>
-							<li><a href="ui_timeline.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Timeline</a></li>
-							<li><a href="ui_timeline_horizontal.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Horizontal Timeline</a></li>
-						</ul>
-					</li>	  
-			 
+				
+				
+				
+					
+					
 		  </div>
 		</div>
     </section>
@@ -312,15 +227,11 @@
 				<span class="info-box-icon push-bottom rounded"><span class="icon-User"><span class="path1"></span><span class="path2"></span></span></span>
 
 				<div class="info-box-content">
-				  <span class="info-box-text">New Clients</span>
-				  <span class="info-box-number">450</span>
+				  <span class="info-box-text">New Appointment</span>
+				  <span class="info-box-number">3</span>
 
-				  <div class="progress">
-					<div class="progress-bar" style="width: 45%"></div>
-				  </div>
-				  <span class="progress-description">
-						45% Increase in 28 Days
-					  </span>
+				 
+				 
 				</div>
 				<!-- /.info-box-content -->
 			  </div>
@@ -332,15 +243,10 @@
 				<span class="info-box-icon push-bottom rounded-circle"><span class="icon-Smile"><span class="path1"></span><span class="path2"></span></span></span>
 
 				<div class="info-box-content">
-				  <span class="info-box-text">Total Visits</span>
-				  <span class="info-box-number">15,489</span>
+				  <span class="info-box-text">New Reports </span>
+				  <span class="info-box-number">0</span>
 
-				  <div class="progress">
-					<div class="progress-bar" style="width: 40%"></div>
-				  </div>
-				  <span class="progress-description">
-						40% Increase in 28 Days
-					  </span>
+				  
 				</div>
 				<!-- /.info-box-content -->
 			  </div>
@@ -352,15 +258,10 @@
 				<span class="info-box-icon push-bottom rounded"><span class="icon-Cloud-download"><span class="path1"></span><span class="path2"></span></span></span>
 
 				<div class="info-box-content">
-				  <span class="info-box-text">Downloads</span>
-				  <span class="info-box-number">55,005</span>
+				  <span class="info-box-text">Upcoming Appoinments</span>
+				  <span class="info-box-number">0</span>
 
-				  <div class="progress">
-					<div class="progress-bar" style="width: 85%"></div>
-				  </div>
-				  <span class="progress-description">
-						85% Increase in 28 Days
-					  </span>
+				 
 				</div>
 				<!-- /.info-box-content -->
 			  </div>

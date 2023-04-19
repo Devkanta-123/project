@@ -22,19 +22,20 @@ namespace DrProject.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-          
-            if (!IsPostBack)
+            if (Session["user"] == null)
             {
-               
+                Response.Redirect("AdminLogin.aspx");
+            }
+            else
+              {
+
+                con.Close();
                 countdoctor();
                 countdept();
-
+                getrecentpatient();
 
             }
-        }
-
-       
-
+            }
         public void regtDept_Click(object sender, EventArgs e)
         {
            
@@ -98,11 +99,20 @@ namespace DrProject.admin
 
 
         }
-
-        
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        public void getrecentpatient()
         {
 
+            con = new SqlConnection(cnstr);
+            con.Open();
+            cmd.CommandText = " select id,fullname from patient ";
+            cmd.Connection = con;
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            fetchpatient.DataSource = dt;
+            fetchpatient.DataBind();
+
+
         }
+
     }
 }
