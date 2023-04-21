@@ -46,7 +46,7 @@ namespace DrProject.doctor
 
             con = new SqlConnection(cnstr);
             con.Open();
-            cmd.CommandText = "select a.name,a.time  from appoint a  INNER JOIN doctor d  on a.d_id = d.id    where d.emailid = '" + Session["user"] + "' ";
+            cmd.CommandText = "select a.appointment_date,a.appointment_time  from appointment a  INNER JOIN doctor d  on a.doctor_id = d.id    where d.emailid = '" + Session["user"] + "' ";
             cmd.Connection = con;
             da.SelectCommand = cmd;
             da.Fill(dt);

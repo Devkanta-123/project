@@ -27,6 +27,7 @@ namespace DrProject
             if (!IsPostBack)
             {
                 getDept();
+              
                 FillEmployee();
             }
 
@@ -41,10 +42,30 @@ namespace DrProject
                 callData();
                 countdoctor();
                 countdept();
-           
+                getpatient();
 
             }
         }
+       
+
+        private void getpatient()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+            string query = "SELECT fullname,emailid,age,address,phone FROM patient";
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
+                {
+                    using (DataTable dt = new DataTable())
+                    {
+                        sda.Fill(dt);
+                        fetchpatient.DataSource = dt;
+                        fetchpatient.DataBind();
+                    }
+                }
+            }
+        }
+
         public void getDept()
         {
             con = new SqlConnection(cnstr);
@@ -56,7 +77,6 @@ namespace DrProject
             department.DataValueField = "id";
             department.DataBind();
             department.Items.Insert(0, new ListItem("Select Department", "0"));
-
         }
         private void FillEmployee()
         {
@@ -79,7 +99,8 @@ namespace DrProject
                     }
                     catch (Exception)
                     {
-                        //     
+
+                           
                     }
                 }
             }

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 
 namespace DrProject.patient
@@ -17,18 +18,26 @@ namespace DrProject.patient
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
         SqlCommand cmd = new SqlCommand();
+        string cnstr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+                getDept();
+            
+
+
             if (Session["user"] == null)
             {
                 Response.Redirect("PatientLogin.aspx");
+                
             }
             else
             {
-                con.ConnectionString = "Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF' ";
+               
                 con.Close();
                 callData();
+                //getDept();
 
                 if (ds.Tables[0].Rows[0]["profile"].ToString().Length > 1)
                 {
@@ -49,12 +58,28 @@ namespace DrProject.patient
             Label3.Text = ds.Tables[0].Rows[0]["fullname"].ToString();
 
         }
+
+        public void getDept()
+        {
+            con = new SqlConnection(cnstr);
+            con.Open();
+            SqlCommand de = new SqlCommand("select * from app_dept", con);
+            de.CommandType = CommandType.Text;
+            deptlist.DataSource = de.ExecuteReader();
+            deptlist.DataTextField = "dept_name";
+            deptlist.DataValueField = "id";
+            deptlist.DataBind();
+            deptlist.Items.Insert(0, new ListItem("Select Department", "0"));
+
+        }
+   
         protected void logout_Click(object sender, EventArgs e)
         {
                 Session.Abandon();
                 Response.Redirect("PatientLogin.aspx"); 
         }
-        
+
+       
     }
     
 }

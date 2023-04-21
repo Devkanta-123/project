@@ -147,51 +147,26 @@
 								</div>
 							</div>
 						</div>
+						 <div class="box">
+				<div class="box-header with-border">
+				  <h3 class="box-title">Recently Register Patient</h3>
+		
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+					<div class="">
 
-								<div class="col-12">
-						  <div class="box">
-							<div class="box-header with-border">
-							  <h4 class="box-title">Admitted Patient</h4>
-							  <div class="box-controls pull-right">
-								<div class="lookup lookup-circle lookup-right">
-								
-								</div>
-							  </div>
-							</div>
-							<div class="box-body no-padding">
+						
+						<asp:GridView ID="fetchpatient" runat="server" CssClass=" table-responsive table table-striped table-bordered display">
+				 </asp:GridView>
+					</div>              
+				</div>
+						
 							
-								  	
-										
-										
-											
-											
-								</div>
+		
+			
 				
-						  </div>
-						</div>
-				<asp:GridView ID="fetchpatient"  AutoGenerateColumns="false"  CssClass="datatbemp" Width="60%" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
-				<AlternatingRowStyle BackColor="White" />
-                <EditRowStyle BackColor="#2461BF" />
-                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#EFF3FB" />
-                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                <SortedDescendingHeaderStyle BackColor="#4870BE" />
-
-                                                </asp:GridView>
-							  
-							  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".datatbemp").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
-        });
-    </script>
-	
+			
 			
 
 	<div class="modal center-modal fade" id="modal-center" tabindex="-1">
@@ -340,10 +315,16 @@
     </form>
 
    <script src="/js/vendors.min.js"></script>
-	<script src="/js/pages/chat-popup.js"></script>
-    <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
+	<script src="~/js/pages/chat-popup.js"></script>
+    <script src="~/css/assets/icons/feather-icons/feather.min.js"></script>
+		<script src="~/css/assets/vendor_components/datatable/datatables.min.js"></script>
 	
-	t>
+
+
+	
+	<script src="~/js/pages/data-table.js"></script>
+	
+	
 	
 
 

@@ -335,6 +335,7 @@
     <Content Include="doctor\profiles\dr.jfif" />
     <Content Include="doctor\profiles\kk.jpg" />
     <Content Include="doctor\sidepanel.html" />
+    <Content Include="patient\dropdown.aspx" />
     <Content Include="form.aspx" />
     <Content Include="images\1.jpg" />
     <Content Include="images\150x100.png" />
@@ -697,6 +698,13 @@
     </Compile>
     <Compile Include="doctor\DoctorLogin.aspx.designer.cs">
       <DependentUpon>DoctorLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patient\dropdown.aspx.cs">
+      <DependentUpon>dropdown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient\dropdown.aspx.designer.cs">
+      <DependentUpon>dropdown.aspx</DependentUpon>
     </Compile>
     <Compile Include="form.aspx.cs">
       <DependentUpon>form.aspx</DependentUpon>

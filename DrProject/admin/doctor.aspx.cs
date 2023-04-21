@@ -88,7 +88,7 @@ namespace DrProject.admin
         private void BindGrid()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "SELECT id,fname,lname,emailid,designation FROM doctor";
+            string query = "SELECT id,fname,lname,emailid,designation,status FROM doctor";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
@@ -169,7 +169,7 @@ namespace DrProject.admin
         {
             if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridView1.EditIndex)
             {
-                (e.Row.Cells[4].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
+                (e.Row.Cells[5].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
             }
         }
 
