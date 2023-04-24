@@ -118,7 +118,8 @@ namespace DrProject.admin
             string lname = (row.FindControl("txtLname") as TextBox).Text;
             string email = (row.FindControl("txtEmail") as TextBox).Text;
             string design= (row.FindControl("Designation") as TextBox).Text;
-            string query = "UPDATE doctor SET  fname=@Fname, lname=@Lname,emailid=@EmailID, designation=@Degn WHERE id=@DocID";
+            string status= (row.FindControl("newstatus") as DropDownList).Text;
+            string query = "UPDATE doctor SET  fname=@Fname, lname=@Lname,emailid=@EmailID, designation=@Degn,status=@Ustatus WHERE id=@DocID";
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
@@ -129,6 +130,7 @@ namespace DrProject.admin
                     cmd.Parameters.AddWithValue("@Lname", lname);
                     cmd.Parameters.AddWithValue("@EmailID", email);
                     cmd.Parameters.AddWithValue("@Degn", design);
+                    cmd.Parameters.AddWithValue("@Ustatus",status);
                     cmd.Connection = con;
                     con.Open();
                     cmd.ExecuteNonQuery();

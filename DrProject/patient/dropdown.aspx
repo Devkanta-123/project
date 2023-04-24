@@ -76,7 +76,7 @@
                 </div>
             </nav>
         </header>
-	     </form>
+	   
 	     <div class="content-wrapper">
 	  <div class="container-full">
        	<section class="content">
@@ -156,7 +156,7 @@
 								<button type="button" class="btn btn-warning me-1">
 								  <i class="ti-trash"></i> Cancel
 								</button>
-                                <asp:Button ID="bookAppoint" runat="server" Text="CONFIRM" OnClick="bookAppoint_Click"  class="btn btn-primary" /><i class="ti-save-alt"></i> 
+                                <asp:Button ID="bookAppoint" runat="server" Text="Button" OnClick="bookAppoint_Click"  class="btn btn-primary" /><i class="ti-save-alt"></i> 
 								
 							</div>  
 					

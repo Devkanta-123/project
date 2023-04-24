@@ -282,8 +282,8 @@
 									<div class="form-group">
 									  <label class="form-label">Status</label>
 						<asp:DropDownList ID="status" runat="server"  class="form-control" >
-                        <asp:ListItem>active</asp:ListItem>
-                        <asp:ListItem>nonactive</asp:ListItem>
+                        <asp:ListItem>Active</asp:ListItem>
+                        <asp:ListItem>Not Active</asp:ListItem>
                     </asp:DropDownList>
 									</div>
 								  </div>

@@ -55,5 +55,10 @@ namespace DrProject.patient
             DropDownList3.DataBind();
 
         }
+
+        protected void bookAppoint_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

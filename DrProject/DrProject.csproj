@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -321,6 +324,8 @@
     <Content Include="css\style_rtl.css" />
     <Content Include="css\vendors_css.css" />
     <Content Include="datalist.aspx" />
+    <Content Include="DataPass.aspx" />
+    <Content Include="DataPass2.aspx" />
     <Content Include="doctor\dashboard.aspx" />
     <Content Include="doctor\DoctorLogin.aspx" />
     <Content Include="doctor\profiles\1.jpg" />
@@ -335,6 +340,7 @@
     <Content Include="doctor\profiles\dr.jfif" />
     <Content Include="doctor\profiles\kk.jpg" />
     <Content Include="doctor\sidepanel.html" />
+    <Content Include="patient\book_appoint.aspx" />
     <Content Include="patient\dropdown.aspx" />
     <Content Include="form.aspx" />
     <Content Include="images\1.jpg" />
@@ -632,6 +638,8 @@
     <Content Include="patient\doctorlist.aspx" />
     <Content Include="patient\PatientLogin.aspx" />
     <Content Include="patient\register.aspx" />
+    <Content Include="patient\sidepanel.html" />
+    <Content Include="sendReport.aspx" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -671,6 +679,7 @@
     <Compile Include="admin\doctor.aspx.designer.cs">
       <DependentUpon>doctor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AjaxControlToolkit\ToolkitScriptManager.cs" />
     <Compile Include="alert.aspx.cs">
       <DependentUpon>alert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -685,6 +694,20 @@
     <Compile Include="datalist.aspx.designer.cs">
       <DependentUpon>datalist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataPass.aspx.cs">
+      <DependentUpon>DataPass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataPass.aspx.designer.cs">
+      <DependentUpon>DataPass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataPass2.aspx.cs">
+      <DependentUpon>DataPass2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataPass2.aspx.designer.cs">
+      <DependentUpon>DataPass2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="doctor\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -698,6 +721,13 @@
     </Compile>
     <Compile Include="doctor\DoctorLogin.aspx.designer.cs">
       <DependentUpon>DoctorLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patient\book_appoint.aspx.cs">
+      <DependentUpon>book_appoint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient\book_appoint.aspx.designer.cs">
+      <DependentUpon>book_appoint.aspx</DependentUpon>
     </Compile>
     <Compile Include="patient\dropdown.aspx.cs">
       <DependentUpon>dropdown.aspx</DependentUpon>
@@ -742,6 +772,13 @@
       <DependentUpon>register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sendReport.aspx.cs">
+      <DependentUpon>sendReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sendReport.aspx.designer.cs">
+      <DependentUpon>sendReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

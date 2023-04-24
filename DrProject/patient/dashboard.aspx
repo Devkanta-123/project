@@ -554,9 +554,6 @@
                                     <asp:DropDownList ID="deptlist" runat="server" class="form-control" AutoComplete="off" >
                                     </asp:DropDownList>
 
-
-
-
                                 </div>
                             </div>
                             <div class="col-md-6">

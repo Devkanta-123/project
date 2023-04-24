@@ -219,12 +219,15 @@
 							  <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
 						<asp:TemplateField HeaderText="Status" ItemStyle-Width="150">
-                            <ItemTemplate>
-                                <asp:Label ID="lblstatus" runat="server" Text='<%# Eval("status") %>'></asp:Label>
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:TextBox ID="status" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("status") %>' Width="140"></asp:TextBox>
-                            </EditItemTemplate>
+					<ItemTemplate>
+			 <asp:Label ID="lblDesignation" runat="server"  Text='<%# Eval("status") %>'></asp:Label>
+			</ItemTemplate>
+							<EditItemTemplate>
+<asp:DropDownList ID="newstatus" runat="server" class="form-control"    SelectedValue='<%# Bind("status")%>'>
+<asp:ListItem>Active</asp:ListItem>
+<asp:ListItem>Not Active</asp:ListItem>
+</asp:DropDownList>
+</EditItemTemplate>
 							  <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
 						
