@@ -76,6 +76,7 @@
     <Content Include="admin\dataTables.aspx" />
     <Content Include="admin\doctor.aspx" />
     <Content Include="admin\panel.html" />
+    <Content Include="admin\Report.aspx" />
     <Content Include="alert.aspx" />
     <Content Include="css\assets\icons\cryptocoins-master\cryptocoins.css" />
     <Content Include="css\assets\icons\feather-icons\feather.min.js" />
@@ -678,6 +679,13 @@
     </Compile>
     <Compile Include="admin\doctor.aspx.designer.cs">
       <DependentUpon>doctor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
     </Compile>
     <Compile Include="AjaxControlToolkit\ToolkitScriptManager.cs" />
     <Compile Include="alert.aspx.cs">

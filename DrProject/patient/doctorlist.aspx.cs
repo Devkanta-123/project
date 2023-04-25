@@ -31,7 +31,7 @@ namespace DrProject.patient
             using (SqlConnection con = new SqlConnection(cnstr))
             {
                 con.Open();               
-                SqlCommand cmd = new SqlCommand("select d.fname,d.phno,d.designation,d.profile,de.dept_name from doctor d inner join app_dept de ON de.id = d.dept", con);
+                SqlCommand cmd = new SqlCommand("select d.fname,d.phno,d.designation,d.profile,de.dept_name from doctor d inner join app_dept de ON de.id = d.dept where d.status='not active'", con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 if(dr.HasRows == true)
                 {
