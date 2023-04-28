@@ -1,0 +1,69 @@
+Admin
+
+CREATE TABLE [dbo].[admin](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[emailid] [varchar](30) NOT NULL,
+	[password] [varchar](10) NOT NULL
+
+Doctor
+
+CREATE TABLE [dbo].[doctor](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[fname] [varchar](20) NOT NULL,
+	[lname] [varchar](20) NOT NULL,
+	[emailid] [varchar](20) NOT NULL,
+	[password] [varchar](15) NOT NULL,
+	[designation] [varchar](20) NOT NULL,
+	[dept] [int] NOT NULL,
+	[phno] [varchar](10) NOT NULL,
+	[DOB] [date] NOT NULL,
+	[address] [varchar](20) NOT NULL,
+	[experience] [varchar](200) NOT NULL,
+	[profile] [varchar](200) NULL,
+	[status] [varchar](100) NULL
+
+patient
+
+
+CREATE TABLE [dbo].[patient](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[fullname] [varchar](30) NOT NULL,
+	[emailid] [varchar](30) NOT NULL,
+	[password] [varchar](10) NOT NULL,
+	[address] [varchar](30) NOT NULL,
+	[phone] [varchar](10) NOT NULL,
+	[age] [varchar](45) NULL,
+	[profile] [varchar](200) NULL,
+	[weight] [varchar](10) NULL,
+	[height] [varchar](10) NULL,
+	[bmi] [varchar](200) NULL
+
+
+app_dept
+
+CREATE TABLE [dbo].[app_dept](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[dept_name] [varchar](30) NULL,
+	[status] [varchar](10) NULL,
+	[dept_pic] [varchar](100) NULL
+
+
+availability
+CREATE TABLE [dbo].[availability](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[doc_id] [int] NOT NULL,
+	[TIME] [varchar](200) NOT NULL,
+	[fees] [varchar](200) NOT NULL
+
+
+appointment
+
+CREATE TABLE [dbo].[appointment](
+	[appointment_id] [int] IDENTITY(1,1) NOT NULL,
+	[appoint_dept] [int] NOT NULL,
+	[appoint_docId] [int] NOT NULL,
+	[appoint_date] [date] NULL,
+	[appoint_TIME] [varchar](200) NULL,
+	[issues] [varchar](200) NULL,
+	[patientId] [int] NULL,
+	[status] [varchar](200) NULL

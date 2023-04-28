@@ -89,7 +89,7 @@ namespace DrProject.patient
             DropDownList3.Items.Clear();
             DropDownList3.Items.Add("Select Timing");
             SqlConnection con = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF'");
-            SqlCommand cmd = new SqlCommand("select * from appoint where d_id=" + DropDownList2.SelectedItem.Value, con);
+            SqlCommand cmd = new SqlCommand("select * from availability where doc_id=" + DropDownList2.SelectedItem.Value, con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);

@@ -11,9 +11,6 @@
 	<link rel="stylesheet" href="/css/style.css"/>
 	<link rel="stylesheet" href="/css/skin_color.css"/>
 	  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css"/>
-
-		
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
 
@@ -96,77 +93,83 @@
 					
 						<!-- card -->
 					<div class="row">
-						<div class="col-lg-4 col-12">
+					<div class="col-xl-3 col-md-6 col-6">
 							<div class="box">
-								<div class="box-body">
-									<div class="d-flex align-items-center">
-										<div class="me-15">
-											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-20.svg" alt="" class="w-120" />
-										</div>
-										<div>
-											<h4 class="mb-0">Total Patients</h4>
-											<asp:Label ID="Label3" runat="server" Text="1234" class="mb-3" ></asp:Label>
-                                          
-										</div>
+								<div class="box-body text-center">
+									<div class="bg-primary-light rounded10 p-20 mx-auto w-100 h-100">
+										<img src="https://rhythm-admin-template.multipurposethemes.com/images/svg-icon/medical/icon-1.svg" class="" alt="" />
 									</div>
+									<p class="text-fade mt-15 mb-5">Total Patients</p>
+								<h2 class="mt-0"><asp:Label ID="Label3" runat="server"></asp:Label></h2>
+								</div>
+							</div>
+						</div>	
+						<div class="col-xl-3 col-md-6 col-6">
+							<div class="box">
+								<div class="box-body text-center">
+									<div class="bg-danger-light rounded10 p-20 mx-auto w-100 h-100">
+										<img src="https://rhythm-admin-template.multipurposethemes.com/images/svg-icon/medical/icon-2.svg" class="" alt="" />
+											<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">+</button>
+									</div>
+								
+									<p class="text-fade mt-15 mb-5">Total Doctors</p> 
+									<h2 class="mt-0">	<asp:Label ID="Label4" runat="server"></asp:Label></h2>
+								</div>
+							</div>
+						</div>	
+							<div class="col-xl-3 col-md-6 col-6">
+							<div class="box">
+								<div class="box-body text-center">
+									<div class="bg-warning-light rounded10 p-20 mx-auto w-100 h-100">
+										<img src="https://rhythm-admin-template.multipurposethemes.com/images/svg-icon/medical/icon-3.svg" class="" alt="" />
+									</div>
+									<p class="text-fade mt-15 mb-5">Total Departments</p>
+									<h2 class="mt-0"><asp:Label ID="Label1" runat="server"></asp:Label>
+												</h2>
 								</div>
 							</div>
 						</div>
-							<div class="col-lg-4 col-12">
-							<div class="box">
-								<div class="box-body">
-									<div class="d-flex align-items-center">
-										<div class="me-15">
-											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-18.svg" alt="" class="w-120" />
-										</div>
-										<div>
-											<h5 class="mb-0">Total Doctor  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">+</button></h5>
-										<asp:Label ID="Label4" runat="server"  class="mb-3"  Font-Size="Large"></asp:Label>
-											<br/>
-											
-										
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-12">
-							<div class="box">
-								<div class="box-body">
-									<div class="d-flex align-items-center">
-										<div class="me-15">
-											<img src="https://medical-admin-template.multipurposethemes.com/images/svg-icon/color-svg/custom-19.svg" alt="" class="w-120" />
-										</div>
-										<div>
-											<h4 class="mb-0">Department</h4>
-											
-											<asp:Label ID="Label1" runat="server"  class="mb-3"  Font-Size="Large"></asp:Label>
-												
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						 <div class="box">
-				<div class="box-header with-border">
-				  <h3 class="box-title">Recently Register Patient</h3>
-		
-				</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-					<div class="">
 
+						<div class="col-xl-3 col-md-6 col-6">
+							<div class="box">
+								<div class="box-body text-center">
+									<div class="bg-info-light rounded10 p-20 mx-auto w-100 h-100">
+										<img src="https://rhythm-admin-template.multipurposethemes.com/images/svg-icon/medical/icon-4.svg" class="" alt="" />
+									</div>
+									<p class="text-fade mt-15 mb-5">Total Rooms</p>
+									<h2 class="mt-0">0</h2>
+								</div>
+							</div>
+						</div>
 						
-						<asp:GridView ID="fetchpatient" runat="server" CssClass=" table-responsive table table-striped table-bordered display">
-				 </asp:GridView>
-					</div>              
-				</div>
-						
+
+								<div class="col-12">
+						  <div class="box">
+							<div class="box-header with-border">
+							  <h4 class="box-title">Admitted Patient</h4>
+							  <div class="box-controls pull-right">
+								<div class="lookup lookup-circle lookup-right">
+								
+								</div>
+							  </div>
+							</div>
+							<div class="box-body no-padding">
 							
-		
-			
-				
-			
+								  	
+										
+										
+											<asp:GridView ID="fetchpatient" runat="server"  class="table mb-0  table-responsive">
+                                                </asp:GridView>
+											
+								</div>
+								
+							  
+							<div class="box-footer bg-light py-10 with-border">
+							  
+							</div>
+						  </div>
+						</div>
+	
 			
 
 	<div class="modal center-modal fade" id="modal-center" tabindex="-1">
@@ -240,11 +243,12 @@
 								  <div class="col-md-6">
 									<div class="form-group">
 									  <label class="form-label">DOB</label>
-										
 						        <asp:TextBox ID="dob" runat="server" type="date"   class="form-control" ></asp:TextBox>
-										<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="dob" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
-										<asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="DOB must be Lesser than current dates.." ForeColor="Red"
+										 
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="dob" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+										<asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="DOB should be Lesser than current dates.." ForeColor="Red"
     ControlToValidate="dob" Operator="LessThan" Type="Date" Display="Dynamic" />
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="dob" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
 									</div>
 								  </div>
 				    <div class="col-md-6">
@@ -282,8 +286,8 @@
 									<div class="form-group">
 									  <label class="form-label">Status</label>
 						<asp:DropDownList ID="status" runat="server"  class="form-control" >
-                        <asp:ListItem>Active</asp:ListItem>
-                        <asp:ListItem>Not Active</asp:ListItem>
+                        <asp:ListItem>active</asp:ListItem>
+                        <asp:ListItem>nonactive</asp:ListItem>
                     </asp:DropDownList>
 									</div>
 								  </div>
@@ -315,16 +319,11 @@
     </form>
 
    <script src="/js/vendors.min.js"></script>
-	<script src="~/js/pages/chat-popup.js"></script>
-    <script src="~/css/assets/icons/feather-icons/feather.min.js"></script>
-		<script src="~/css/assets/vendor_components/datatable/datatables.min.js"></script>
+	<script src="/js/pages/chat-popup.js"></script>
+    <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
 	
-
-
-	
-	<script src="~/js/pages/data-table.js"></script>
-	
-	
+	<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
 	
 
 

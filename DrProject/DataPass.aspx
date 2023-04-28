@@ -5,6 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css"/>
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/skin_color.css"/>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -17,7 +23,9 @@
                     <asp:BoundField DataField="dept_pic" HeaderText="EmpSalary" /> 
                     <asp:TemplateField>  
                         <ItemTemplate>  
-                            <asp:Button ID="btnEdit" runat="server" Width="60" Text="Edit" CommandName="EditButton" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />  
+                            <asp:LinkButton ID="btnEdit" CssClass="btn btn-primary btn-sm"  CommandName="EditButton" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  runat="server"><span class="badge badge-pill badge-danger"/>Approved</asp:LinkButton>
+
+                         <asp:Button    runat="server" Width="60" Text="Edit"  />
                         </ItemTemplate>  
                     </asp:TemplateField>  
                 </Columns>  

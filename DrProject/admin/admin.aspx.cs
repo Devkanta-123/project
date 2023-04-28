@@ -43,11 +43,11 @@ namespace DrProject
                 countdoctor();
                 countdept();
                 getpatient();
+                countpatient();
 
             }
         }
-       
-
+      
         private void getpatient()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
@@ -65,12 +65,20 @@ namespace DrProject
                 }
             }
         }
+        public void countpatient()
+         {
 
+            con = new SqlConnection(cnstr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) from patient", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            Label3.Text = RowCount.ToString();
+        }
         public void getDept()
         {
             con = new SqlConnection(cnstr);
             con.Open();
-            SqlCommand de = new SqlCommand("select * from [dbo].[app_dept]", con);
+            SqlCommand de = new SqlCommand("select * from app_dept", con);
             de.CommandType = CommandType.Text;
             department.DataSource = de.ExecuteReader();
             department.DataTextField = "dept_name";
@@ -90,17 +98,14 @@ namespace DrProject
                         cmd.Connection = con;
                         con.Open();
                         dt.SelectCommand = cmd;
-
                         DataTable dTable = new DataTable();
                         dt.Fill(dTable);
-
                         fetchpatient.DataSource = dTable;
                         fetchpatient.DataBind();
                     }
                     catch (Exception)
                     {
-
-                           
+                        
                     }
                 }
             }
@@ -132,16 +137,12 @@ namespace DrProject
         #endregion
         public void countdept()
         {
-
             con = new SqlConnection(cnstr);
             con.Open();
             SqlCommand c = new SqlCommand("select COUNT(*) from app_dept", con);
             int? RowCount = (int?)c.ExecuteScalar();
             Label1.Text = RowCount.ToString();
-
-
         }
-
         protected void logout_Click(object sender, EventArgs e)
         {
             if (Session == null)
@@ -149,8 +150,6 @@ namespace DrProject
                 Response.Redirect("AdminLogin.aspx");
             }
         }
-
-
 
         protected void regtDoc_Click(object sender, EventArgs e)
         {
@@ -175,11 +174,9 @@ namespace DrProject
                     string filepath = "~/doctor/profiles/" + profile.FileName;
                     profile.PostedFile.SaveAs(Server.MapPath("~/doctor/profiles/") + filename);
                     cmd = new SqlCommand("insert into doctor " + " (fname,lname,emailid,password,designation,dept,phno,dob,address,experience,profile,status) " +
-                     "values('" + fname.Text + "','" + lname.Text + "','" + emailid.Text + "','" + strpass +  "','" + designation.Text + "','" + department.Text + "','" + phno.Text + "','" + dob.Text + "','" + address.Text + "','" + experience.Text + "','" + filepath + "','" + status.Text + "')", con);
-
+                     "values('" + fname.Text + "','" + lname.Text + "','" + emailid.Text + "','" + strpass + "','" + designation.Text + "','" + department.Text + "','" + phno.Text + "','" + dob.Text + "','" + address.Text + "','" + experience.Text + "','" + filepath + "','" + status.Text + "')", con);
                     cmd.ExecuteNonQuery();
                     con.Close();
-
                     string message = "Your details have been saved successfully.";
                     string script = "window.onload = function(){ alert('";
                     script += message;
@@ -190,7 +187,6 @@ namespace DrProject
                     ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
                 }
             }
-
         }
         public string encryptpass(string password)
         {
@@ -200,8 +196,5 @@ namespace DrProject
             msg = Convert.ToBase64String(encode);
             return msg;
         }
-
-
-
     }
 }

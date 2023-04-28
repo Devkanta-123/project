@@ -232,7 +232,7 @@
                         </asp:TemplateField>
 						
                         <asp:CommandField  HeaderText="Actions"  ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" 
-                            ItemStyle-Width="150"  EditText="<i aria-hidden='true' class='ti-pencil-alt'></i>" DeleteText="<i aria-hidden='true' class='ti-trash'></i>"
+                            ItemStyle-Width="150"  EditText="<i aria-hidden='true' class='ti-marker-alt'></i>" DeleteText="<i aria-hidden='true' class='ti-trash'></i>"
 CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" UpdateText="<i aria-hidden='true' class='ti-check-box'></i>"/>
 									
                     </Columns>

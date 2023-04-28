@@ -341,6 +341,7 @@
     <Content Include="doctor\profiles\dr.jfif" />
     <Content Include="doctor\profiles\kk.jpg" />
     <Content Include="doctor\sidepanel.html" />
+    <Content Include="Model.aspx" />
     <Content Include="patient\book_appoint.aspx" />
     <Content Include="patient\dropdown.aspx" />
     <Content Include="form.aspx" />
@@ -687,7 +688,6 @@
     <Compile Include="admin\Report.aspx.designer.cs">
       <DependentUpon>Report.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AjaxControlToolkit\ToolkitScriptManager.cs" />
     <Compile Include="alert.aspx.cs">
       <DependentUpon>alert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -729,6 +729,13 @@
     </Compile>
     <Compile Include="doctor\DoctorLogin.aspx.designer.cs">
       <DependentUpon>DoctorLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Model.aspx.cs">
+      <DependentUpon>Model.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Model.aspx.designer.cs">
+      <DependentUpon>Model.aspx</DependentUpon>
     </Compile>
     <Compile Include="patient\book_appoint.aspx.cs">
       <DependentUpon>book_appoint.aspx</DependentUpon>
