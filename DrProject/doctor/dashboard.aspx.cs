@@ -49,7 +49,7 @@ namespace DrProject.doctor
         private void BindGrid()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "SELECT id,fname,lname,emailid,designation,status FROM doctor";
+            string query = "select a.appointment_id,a.appoint_date,a.appoint_TIME,a.issues,a.status,p.fullname,p.age from appointment a inner join patient p on p.id=a.patientId";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter(query, con))

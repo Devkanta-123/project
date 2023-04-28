@@ -54,7 +54,7 @@
                                 <div class="d-flex pt-1">
                                     <div class="text-end me-15">
                                         <div class="text-end me-10">
-                                            <asp:Label ID="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label>
+                                           
                                         </div>
                                         <div class="text-end me-10">
                                             <asp:Label ID="Label3" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-success"></asp:Label>
@@ -84,33 +84,107 @@
                     <!--Cards-->
 
 
-                    <div class="col-xl-6">
-                        <a href="#" class="box bg-danger bg-hover-danger">
-                            <div class="box-body">
-                                <span class="text-white icon-Cart2 fs-40"><span class="path1"></span><span class="path2"></span></span>
-                                <div class="text-white fw-600 fs-18 mb-2 mt-5">Reports</div>
-                                <div class="text-white fs-16">0</div>
-                            </div>
-                        </a>
 
+                    		<div class="col-xl-3 col-lg-6 col-12">
+							<div class="box">
+								<div class="box-body">
+									<div class="mb-15 d-flex justify-content-between align-items-center">
+										<h4 class="my-0">BP Count</h4>
+										<i class="text-primary fs-18 mdi mdi-heart-pulse"></i>
+									</div>
+									<div class="mb-10 d-flex justify-content-between align-items-center">
+										<h4 class="fw-400 my-0">0</h4>
+										<p class="my-0">Upper</p>
+									</div>
+									<div class="d-flex justify-content-between align-items-center">
+										<h4 class="fw-400 my-0">0</h4>
+										<p class="my-0">Lower</p>
+									</div>
+								</div>
+							</div>
+							<div class="box">
+								<div class="box-body">
+									<div class="mb-3 pb-1 d-flex justify-content-between align-items-center">
+										<h4 class="my-0">Bill Due</h4>
+										<i class="text-primary fs-18 mdi mdi-wallet"></i>
+									</div>
+									<div>
+										<h5 class="fw-300 my-0">$0</h5>
+									</div>
+								</div>
+							</div>
+						</div>
 
+                    <div class="col-xl-8 col-11">			
+						  <div class="box">
+							<div class="box-header">
+							  <h4 class="box-title">BMI INDEX</h4>
+							  <div class="box-controls pull-right">
+								<div class="lookup lookup-circle lookup-right">
+								  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">UPDATE</button>
+								</div>
+							  </div>
+							</div>
+							<div class="box-body">
+							  	<div class="flexbox bb-1 mb-15">
+									<div><p><span class="text-mute">Patient Name:</span> <strong><asp:Label ID="Label7" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></strong></p></div>
+									<div><p><span class="text-mute">Patient Id:</span> <strong><asp:Label ID="Label8" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></strong></p></div>
+							  	</div>	
+								  <div class="row">						
+									<div class="col-12">
+										<div class="row bb-1 pb-10">							
+											<div class="col-4">							  
+												<img class="img-fluid float-start w-30 mt-10 me-10" src="../images/weight.png" alt="">
+												<div>
+													<p class="mb-0"><small>Weight</small></p> 
+													<h5 class="mb-0"><span><asp:Label ID="Label9" runat="server" Text="0" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label>KG
+                                                      
+                                                        </span></h5>
+												</div>
+											</div>							
+											<div class="col-4 bs-1 be-1">							  
+												<img class="img-fluid float-start w-30 mt-10 me-10" src="../images/human.png" alt="">
+												<div>
+													<p class="mb-0"><small>Height</small></p> 
+													<h5 class=" mb-0"><span><asp:Label ID="Label10" runat="server" Text="0" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label>CM</span></h5>
+												</div>
+											</div>							
+											<div class="col-4">							  
+												<img class="img-fluid float-start w-30 mt-10 me-10" src="../images/bmi.png" alt="">
+												<div>
+													<p class="mb-0"><small>BMI</small></p> 
+													<h5 class="mb-0"><span><asp:Label ID="Label11" runat="server" Text="0" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></span></h5>
+													<h5 class="mb-0"><span><asp:Label ID="Label12" runat="server" Text="0" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></span></h5>
+												</div>
+											</div>
+										</div>									
+									</div>
+								  </div>
+							</div>						 
+						  </div>	
+						</div>
 
-
-
-                    </div>
-
-                    <div class="col-xl-6">
-                        <a href="#" class="box bg-info bg-hover-info">
-                            <div class="box-body">
-                                <span class="text-white icon-Layout-arrange fs-60"><span class="path1"></span><span class="path2"></span></span>
-                                <div class="text-white fw-600 fs-18 mb-2 mt-5">Appointment
-
-                                <div class="text-white fs-16"></div>
-                            </div>
-                        </a>
-                    </div>
-
-
+<div class="box">
+						<div class="box-body">
+							<span class="badge badge-success-light">Patient Profile</span>
+                            <h4 class="ti-email"> <asp:Label ID="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></h4>
+																			
+						  							
+							    <div class="d-flex align-items-center">          
+                                       <asp:Image ID="profile2" runat="server" class=" rounded-circle bg-info-light" Width="150" />
+									<div class="text-start">
+                                        	<h4 class="mt-20 mb-10"><asp:Label ID="Label15" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></h4>
+									  <h4 class="mt-20 mb-10"><asp:Label ID="Label4" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></h4>	
+                                        <p class="ti-location-pin">  <asp:Label ID="Label5" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></p>
+								<p class="mb-0 text-mute"><i class="ti-mobile"> </i> <span class="text-primary"><asp:Label ID="Label6" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></span></p>
+									  <small><asp:Label ID="Label1" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></small>
+                                      
+									</div>
+							    </div>
+								
+						    
+						</div>					
+					</div>
 
                 </div>
             </div>
@@ -120,110 +194,39 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i>Appointment Details</h4>
+                        <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i>BMI Calculator</h4>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">First Name</label>
-                                    <asp:TextBox ID="fname" runat="server" class="form-control" placeholder="First Name..." AutoComplete="off"></asp:TextBox>
+                                    <label class="form-label">Weight</label>
+                                    <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter weight..." AutoComplete="off"></asp:TextBox>
                                     &nbsp;&nbsp;
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fname" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
-                                </div>
+                             
+                            </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">Last Name</label>
-                                    <asp:TextBox ID="lname" runat="server" class="form-control" placeholder="last Name..." AutoComplete="off"></asp:TextBox>
+                                    <label class="form-label">Height</label>
+                                    <asp:TextBox ID="TextBox2" runat="server" class="form-control" placeholder="Enter Height..." AutoComplete="off"></asp:TextBox>
                                     &nbsp;&nbsp;
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="lname" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                           
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
+                                   <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">E-mail</label>
-                                    <asp:TextBox ID="emailid" runat="server" class="form-control" placeholder="E-MailId..." AutoComplete="off"></asp:TextBox>
+                                    <label class="form-label">BMI</label>
+                                    <asp:TextBox ID="TextBox3" runat="server" class="form-control"  AutoComplete="off"></asp:TextBox>
                                     &nbsp;&nbsp;
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="emailid" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
-
 
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">DOA</label>
-
-                                    <asp:TextBox ID="dob" runat="server" type="date" class="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="dob" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Department</label>
-
-                                    <asp:DropDownList ID="deptlist" runat="server" class="form-control" AutoComplete="off" >
-                                    </asp:DropDownList>
-
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Doctor</label>
-                                    <asp:DropDownList ID="doctorlist" runat="server" class="form-control"  AutoComplete="off" >
-											
-								       </asp:DropDownList>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Time</label>
-                                    <asp:DropDownList ID="DropDownList1" runat="server" class="form-control"  AutoComplete="off" >
-											
-								       </asp:DropDownList>
-                                </div>
-                            </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">COMMENTS</label>
-                                        <asp:TextBox ID="experience" runat="server" class="form-control" placeholder="Experience..." AutoComplete="off"></asp:TextBox>
-                                        &nbsp;&nbsp;
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="experience" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Status</label>
-                                        <asp:DropDownList ID="status" runat="server" class="form-control">
-                                            <asp:ListItem>active</asp:ListItem>
-                                            <asp:ListItem>nonactive</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Select Profile</label>
-                                <asp:FileUpload ID="FileUpload1" runat="server" />
-                            </div>
+                            </div>            
                             <div class="modal-footer modal-footer-uniform">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                 
 
-                                <%--	<asp:Button  ID="regdoc" runat="server" Text="Save"   OnClick="regtDoc_Click" class="btn btn-primary float-end"/>--%>
-                            </div>
+                              
+                                 <asp:Button ID="save" class="btn btn-success" runat="server" Text="Update" OnClick="save_Click" />
                         </div>
                     </div>
                 </div>
@@ -241,6 +244,22 @@
 
     <script src="js/template.js"></script>
     <script src="js/pages/dashboard3.js"></script>
+        <script>
+  function sum() {
+      var txtFirstNumberValue = document.getElementById('TextBox1').value;
+      var txtSecondNumberValue = document.getElementById('TextBox2').value;
+      var result = parseInt(txtFirstNumberValue ) / (((parseInt(txtSecondNumberValue)/100)*(parseInt(txtSecondNumberValue)/100)));
+      if (!isNaN(result))
+      {
+          document.getElementById('TextBox3').value = result;
+      }
+
+
+      
+        }
+        </script>
+
+
 
 </body>
 </html>

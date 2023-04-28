@@ -22,8 +22,9 @@ namespace DrProject.patient
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-                getDept();
+            TextBox1.Attributes.Add("onkeyup", "sum();");
+            TextBox2.Attributes.Add("onkeyup", "sum();");
+
             
 
 
@@ -50,28 +51,27 @@ namespace DrProject.patient
         }
         public void callData()
         {
+            con = new SqlConnection(cnstr);
+            con.Open();
             cmd.CommandText = "select * from patient  where emailid = '" + Session["user"] + "' ";
             cmd.Connection = con;
             da.SelectCommand = cmd;
             da.Fill(ds);
             Label2.Text = ds.Tables[0].Rows[0]["emailid"].ToString();
-            Label3.Text = ds.Tables[0].Rows[0]["fullname"].ToString();
+            Label4.Text = ds.Tables[0].Rows[0]["fullname"].ToString();
+            Label7.Text = ds.Tables[0].Rows[0]["fullname"].ToString();
+            Label8.Text = ds.Tables[0].Rows[0]["id"].ToString();
+            Label5.Text = ds.Tables[0].Rows[0]["address"].ToString();
+            Label9.Text = ds.Tables[0].Rows[0]["weight"].ToString();
+            Label12.Text = ds.Tables[0].Rows[0]["weight"].ToString();
+            Label10.Text = ds.Tables[0].Rows[0]["height"].ToString();
+            Label11.Text = ds.Tables[0].Rows[0]["bmi"].ToString();
 
+            Label6.Text = ds.Tables[0].Rows[0]["phone"].ToString();
+            profile2.ImageUrl = ds.Tables[0].Rows[0]["profile"].ToString();
         }
 
-        public void getDept()
-        {
-            con = new SqlConnection(cnstr);
-            con.Open();
-            SqlCommand de = new SqlCommand("select * from app_dept", con);
-            de.CommandType = CommandType.Text;
-            deptlist.DataSource = de.ExecuteReader();
-            deptlist.DataTextField = "dept_name";
-            deptlist.DataValueField = "id";
-            deptlist.DataBind();
-            deptlist.Items.Insert(0, new ListItem("Select Department", "0"));
-
-        }
+  
    
         protected void logout_Click(object sender, EventArgs e)
         {
@@ -79,7 +79,22 @@ namespace DrProject.patient
                 Response.Redirect("PatientLogin.aspx"); 
         }
 
-       
+        protected void save_Click(object sender, EventArgs e)
+        {
+            con = new SqlConnection(cnstr);
+            con.Open();
+            cmd = new SqlCommand("update patient SET weight='" + TextBox1.Text + "',height='" + TextBox2.Text + "',bmi='" + TextBox3.Text + "' where emailid = '" + Session["user"] + "'", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            string message = "Your details have been saved successfully.";
+            string script = "window.onload = function(){ alert('";
+            script += message;
+            script += "');";
+            script += "window.location = '";
+            script += Request.Url.AbsoluteUri;
+            script += "'; }";
+            ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+        }
     }
     
 }

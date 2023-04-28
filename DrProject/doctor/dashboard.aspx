@@ -121,7 +121,7 @@
 				
 					</div>
 					<div class="widget-user-image">
-					 <asp:Image ID="profile" runat="server"  class="rounded-circle bg-warning-light"/> 
+					 <asp:Image ID="profile" runat="server"    Width="120"      CssClass="rounded-circle bg-warning-light"/> 
 					
 					</div>
 					<div class="box-footer">
@@ -346,45 +346,45 @@
             <ContentTemplate>
 
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowDataBound="OnRowDataBound"
-                    DataKeyNames="id" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+                    DataKeyNames="appointment_id" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
                     PageSize="2" AllowPaging="true" OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
                 OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-4 w-p100 table-responsive" Width="40px">
                     <Columns>
 
                         <asp:TemplateField HeaderText="First Name"   ItemStyle-Width="150" >
                             <ItemTemplate>
-                                <asp:Label ID="lblName" runat="server"   Text='<%# Eval("fname") %>'></asp:Label>
+                                <asp:Label ID="lblName" runat="server"   Text='<%# Eval("fullname") %>'></asp:Label>
 
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtName" runat="server" class="form-control"   autocomplete="off"  Text ='<%# Eval("fname") %>' Width="140"></asp:TextBox>
+                                <asp:TextBox ID="txtName" runat="server" class="form-control"   autocomplete="off"  Text ='<%# Eval("fullname") %>' Width="140"></asp:TextBox>
                             </EditItemTemplate>
 							 <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Last Name" ItemStyle-Width="150">
                             <ItemTemplate>
-                                <asp:Label ID="lblCountry" runat="server"  Text='<%# Eval("lname") %>'></asp:Label>
+                                <asp:Label ID="lblCountry" runat="server"  Text='<%# Eval("appoint_date") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtLname" runat="server" class="form-control"   autocomplete="off"  Text='<%# Eval("lname") %>' Width="140"></asp:TextBox>
+                                <asp:TextBox ID="txtLname" runat="server" class="form-control"   autocomplete="off"  Text='<%# Eval("appoint_date") %>' Width="140"></asp:TextBox>
                             </EditItemTemplate>
 							 <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
                          <asp:TemplateField HeaderText="Emailid" ItemStyle-Width="150">
                             <ItemTemplate>
-                                <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("emailid") %>'></asp:Label>
+                                <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("appoint_TIME") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtEmail" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("emailid") %>' Width="140"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("appoint_TIME") %>' Width="140"></asp:TextBox>
                             </EditItemTemplate>
 							  <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
 						  <asp:TemplateField HeaderText="Designation" ItemStyle-Width="150">
                             <ItemTemplate>
-                                <asp:Label ID="lblDesignation" runat="server" Text='<%# Eval("designation") %>'></asp:Label>
+                                <asp:Label ID="lblDesignation" runat="server" Text='<%# Eval("issues") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="Designation" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("designation") %>' Width="140"></asp:TextBox>
+                                <asp:TextBox ID="Designation" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("issues") %>' Width="140"></asp:TextBox>
                             </EditItemTemplate>
 							  <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
@@ -394,8 +394,8 @@
 			</ItemTemplate>
 							<EditItemTemplate>
 <asp:DropDownList ID="newstatus" runat="server" class="form-control"    SelectedValue='<%# Bind("status")%>'>
-<asp:ListItem>Active</asp:ListItem>
-<asp:ListItem>Not Active</asp:ListItem>
+<asp:ListItem>postoned</asp:ListItem>
+<asp:ListItem>approved</asp:ListItem>
 </asp:DropDownList>
 </EditItemTemplate>
 							  <HeaderStyle CssClass="bg-primary" />
