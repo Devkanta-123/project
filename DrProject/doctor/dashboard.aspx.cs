@@ -49,7 +49,7 @@ namespace DrProject.doctor
         private void BindGrid()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "select a.appointment_id,a.appoint_date,a.appoint_TIME,a.issues,a.status,p.fullname,p.age from appointment a inner join patient p on p.id=a.patientId";
+            string query = "select a.appointment_id,a.appoint_date,a.appoint_TIME,a.issues,a.status,d.emailid,p.fullname,p.age from appointment a inner join patient p on p.id=a.patientId inner join doctor d on a.appoint_docId = d.id  where d.emailid = '" + Session["user"] + "'";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
@@ -72,23 +72,15 @@ namespace DrProject.doctor
         protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             GridViewRow row = GridView1.Rows[e.RowIndex];
-            int Id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
-            string name = (row.FindControl("txtName") as TextBox).Text;
-            string lname = (row.FindControl("txtLname") as TextBox).Text;
-            string email = (row.FindControl("txtEmail") as TextBox).Text;
-            string design = (row.FindControl("Designation") as TextBox).Text;
+            int appointment_id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);;
             string status = (row.FindControl("newstatus") as DropDownList).Text;
-            string query = "UPDATE doctor SET  fname=@Fname, lname=@Lname,emailid=@EmailID, designation=@Degn,status=@Ustatus WHERE id=@DocID";
+            string query = "UPDATE  appointment SET status=@Ustatus WHERE  appointment_id =@ApID";
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
-                    cmd.Parameters.AddWithValue("@DocID", Id);
-                    cmd.Parameters.AddWithValue("@Fname", name);
-                    cmd.Parameters.AddWithValue("@Lname", lname);
-                    cmd.Parameters.AddWithValue("@EmailID", email);
-                    cmd.Parameters.AddWithValue("@Degn", design);
+                    cmd.Parameters.AddWithValue("@ApID", appointment_id);
                     cmd.Parameters.AddWithValue("@Ustatus", status);
                     cmd.Connection = con;
                     con.Open();
@@ -109,13 +101,13 @@ namespace DrProject.doctor
         protected void OnRowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
-            string query = "DELETE FROM doctor WHERE id=@DocId";
+            string query = "UPDATE  appointment SET status='cancel' WHERE  appointment_id=@ApID";
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
-                    cmd.Parameters.AddWithValue("@DocId", id);
+                    cmd.Parameters.AddWithValue("@ApID", id);
                     cmd.Connection = con;
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -130,7 +122,7 @@ namespace DrProject.doctor
         {
             if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridView1.EditIndex)
             {
-                (e.Row.Cells[5].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
+                (e.Row.Cells[5].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to Cancel this appointment?');";
             }
         }
 
@@ -152,18 +144,7 @@ namespace DrProject.doctor
             fetchpatient.DataSource = dt;
             fetchpatient.DataBind();
         }
-        //public void patientget()
-        //{
-
-        //    con = new SqlConnection(cnstr);
-        //    con.Open();
-        //    cmd.CommandText = "select fullname from patient ";
-        //    cmd.Connection = con;
-        //    da.SelectCommand = cmd;
-        //    da.Fill(dt);
-        //    patient.DataSource = dt;
-        //    patient.DataBind();
-        //}
+      
         public void regtDept_Click(object sender, EventArgs e)
         {
 

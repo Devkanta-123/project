@@ -145,11 +145,7 @@
 						  <asp:Label ID ="expe" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-warning" ></asp:Label>
 						  </div>
 						</div>
-						  
-
 						  <asp:Label ID ="id" runat="server"  visible="false"  class="pt-5 fs-14 mb-0 fw-800 text-warning" ></asp:Label>
-						 
-						
 					  </div>
 					</div>
 				  </div>
@@ -209,12 +205,7 @@
 					<i class="icon-Settings-1"><span class="path1"></span><span class="path2"></span></i>
 					<span>Reports</span>
 				  </a>
-				</li>				
-				
-				
-				
-					
-					
+				</li>		
 		  </div>
 		</div>
     </section>
@@ -334,7 +325,7 @@
 						<div class="col-xl-12 col-12">						
 							<div class="box">
 								<div class="box-header">
-									<h4 class="box-title">Patients</h4>
+									<h4 class="box-title">Your Appointments</h4>
 								</div>
 												<div class="box-body">
 					<div class="">
@@ -351,51 +342,52 @@
                 OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-4 w-p100 table-responsive" Width="40px">
                     <Columns>
 
-                        <asp:TemplateField HeaderText="First Name"   ItemStyle-Width="150" >
+                        <asp:TemplateField HeaderText="PATIENT NAME"   ItemStyle-Width="150" >
                             <ItemTemplate>
                                 <asp:Label ID="lblName" runat="server"   Text='<%# Eval("fullname") %>'></asp:Label>
 
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtName" runat="server" class="form-control"   autocomplete="off"  Text ='<%# Eval("fullname") %>' Width="140"></asp:TextBox>
+                                <asp:TextBox ID="txtName" runat="server" class="form-control"  readonly autocomplete="off"  Text ='<%# Eval("fullname") %>' Width="140"></asp:TextBox>
                             </EditItemTemplate>
 							 <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Last Name" ItemStyle-Width="150">
+                        <asp:TemplateField HeaderText="APPOINT_DATE" ItemStyle-Width="150">
                             <ItemTemplate>
                                 <asp:Label ID="lblCountry" runat="server"  Text='<%# Eval("appoint_date") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtLname" runat="server" class="form-control"   autocomplete="off"  Text='<%# Eval("appoint_date") %>' Width="140"></asp:TextBox>
+                                <asp:TextBox ID="txtLname" runat="server" class="form-control"  readonly autocomplete="off"  Text='<%# Eval("appoint_date") %>' Width="140"></asp:TextBox>
                             </EditItemTemplate>
 							 <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
-                         <asp:TemplateField HeaderText="Emailid" ItemStyle-Width="150">
+                         <asp:TemplateField HeaderText="TIME" ItemStyle-Width="150">
                             <ItemTemplate>
                                 <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("appoint_TIME") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtEmail" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("appoint_TIME") %>' Width="140"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" runat="server"   autocomplete="off"   readonly   class="form-control" Text='<%# Eval("appoint_TIME") %>' Width="140"></asp:TextBox>
                             </EditItemTemplate>
 							  <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
-						  <asp:TemplateField HeaderText="Designation" ItemStyle-Width="150">
+						  <asp:TemplateField HeaderText="PATIENT PROBLEM" ItemStyle-Width="150">
                             <ItemTemplate>
-                                <asp:Label ID="lblDesignation" runat="server" Text='<%# Eval("issues") %>'></asp:Label>
+                                <asp:Label ID="lblDesignation" runat="server"      Text='<%# Eval("issues") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="Designation" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("issues") %>' Width="140"></asp:TextBox>
+                                <asp:TextBox ID="Designation" runat="server"  readonly   autocomplete="off"  class="form-control" Text='<%# Eval("issues") %>' Width="140"></asp:TextBox>
                             </EditItemTemplate>
 							  <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
-						<asp:TemplateField HeaderText="Status" ItemStyle-Width="150">
+						<asp:TemplateField HeaderText="STATUS" ItemStyle-Width="150">
 					<ItemTemplate>
-			 <asp:Label ID="lblDesignation" runat="server"  Text='<%# Eval("status") %>'></asp:Label>
+			 <asp:Label ID="lblDesignation" runat="server"  readonly Text='<%# Eval("status") %>'></asp:Label>
 			</ItemTemplate>
 							<EditItemTemplate>
 <asp:DropDownList ID="newstatus" runat="server" class="form-control"    SelectedValue='<%# Bind("status")%>'>
-<asp:ListItem>postoned</asp:ListItem>
 <asp:ListItem>approved</asp:ListItem>
+<asp:ListItem>cancel</asp:ListItem>
+<asp:ListItem>book</asp:ListItem>
 </asp:DropDownList>
 </EditItemTemplate>
 							  <HeaderStyle CssClass="bg-primary" />
