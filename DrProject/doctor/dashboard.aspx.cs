@@ -23,6 +23,7 @@ namespace DrProject.doctor
             if (!this.IsPostBack)
             {
                 this.BindGrid();
+                this.DocList();
             }
             if (Session["user"] == null)
             {
@@ -63,6 +64,24 @@ namespace DrProject.doctor
                 }
             }
         }
+        private void DocList()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+            string query = "SELECT id,fname,profile,emailid FROM doctor  where emailid !='" + Session["user"] + "' ";
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
+                {
+                    using (DataTable dt = new DataTable())
+                    {
+                        sda.Fill(dt);
+                        availabledoc.DataSource = dt;
+                        availabledoc.DataBind();
+                    }
+                }
+            }
+        }
+
         protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
@@ -137,7 +156,7 @@ namespace DrProject.doctor
 
             con = new SqlConnection(cnstr);
             con.Open();
-            cmd.CommandText = "select a.appoint_date,a.appoint_TIME  from appointment a  INNER JOIN doctor d  on a.appoint_docId = d.id    where d.emailid = '" + Session["user"] + "' ";
+            cmd.CommandText = "select a.appoint_date,a.appoint_TIME  from appointment a  INNER JOIN doctor d  on a.appoint_docId = d.id  where appoint_date=GETDATE() and     d.emailid = '" + Session["user"] + "' ";
             cmd.Connection = con;
             da.SelectCommand = cmd;
             da.Fill(dt);

@@ -51,7 +51,7 @@ namespace DrProject
         private void getpatient()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "SELECT fullname,emailid,age,address,phone FROM patient";
+            string query = "SELECT fullname,address FROM patient";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter(query, con))

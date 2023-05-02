@@ -159,6 +159,10 @@
 										
 										
 											<asp:GridView ID="fetchpatient" runat="server"  class="table mb-0  table-responsive">
+                                                <Columns>
+                                                    <asp:BoundField DataField="fullname" HeaderText="FullName" />
+                                                    <asp:BoundField   DataField="address" HeaderText="Address" />
+                                                </Columns> 
                                                 </asp:GridView>
 											
 								</div>
