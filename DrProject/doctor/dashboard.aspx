@@ -95,6 +95,7 @@
 			  </li>
 			  <li>
 			<asp:GridView ID="fetchpatient" runat="server"  class="table mb-0  table-responsive">
+				
                                                 </asp:GridView>
 				
 			  </li>
@@ -227,7 +228,8 @@
 										</div>
 										<div>
 											<p class="text-fade fs-16 mb-0">Patients</p>
-											<h3 class="fw-500 my-0">0</h3>
+											<h3 class="fw-500 my-0"><asp:Label ID="countpatient" runat="server"></asp:Label></h3>
+
 										</div>
 									</div>
 								</div>
@@ -285,9 +287,10 @@
                         <asp:ListItem>10 to 10:30 AM</asp:ListItem>
                         <asp:ListItem>11 to 11:30 AM</asp:ListItem>
                         <asp:ListItem>12 to 01 PM</asp:ListItem>
+                        <asp:ListItem>01 to 01:30 PM</asp:ListItem>
                         <asp:ListItem>01 to 02 PM</asp:ListItem>
+                        <asp:ListItem>02 to 02:30 PM</asp:ListItem>
                         <asp:ListItem>02 to 03 PM</asp:ListItem>
-                        <asp:ListItem>03 to 4:30 PM</asp:ListItem>
                         <asp:ListItem>05 to 06 PM</asp:ListItem>
                         <asp:ListItem>06 to 07 PM</asp:ListItem>
                         <asp:ListItem>07 to 08 PM</asp:ListItem>
@@ -354,9 +357,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="APPOINT_DATE" ItemStyle-Width="150">
                             <ItemTemplate>
-                                <asp:Label ID="lblCountry" runat="server"  Text='<%# Eval("appoint_date") %>'></asp:Label>
+                                <asp:Label ID="lblCountry" runat="server"  Text='<%#Bind ("appoint_date","{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
+								 
                                 <asp:TextBox ID="txtLname" runat="server" class="form-control"  readonly autocomplete="off"  Text='<%# Eval("appoint_date") %>' Width="140"></asp:TextBox>
                             </EditItemTemplate>
 							 <HeaderStyle CssClass="bg-primary" />

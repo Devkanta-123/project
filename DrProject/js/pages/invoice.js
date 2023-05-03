@@ -2,7 +2,7 @@
 
 
 
-$(function () {
+$(function PrintPanel () {
     "use strict";   
 
 		

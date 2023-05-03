@@ -106,10 +106,10 @@
 								  </div>
 								  <div class="form-group">
 									<div class="btn btn-info btn-file">
-									  <i class="fa fa-paperclip"></i> Attachment
+									  <i class="ti-cloud"></i> Attachment
 									   <asp:FileUpload ID="fileUploader" runat="server" />  
 									</div>
-									<p class="help-block">Max. 32MB</p>
+									
 								  </div>
 							</div>
 							<div class="modal-footer">

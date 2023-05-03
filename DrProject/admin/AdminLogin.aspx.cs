@@ -42,8 +42,9 @@ namespace DrProject
             }
             else
             {
-                Response.Write(" <script> alert(' Inavlid Credentials')</script>");
-                
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert",
+                "Swal.fire('Invalid Credentials', 'Try again..!', 'error')", true);
+
             }
 
 

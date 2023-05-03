@@ -105,6 +105,15 @@ namespace DrProject.doctor
         protected global::System.Web.UI.WebControls.Label id;
 
         /// <summary>
+        /// countpatient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countpatient;
+
+        /// <summary>
         /// timing control.
         /// </summary>
         /// <remarks>

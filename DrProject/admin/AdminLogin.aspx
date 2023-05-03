@@ -12,7 +12,8 @@
     <title>Login Pages</title>
     <link rel="stylesheet" href="/css/vendors_css.css" />
 	<link rel="stylesheet" href="/css/style.css" />
-	<link rel="stylesheet" href="/css/skin_color.css"/>	
+	<link rel="stylesheet" href="/css/skin_color.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 

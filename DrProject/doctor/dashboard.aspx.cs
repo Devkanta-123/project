@@ -34,7 +34,8 @@ namespace DrProject.doctor
                 con = new SqlConnection(cnstr);
                 con.Close();
                 callData();
-                getrecentpatient();
+                todayappointment();
+                countpatients();
                 //patientget();
 
                 if (ds.Tables[0].Rows[0]["profile"].ToString().Length > 1)
@@ -46,6 +47,15 @@ namespace DrProject.doctor
                     profile.ImageUrl = "/images/default.jpg";
                 }
             }
+        }
+        public void countpatients()
+        {
+
+            con = new SqlConnection(cnstr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) , d.emailid from appointment a inner join doctor d on a.appoint_docId = d.id  where d.emailid ='" + Session["user"] + "' group by d.emailid", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            countpatient.Text = RowCount.ToString();
         }
         private void BindGrid()
         {
@@ -151,12 +161,12 @@ namespace DrProject.doctor
             this.BindGrid();
         }
 
-        public void getrecentpatient()
+        public void todayappointment()
         {
 
             con = new SqlConnection(cnstr);
             con.Open();
-            cmd.CommandText = "select a.appoint_date,a.appoint_TIME  from appointment a  INNER JOIN doctor d  on a.appoint_docId = d.id  where appoint_date=GETDATE() and     d.emailid = '" + Session["user"] + "' ";
+            cmd.CommandText = "select a.appoint_date,a.appoint_TIME from appointment a  INNER JOIN doctor d  on a.appoint_docId = d.id   where cast(appoint_date as Date) = cast(getdate() as Date) and d.emailid = '" + Session["user"] + "' ";
             cmd.Connection = con;
             da.SelectCommand = cmd;
             da.Fill(dt);
