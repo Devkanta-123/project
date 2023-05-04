@@ -146,7 +146,7 @@
 								<div class="col-12">
 						  <div class="box">
 							<div class="box-header with-border">
-							  <h4 class="box-title">Admitted Patient</h4>
+							  <h4 class="box-title">Recently Registered Patients</h4>
 							  <div class="box-controls pull-right">
 								<div class="lookup lookup-circle lookup-right">
 								
@@ -154,15 +154,9 @@
 							  </div>
 							</div>
 							<div class="box-body no-padding">
-							
-								  	
-										
-										
+					
 											<asp:GridView ID="fetchpatient" runat="server"  class="table mb-0  table-responsive">
-                                                <Columns>
-                                                    <asp:BoundField DataField="fullname" HeaderText="FullName" />
-                                                    <asp:BoundField   DataField="address" HeaderText="Address" />
-                                                </Columns> 
+                                                
                                                 </asp:GridView>
 											
 								</div>

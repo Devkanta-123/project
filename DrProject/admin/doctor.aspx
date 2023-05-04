@@ -211,12 +211,12 @@
                         </asp:TemplateField>
 						<asp:TemplateField HeaderText="Status" ItemStyle-Width="150">
 					<ItemTemplate>
-			 <asp:Label ID="lblDesignation" runat="server"  Text='<%# Eval("status") %>'></asp:Label>
+			 <asp:Label ID="lblNewstatus" runat="server"  Text='<%# Eval("status") %>'></asp:Label>
 			</ItemTemplate>
 							<EditItemTemplate>
 <asp:DropDownList ID="newstatus" runat="server" class="form-control"    SelectedValue='<%# Bind("status")%>'>
 <asp:ListItem>Active</asp:ListItem>
-<asp:ListItem>Not Active</asp:ListItem>
+<asp:ListItem>On Leave</asp:ListItem>
 </asp:DropDownList>
 </EditItemTemplate>
 							  <HeaderStyle CssClass="bg-primary" />

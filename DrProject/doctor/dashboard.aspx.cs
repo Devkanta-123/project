@@ -149,10 +149,28 @@ namespace DrProject.doctor
 
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
+
             if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridView1.EditIndex)
             {
                 (e.Row.Cells[5].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to Cancel this appointment?');";
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label lblStatus = (Label)e.Row.FindControl("lblStatus");
+                    if (lblStatus.Text == "book")
+                    {
+                        lblStatus.CssClass = "badge badge-pill badge-success";
+                    }
+                    else if (lblStatus.Text == "cancel")
+                    {
+                        lblStatus.CssClass = "badge badge-pill badge-danger";
+                    }
+                    else if (lblStatus.Text == "approved")
+                    {
+                        lblStatus.CssClass = "badge badge-pill badge-warning";
+                    }
+                }
             }
+
         }
 
         protected void OnPaging(object sender, GridViewPageEventArgs e)
@@ -208,12 +226,10 @@ namespace DrProject.doctor
             id.Text = ds.Tables[0].Rows[0]["id"].ToString();
 
         }
-
-        protected void logout_Click(object sender, EventArgs e)
+        protected void logout_Click1(object sender, EventArgs e)
         {
             Session.Abandon();
             Response.Redirect("Doctorlogin.aspx");
-
         }
     }
 }

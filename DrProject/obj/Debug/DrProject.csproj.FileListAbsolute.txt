@@ -57,6 +57,10 @@ D:\DrProject\DrProject\obj\Debug\DrProject.csproj.CopyComplete
 D:\DrProject\DrProject\obj\Debug\DrProject.dll
 D:\DrProject\DrProject\obj\Debug\DrProject.pdb
 D:\DrProject\DrProject\obj\Debug\DrProject.csproj.AssemblyReference.cache
+C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.csproj.AssemblyReference.cache
+C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.csproj.CoreCompileInputs.cache
+C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.dll
+C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.pdb
 C:\Users\konsams\Medusind\Project\DrProject\bin\DrProject.dll.config
 C:\Users\konsams\Medusind\Project\DrProject\bin\DrProject.dll
 C:\Users\konsams\Medusind\Project\DrProject\bin\DrProject.pdb
@@ -109,15 +113,11 @@ C:\Users\konsams\Medusind\Project\DrProject\bin\roslyn\vbc.exe.config
 C:\Users\konsams\Medusind\Project\DrProject\bin\roslyn\vbc.rsp
 C:\Users\konsams\Medusind\Project\DrProject\bin\roslyn\VBCSCompiler.exe
 C:\Users\konsams\Medusind\Project\DrProject\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\konsams\Medusind\Project\DrProject\bin\AjaxControlToolkit.dll
 C:\Users\konsams\Medusind\Project\DrProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\konsams\Medusind\Project\DrProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.csproj.CoreCompileInputs.cache
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.csproj.CopyComplete
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.dll
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.pdb
-C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.csproj.AssemblyReference.cache
-C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.csproj.CoreCompileInputs.cache
-C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.dll
-C:\Users\shahuls\Medusind\CSharp\Dr.appointment\DrProject\obj\Debug\DrProject.pdb
-C:\Users\konsams\Medusind\Project\DrProject\bin\AjaxControlToolkit.dll
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.csprojAssemblyReference.cache

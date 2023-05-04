@@ -10,6 +10,8 @@
 	<!-- Style-->  
 	<link rel="stylesheet" href="/css/style.css"/>
 	<link rel="stylesheet" href="/css/skin_color.css"/>
+	<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
 	  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico"/>
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
@@ -22,7 +24,7 @@
 	<div class="d-flex align-items-center logo-box justify-content-start">	
 		<!-- Logo -->
 		<a href="index.html" class="logo">
-		  <!-- logo-->
+		 
 		 
 		  <div class="logo-lg">
 			  <span class="light-logo"><img src="/images/medusind.png" alt="logo"/></span>
@@ -42,10 +44,6 @@
 			</li>
 			<li class="btn-group d-lg-inline-flex d-none">
 				<div class="app-menu">
-					
-									
-						
-					
 				</div>
 			</li>
 		</ul> 
@@ -71,12 +69,34 @@
 				  <li class="user-body">
 					 <button type="button" class="btn btn-primary  btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">
 				Profile
-				  </button>
-					 <asp:LinkButton ID="logout" runat="server" class="pt-5 fs-10 mb-0 fw-800 text-danger" OnClick="logout_Click">Logout</asp:LinkButton>
+				  </button>    
+       <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal-default">
+					Logout
+					  </button>              
 				  </li>
 				</ul>
 			</li>	
-			
+
+	<div class="modal fade" id="modal-default">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h4 class="modal-title">Are you Ready To Leave ?</h4>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			<p>Select "Logout" below if you are ready to end your current session.&hellip;</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+			  <asp:Button ID="logout" runat="server" Text="Logout"  class="btn btn-primary float-end" OnClick="logout_Click1" />
+
+		  </div>
+		</div>
+		<!-- /.modal-content -->
+	  </div>
+	  <!-- /.modal-dialog -->
+  </div>
 	
 		  <li class="dropdown notifications-menu">
 			<a href="#" class="waves-effect waves-light dropdown-toggle btn-info-light" data-bs-toggle="dropdown" title="Notifications">
@@ -88,7 +108,7 @@
 					<div class="flexbox">
 						
 						<div>
-							<a href="#" class="text-warning">Today's Appointment</a>
+							<a href="#" class="text-success">Today's Appointment</a>
 						</div>
 					</div>
 				</div>
@@ -151,6 +171,25 @@
 					</div>
 				  </div>
 			  </div>
+					   								
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="DoctorLogin.aspx">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 	
 	</div>
 	</div>
@@ -224,7 +263,7 @@
 								<div class="col-xl-3 col-md-6 col-12">
 									<div class="d-flex align-items-center mb-15 mb-lg-0">
 										<div class="me-15 bg-danger w-60 h-60 rounded-circle text-center l-h-70">
-											<i class="ti-user"></i>
+									<i class="fa-solid fa-bed"></i>
 										</div>
 										<div>
 											<p class="text-fade fs-16 mb-0">Patients</p>
@@ -236,34 +275,34 @@
 								<div class="col-xl-3 col-md-6 col-12">
 									<div class="d-flex align-items-center mb-15 mb-lg-0">
 										<div class="me-15 bg-warning w-60 h-60 rounded-circle text-center l-h-70">
-											<i class="fs-24 fa fa-user-md"></i>
+										<i class="fa-solid fa-user-doctor"></i>
 										</div>
 										<div>
 											<p class="text-fade fs-16 mb-0">Staffs</p>
-											<h3 class="fw-500 my-0">1,521</h3>
+											<h3 class="fw-500 my-0">0</h3>
 										</div>
 									</div>
 								</div>
 								<div class="col-xl-3 col-md-6 col-12">
 									<div class="d-flex align-items-center mb-15 mb-md-0">
 										<div class="me-15 bg-success w-60 h-60 rounded-circle text-center l-h-70">
-											<i class="fs-24 fa fa-hospital-o"></i>
+										<i class="fa-regular fa-hospital"></i>
 										</div>
 										<div>
 											<p class="text-fade fs-16 mb-0">Rooms</p>
 											
-											<h3 class="fw-500 my-0">2,415</h3>
+											<h3 class="fw-500 my-0">28</h3>
 										</div>
 									</div>
 								</div>
 								<div class="col-xl-3 col-md-6 col-12">
 									<div class="d-flex align-items-center mb-15 mb-md-0">
 										<div class="me-15 bg-info w-60 h-60 rounded-circle text-center l-h-70">
-											<i class="fs-24 fa fa-ambulance"></i>
+										<i class="fa-solid fa-truck-medical"></i>
 										</div>
 										<div>
 											<p class="text-fade fs-16 mb-0">Ambulance</p>
-											<h3 class="fw-500 my-0">15</h3>
+											<h3 class="fw-500 my-0">10</h3>
 										</div>
 
 									</div>
@@ -385,7 +424,7 @@
                         </asp:TemplateField>
 						<asp:TemplateField HeaderText="STATUS" ItemStyle-Width="150">
 					<ItemTemplate>
-			 <asp:Label ID="lblDesignation" runat="server"  readonly Text='<%# Eval("status") %>'></asp:Label>
+			 <asp:Label ID="lblstatus" runat="server"  readonly  Text='<%# Eval("status") %>'></asp:Label>
 			</ItemTemplate>
 							<EditItemTemplate>
 <asp:DropDownList ID="newstatus" runat="server" class="form-control"    SelectedValue='<%# Bind("status")%>'>
@@ -629,6 +668,9 @@ CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" Updat
 	<script src="/js/pages/chart-widgets.js"></script>
     <script src="/js/pages/chartjs-int.js"></script>
 		<script src="js/pages/dashboard2.js"></script>
+	    <script src="/js/jquery.easing.min.js"></script>
+	 <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
     	
 </body>
 </html>

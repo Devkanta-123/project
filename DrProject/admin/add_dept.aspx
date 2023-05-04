@@ -148,7 +148,7 @@
 								<div class="col-12">
 						  <div class="box">
 							<div class="box-header with-border">
-							  <h4 class="box-title">Admitted Patient</h4>
+							  <h4 class="box-title">Department Lists</h4>
 							  <div class="box-controls pull-right">
 								<div class="lookup lookup-circle lookup-right">
 								
@@ -156,12 +156,8 @@
 							  </div>
 							</div>
 							<div class="box-body no-padding">
-							
-								  	
-										
-										
-											<asp:GridView ID="fetchpatient" runat="server"  class="table mb-0  table-responsive">
-                                                </asp:GridView>
+				            <asp:GridView ID="fetchdept" runat="server"  class="table mb-0  table-responsive">
+                               </asp:GridView>
 											
 								</div>
 								

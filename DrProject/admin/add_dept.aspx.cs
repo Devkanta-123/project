@@ -20,7 +20,7 @@ namespace DrProject.admin
         DataTable dt = new DataTable();
         SqlCommand cmd = new SqlCommand();
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e) 
         {
             if (Session["user"] == null)
             {
@@ -31,11 +31,11 @@ namespace DrProject.admin
 
                 con.Close();
                 countdoctor();
+                countpatients();
                 countdept();
-                getrecentpatient();
-
+                departmentlists();
             }
-            }
+           }
         public void regtDept_Click(object sender, EventArgs e)
         {
            
@@ -88,6 +88,17 @@ namespace DrProject.admin
 
 
         }
+        public void countpatients()
+        {
+
+            con = new SqlConnection(cnstr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) from patient", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            Label3.Text = RowCount.ToString();
+
+
+        }
         public void countdoctor()
         {
 
@@ -99,20 +110,32 @@ namespace DrProject.admin
 
 
         }
-        public void getrecentpatient()
+        private void departmentlists()
         {
+            using (SqlConnection con = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF' "))
+            {
+                using (SqlCommand cmd = new SqlCommand("select id,dept_name,status from app_dept"))
+                {
+                    SqlDataAdapter dt = new SqlDataAdapter();
+                    try
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        dt.SelectCommand = cmd;
+                        DataTable dTable = new DataTable();
+                        dt.Fill(dTable);
+                        fetchdept.DataSource = dTable;
+                        fetchdept.DataBind();
+                    }
+                    catch (Exception)
+                    {
 
-            con = new SqlConnection(cnstr);
-            con.Open();
-            cmd.CommandText = " select id,fullname from patient ";
-            cmd.Connection = con;
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-            fetchpatient.DataSource = dt;
-            fetchpatient.DataBind();
-
-
+                    }
+                }
+            }
         }
+
+
 
     }
 }

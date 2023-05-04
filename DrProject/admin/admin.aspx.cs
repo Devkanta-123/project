@@ -27,8 +27,8 @@ namespace DrProject
             if (!IsPostBack)
             {
                 getDept();
-              
-                FillEmployee();
+
+            
             }
 
             if (Session["user"] == null)
@@ -42,29 +42,13 @@ namespace DrProject
                 callData();
                 countdoctor();
                 countdept();
-                getpatient();
                 countpatient();
+                RecentPatient();
 
             }
         }
       
-        private void getpatient()
-        {
-            string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "SELECT fullname,address FROM patient";
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
-                {
-                    using (DataTable dt = new DataTable())
-                    {
-                        sda.Fill(dt);
-                        fetchpatient.DataSource = dt;
-                        fetchpatient.DataBind();
-                    }
-                }
-            }
-        }
+       
         public void countpatient()
          {
 
@@ -86,11 +70,11 @@ namespace DrProject
             department.DataBind();
             department.Items.Insert(0, new ListItem("Select Department", "0"));
         }
-        private void FillEmployee()
+        private void RecentPatient()
         {
             using (SqlConnection con = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF' "))
             {
-                using (SqlCommand cmd = new SqlCommand("select fullname,emailid from patient"))
+                using (SqlCommand cmd = new SqlCommand("select top 3 fullname as FullName,emailid as Email , address as Address ,phone as Phone, age as Age   from patient order by id desc"))
                 {
                     SqlDataAdapter dt = new SqlDataAdapter();
                     try

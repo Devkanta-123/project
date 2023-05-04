@@ -36,7 +36,9 @@ namespace DrProject.admin
                 callData();
                 countdoctor();
                 countdept();
-             
+                countpatients();
+
+
 
             }
         }
@@ -73,6 +75,17 @@ namespace DrProject.admin
             SqlCommand c = new SqlCommand("select COUNT(*) from app_dept", con);
             int? RowCount = (int?)c.ExecuteScalar();
             Label1.Text = RowCount.ToString();
+
+
+        }
+        public void countpatients()
+        {
+
+            con = new SqlConnection(cnstr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) from patient", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            Label3.Text = RowCount.ToString();
 
 
         }
@@ -172,6 +185,19 @@ namespace DrProject.admin
             if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridView1.EditIndex)
             {
                 (e.Row.Cells[6].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label newstatus = (Label)e.Row.FindControl("lblNewstatus");
+                    if (newstatus.Text == "Active")
+                    {
+                        newstatus.CssClass = "badge badge-pill badge-info";
+                    }
+                    else if (newstatus.Text == "On Leave")
+                    {
+                        newstatus.CssClass = "badge badge-pill badge-warning";
+                    }
+                    
+                }
             }
         }
 
