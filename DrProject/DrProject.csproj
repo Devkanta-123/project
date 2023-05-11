@@ -78,6 +78,11 @@
     <Content Include="admin\panel.html" />
     <Content Include="admin\Report.aspx" />
     <Content Include="alert.aspx" />
+    <Content Include="css\assets\css\owl.carousel.css" />
+    <Content Include="css\assets\css\owl.theme.default.min.css" />
+    <Content Include="css\assets\css\style.css" />
+    <Content Include="css\assets\fontawesome\all.min.css" />
+    <Content Include="css\assets\fontawesome\fontawesome.min.css" />
     <Content Include="css\assets\icons\cryptocoins-master\cryptocoins.css" />
     <Content Include="css\assets\icons\feather-icons\feather.min.js" />
     <Content Include="css\assets\icons\flag-icon-css\css\flag-icon.css" />
@@ -102,6 +107,15 @@
     <Content Include="css\assets\icons\themify-icons\fonts\themify9f24.svg" />
     <Content Include="css\assets\icons\themify-icons\themify-icons.css" />
     <Content Include="css\assets\icons\weather-icons\css\weather-icons.min.css" />
+    <Content Include="css\assets\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="css\assets\js\bootstrap.min.js" />
+    <Content Include="css\assets\js\datepicker.js" />
+    <Content Include="css\assets\js\jquery-3.5.1.min.js" />
+    <Content Include="css\assets\js\moment.min.js" />
+    <Content Include="css\assets\js\owl.carousel.min.js" />
+    <Content Include="css\assets\js\popper.min.js" />
+    <Content Include="css\assets\js\select2.min.js" />
+    <Content Include="css\assets\js\theme.js" />
     <Content Include="css\assets\vendor_components\animate\animate.css" />
     <Content Include="css\assets\vendor_components\apexcharts-bundle\dist\apexcharts.js" />
     <Content Include="css\assets\vendor_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
@@ -316,6 +330,8 @@
     <Content Include="css\assets\vendor_plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="css\assets\vendor_plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="css\assets\vendor_plugins\weather-icons\WeatherIcon.js" />
+    <Content Include="css\assets\css\bootstrap.min.css" />
+    <Content Include="css\bootstrap.css" />
     <Content Include="css\color_theme.css" />
     <Content Include="css\custom.css" />
     <Content Include="css\demo-6.css" />
@@ -341,9 +357,14 @@
     <Content Include="doctor\profiles\dr.jfif" />
     <Content Include="doctor\profiles\kk.jpg" />
     <Content Include="doctor\sidepanel.html" />
+    <Content Include="doctor\treatment.aspx" />
+    <Content Include="images\logo.png" />
+    <Content Include="index.aspx" />
     <Content Include="invoice.aspx" />
     <Content Include="invoice.html" />
     <Content Include="js\bootstrap.bundle.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\jquery-1.8.2.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\pages\jquery.easing.compatibility.js" />
     <Content Include="js\pages\jquery.easing.js" />
@@ -648,7 +669,6 @@
     <Content Include="patient\register.aspx" />
     <Content Include="patient\sidepanel.html" />
     <Content Include="print.aspx" />
-    <Content Include="sendReport.aspx" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -737,6 +757,20 @@
     <Compile Include="doctor\DoctorLogin.aspx.designer.cs">
       <DependentUpon>DoctorLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="doctor\treatment.aspx.cs">
+      <DependentUpon>treatment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="doctor\treatment.aspx.designer.cs">
+      <DependentUpon>treatment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="invoice.aspx.cs">
       <DependentUpon>invoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -801,13 +835,6 @@
       <DependentUpon>print.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sendReport.aspx.cs">
-      <DependentUpon>sendReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="sendReport.aspx.designer.cs">
-      <DependentUpon>sendReport.aspx</DependentUpon>
-    </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

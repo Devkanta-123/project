@@ -102,13 +102,12 @@ namespace DrProject.patient
         protected void bookAppoint_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF'");
-            SqlCommand query = new SqlCommand("select a.appoint_date,a.appoint_TIME,p.emailid from appointment a inner join  patient p  on a.patientId = p.id where a.appoint_date = @adate AND  a.appoint_TIME = @atime AND p.emailid = '" + Session["user"] + "' ", con);
+            SqlCommand query = new SqlCommand("select appoint_date,appoint_TIME from appointment  where appoint_date = @adate AND  appoint_TIME = @atime  AND appoint_dept = @Adept AND appoint_docId = @AdocID", con);
             SqlDataAdapter da = new SqlDataAdapter(query);
             query.Parameters.AddWithValue("@adate",date.Text);
+            query.Parameters.AddWithValue("@Adept", DropDownList1.Text);
+            query.Parameters.AddWithValue("@AdocID", DropDownList2.Text);
             query.Parameters.AddWithValue("@atime", DropDownList3.Text);
-            //query.Parameters.AddWithValue("@AppointDept", DropDownList1.Text);
-            //query.Parameters.AddWithValue("@AppointDoctor", DropDownList2.Text);
-        
             DataTable dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count > 0)
@@ -117,8 +116,6 @@ namespace DrProject.patient
                "Swal.fire('Choosen Date and Time already book ', 'Try different date and time.. ', 'error')", true);
 
             }
-          
-
             else 
             {
                 SqlConnection con1 = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF'");

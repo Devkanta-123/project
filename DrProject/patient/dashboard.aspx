@@ -5,7 +5,6 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" href="/css/vendors_css.css" />
-
     <!-- Style-->
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/skin_color.css" />
@@ -70,7 +69,6 @@
                             </a>
 
                         </li>
-                        <asp:LinkButton ID="logout" runat="server" class="pt-5 fs-10 mb-0 fw-800 text-danger" OnClick="logout_Click">Logout</asp:LinkButton>
                     </ul>
                 </div>
             </nav>
@@ -82,9 +80,6 @@
                 <div class="row">
 
                     <!--Cards-->
-
-
-
                     		<div class="col-xl-3 col-lg-6 col-12">
 							<div class="box">
 								<div class="box-body">
@@ -164,12 +159,10 @@
 						  </div>	
 						</div>
 
-<div class="box">
+                              <div class="box">
 						<div class="box-body">
 							<span class="badge badge-success-light">Patient Profile</span>
-                            <h4 class="ti-email"> <asp:Label ID="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></h4>
-																			
-						  							
+                            <h4 class="ti-email"> <asp:Label ID="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></h4>					
 							    <div class="d-flex align-items-center">          
                                        <asp:Image ID="profile2" runat="server" class=" rounded-circle bg-info-light" Width="150" />
 									<div class="text-start">
@@ -178,18 +171,39 @@
                                         <p class="ti-location-pin">  <asp:Label ID="Label5" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></p>
 								<p class="mb-0 text-mute"><i class="ti-mobile"> </i> <span class="text-primary"><asp:Label ID="Label6" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></span></p>
 									  <small><asp:Label ID="Label1" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary"></asp:Label></small>
-                                      
+                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal-default">
+					                     Logout
+					                      </button> 
+                                    
 									</div>
 							    </div>
-								
-						    
 						</div>					
 					</div>
 
                 </div>
             </div>
         </div>
-
+        
+	<div class="modal fade" id="modal-default">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h4 class="modal-title">Are you Ready To Leave ?</h4>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			<p>Select "Logout" below if you are ready to end your current session.&hellip;</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+			 
+                 <asp:LinkButton ID="logout" runat="server"   class="btn btn-info float-end"  OnClick="logout_Click">Logout</asp:LinkButton>  
+		  </div>
+		</div>
+		<!-- /.modal-content -->
+	  </div>
+	  <!-- /.modal-dialog -->
+  </div>
         <div class="modal center-modal fade" id="modal-center" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -214,36 +228,26 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                                    <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label">BMI</label>
                                     <asp:TextBox ID="TextBox3" runat="server" class="form-control"  AutoComplete="off"></asp:TextBox>
                                     &nbsp;&nbsp;
-
                                 </div>
                             </div>            
-                            <div class="modal-footer modal-footer-uniform">
-                 
-
-                              
-                                 <asp:Button ID="save" class="btn btn-success" runat="server" Text="Update" OnClick="save_Click" />
+                            <div class="modal-footer modal-footer-uniform"> 
+                           <asp:Button ID="save" class="btn btn-success" runat="server" Text="Update" OnClick="save_Click" />
                         </div>
                     </div>
                 </div>
             </div>
     </form>
-
-
     <script src="/js/vendors.min.js"></script>
     <script src="/js/pages/chat-popup.js"></script>
     <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
-
     <script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
     <script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
-
-
-    <script src="js/template.js"></script>
-    <script src="js/pages/dashboard3.js"></script>
         <script>
   function sum() {
       var txtFirstNumberValue = document.getElementById('TextBox1').value;
@@ -253,13 +257,7 @@
       {
           document.getElementById('TextBox3').value = result;
       }
-
-
-      
         }
         </script>
-
-
-
 </body>
 </html>

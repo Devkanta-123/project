@@ -46,15 +46,15 @@ namespace DrProject.admin
                     con = new SqlConnection(cnstr);
                     con.Open();
                     string filename = dept_pic.PostedFile.FileName;
-                    string filepath = "~/dept_pics" + dept_pic.FileName;
-                    dept_pic.PostedFile.SaveAs(Server.MapPath("~/dept_pics") + filename);
+                    string filepath = "~/dept_pics/" + dept_pic.FileName;
+                    dept_pic.PostedFile.SaveAs(Server.MapPath("~/dept_pics/") + filename);
                     cmd = new SqlCommand("insert into app_dept " + " (dept_name,status,dept_pic) " +
                      "values('" + dname.Text + "','" + dept_status.Text + "','" + filepath + "')", con);
 
                     cmd.ExecuteNonQuery();
                     con.Close();
 
-                    string message = "Your details have been saved successfully.";
+                    string message = "New Department added..";
                     string script = "window.onload = function(){ alert('";
                     script += message;
                     script += "');";

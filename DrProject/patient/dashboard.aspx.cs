@@ -78,7 +78,7 @@ namespace DrProject.patient
                 Session.Abandon();
                 Response.Redirect("PatientLogin.aspx"); 
         }
-
+     
         protected void save_Click(object sender, EventArgs e)
         {
             con = new SqlConnection(cnstr);

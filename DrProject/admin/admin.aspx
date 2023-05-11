@@ -10,6 +10,7 @@
 	<!-- Style-->  
 	<link rel="stylesheet" href="/css/style.css"/>
 	<link rel="stylesheet" href="/css/skin_color.css"/>
+	<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 	  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico"/>
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
@@ -284,8 +285,8 @@
 									<div class="form-group">
 									  <label class="form-label">Status</label>
 						<asp:DropDownList ID="status" runat="server"  class="form-control" >
-                        <asp:ListItem>active</asp:ListItem>
-                        <asp:ListItem>nonactive</asp:ListItem>
+                        <asp:ListItem>Active</asp:ListItem>
+                        <asp:ListItem>On leave</asp:ListItem>
                     </asp:DropDownList>
 									</div>
 								  </div>
