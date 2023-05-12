@@ -96,5 +96,11 @@ select * from admin
 
 
 
+create table Customers
+(
+CustomerId int IDENTITY PRIMARY KEY,
+ Name VARCHAR(200) not null,
+Country VARCHAR (200) not null
+);
 
 
