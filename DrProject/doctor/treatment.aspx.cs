@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 
 namespace DrProject.doctor
 {
-    public partial class treatment : System.Web.UI.Page
+    public partial class treatment1 : System.Web.UI.Page
     {
+        string cnstr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
         SqlConnection con = new SqlConnection();
         SqlDataAdapter da = new SqlDataAdapter();
         DataSet ds = new DataSet();
@@ -21,215 +21,138 @@ namespace DrProject.doctor
         SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindGrid();
-        }
-
-        public void BindGrid()
-        {
-            try
+            if (!this.IsPostBack)
             {
-                //Fetch data from mysql database
-                string cnstr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+                BindGridView();
+                this.DocList();
+            }
+            if (Session["user"] == null)
+            {
+                Response.Redirect("DoctorLogin.aspx");
+            }
+            else
+            {
                 con = new SqlConnection(cnstr);
-                con.Open();
-                string cmd = "select  * from appointment";
-                da = new SqlDataAdapter(cmd, con);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-                dt = ds.Tables[0];
-                //Bind the fetched data to gridview
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
+                con.Close();
+                callData();
+                todayappointment();
+                countpatients();
+                //patientget();
 
+                if (ds.Tables[0].Rows[0]["profile"].ToString().Length > 1)
+                {
+                    profile.ImageUrl = ds.Tables[0].Rows[0]["profile"].ToString();
+                }
+                else
+                {
+                    profile.ImageUrl = "/images/default.jpg";
+                }
             }
-            catch (Exception ex)
+        }
+        public void countpatients()
+        {
+
+            con = new SqlConnection(cnstr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) , d.emailid from appointment a inner join doctor d on a.appoint_docId = d.id  where d.emailid ='" + Session["user"] + "' group by d.emailid", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            countpatient.Text = RowCount.ToString();
+        }
+      
+        private void DocList()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+            string query = "SELECT id,fname,profile,emailid FROM doctor  where emailid !='" + Session["user"] + "' ";
+            using (SqlConnection con = new SqlConnection(constr))
             {
-                System.Console.Error.Write(ex.Message);
-
+                using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
+                {
+                    using (DataTable dt = new DataTable())
+                    {
+                        sda.Fill(dt);
+                        availabledoc.DataSource = dt;
+                        availabledoc.DataBind();
+                    }
+                }
             }
-
         }
 
+        private void BindGridView()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            SqlCommand cmd = new SqlCommand("select  a.appointment_id,a.appoint_date,d.emailid from appointment a inner join doctor d on a.appoint_docid = d.id where d.emailid = '" + Session["user"] + "' ", con);
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+        }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int index = Convert.ToInt32(e.CommandArgument);
-            if (e.CommandName.Equals("detail"))
+            if (e.CommandName == "EditButton")
             {
-                string appointment_id = GridView1.DataKeys[index].Value.ToString();
-                IEnumerable<DataRow> query = from i in dt.AsEnumerable()
-                                             where i.Field<Int32>("appointment_id").ToString().Equals(appointment_id)
-                                             select i;
-                DataTable detailTable = query.CopyToDataTable<DataRow>();
-                DetailsView1.DataSource = detailTable;
-                DetailsView1.DataBind();
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.Append(@"<script type='text/javascript'>");
-                sb.Append("$('#detailModal').modal('show');");
-                sb.Append(@"</script>");
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "DetailModalScript", sb.ToString(), false);
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = GridView1.Rows[index];
+                Response.Redirect("treatment2.aspx?id=" + row.Cells[0].Text);
             }
-            else if (e.CommandName.Equals("editRecord"))
-            {
-                GridViewRow gvrow = GridView1.Rows[index];
-                lblappointment_id.Text = HttpUtility.HtmlDecode(gvrow.Cells[3].Text).ToString();
-                //txtPopulation.Text = HttpUtility.HtmlDecode(gvrow.Cells[7].Text);
-                //txtName.Text = HttpUtility.HtmlDecode(gvrow.Cells[4].Text);
-                issues.Text = HttpUtility.HtmlDecode(gvrow.Cells[4].Text);
-                lblResult.Visible = false;
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.Append(@"<script type='text/javascript'>");
-                sb.Append("$('#editModal').modal('show');");
-                sb.Append(@"</script>");
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "EditModalScript", sb.ToString(), false);
-
-            }
-            else if (e.CommandName.Equals("deleteRecord"))
-            {
-                string code = GridView1.DataKeys[index].Value.ToString();
-                hfCode.Value = code;
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.Append(@"<script type='text/javascript'>");
-                sb.Append("$('#deleteModal').modal('show');");
-                sb.Append(@"</script>");
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "DeleteModalScript", sb.ToString(), false);
-            }
-
         }
 
 
-        protected void btnSave_Click(object sender, EventArgs e)
+
+
+        public void todayappointment()
         {
-            //string code = lblCountryCode.Text;
-            //int population = Convert.ToInt32(txtPopulation.Text);
-            //string countryname = txtName.Text;
-            string appointment_id = lblappointment_id.Text;
-            string status = issues.Text;
-            
-            executeUpdate(status, appointment_id);
-            BindGrid();
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append(@"<script type='text/javascript'>");
-            sb.Append("alert('Records Updated Successfully');");
-            sb.Append("$('#editModal').modal('hide');");
-            sb.Append(@"</script>");
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "EditHideModalScript", sb.ToString(), false);
 
+            con = new SqlConnection(cnstr);
+            con.Open();
+            cmd.CommandText = "select a.appoint_date,a.appoint_TIME from appointment a  INNER JOIN doctor d  on a.appoint_docId = d.id   where cast(appoint_date as Date) = cast(getdate() as Date) and d.emailid = '" + Session["user"] + "' ";
+            cmd.Connection = con;
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            fetchpatient.DataSource = dt;
+            fetchpatient.DataBind();
         }
 
-        private void executeUpdate( string sstatus,string appointment_id)
+        public void regtDept_Click(object sender, EventArgs e)
         {
-            string cnstr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-
-            try
-            {
 
 
+            cmd = new SqlCommand("insert into availability " + " (doc_id,Time,fees) " +
+             "values('" + id.Text + "','" + timing.Text + "','" + fees.Text + "')", con);
 
-                string query = "update appointment set status=@status where appointment_id = @aID";
-                cmd = new SqlCommand(query, con);
-                //cmd.Parameters.AddWithValue("@population", population);
-                //cmd.Parameters.AddWithValue("@countryname", countryname);
-                cmd.Parameters.AddWithValue("@status", sstatus);
-                cmd.Parameters.AddWithValue("@aID", appointment_id);
-                cmd.ExecuteNonQuery();
-                con.Close();
+            cmd.ExecuteNonQuery();
+            con.Close();
 
-            }
-            catch (Exception me)
-            {
-                System.Console.Error.Write(me.InnerException.Data);
-            }
+            string message = "Successfully Saved Data.";
+            string script = "window.onload = function(){ alert('";
+            script += message;
+            script += "');";
+            script += "window.location = '";
+            script += Request.Url.AbsoluteUri;
+            script += "'; }";
+            ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+
         }
-
-        protected void btnAdd_Click(object sender, EventArgs e)
+        public void callData()
         {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append(@"<script type='text/javascript'>");
-            sb.Append("$('#addModal').modal('show');");
-            sb.Append(@"</script>");
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AddShowModalScript", sb.ToString(), false);
+            cmd.CommandText = "select * from doctor  where emailid = '" + Session["user"] + "' ";
+            cmd.Connection = con;
+            da.SelectCommand = cmd;
+            da.Fill(ds);
+            Label2.Text = ds.Tables[0].Rows[0]["emailid"].ToString();
+            Label3.Text = ds.Tables[0].Rows[0]["fname"].ToString();
+            Label1.Text = ds.Tables[0].Rows[0]["phno"].ToString();
+            Label4.Text = ds.Tables[0].Rows[0]["address"].ToString();
+            expe.Text = ds.Tables[0].Rows[0]["experience"].ToString();
+            id.Text = ds.Tables[0].Rows[0]["id"].ToString();
 
         }
-
-        protected void btnAddRecord_Click(object sender, EventArgs e)
+        protected void logout_Click1(object sender, EventArgs e)
         {
-            string code = txtCode.Text;
-            string name = txtCountryName.Text;
-            string region = txtRegion.Text;
-            string continent = txtContinent.Text;
-            int population = Convert.ToInt32(txtTotalPopulation.Text);
-            int indyear = Convert.ToInt32(txtIndYear.Text);
-            executeAdd(code, name, continent, region, population, indyear);
-            BindGrid();
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append(@"<script type='text/javascript'>");
-            sb.Append("alert('Record Added Successfully');");
-            sb.Append("$('#addModal').modal('hide');");
-            sb.Append(@"</script>");
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AddHideModalScript", sb.ToString(), false);
-
-
+            Session.Abandon();
+            Response.Redirect("Doctorlogin.aspx");
         }
-
-        private void executeAdd(string code, string name, string continent, string region, int population, int indyear)
-        {
-            string cnstr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            try
-            {
-
-
-                string updatecmd = "insert into tblCountry (Code,Name,Continent,Region,Population,IndepYear) values (@code,@name,@continent,@region,@population,@indyear)";
-                SqlCommand addCmd = new SqlCommand(updatecmd, con);
-                addCmd.Parameters.AddWithValue("@code", code);
-                addCmd.Parameters.AddWithValue("@name", name);
-                addCmd.Parameters.AddWithValue("@continent", continent);
-                addCmd.Parameters.AddWithValue("@region", region);
-                addCmd.Parameters.AddWithValue("@population", population);
-                addCmd.Parameters.AddWithValue("@indyear", indyear);
-                addCmd.ExecuteNonQuery();
-                con.Close();
-
-            }
-            catch (SqlException me)
-            {
-                System.Console.Write(me.Message);
-            }
-        }
-
-        protected void btnDelete_Click(object sender, EventArgs e)
-        {
-            string code = hfCode.Value;
-            executeDelete(code);
-            BindGrid();
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append(@"<script type='text/javascript'>");
-            sb.Append("alert('Record deleted Successfully');");
-            sb.Append("$('#deleteModal').modal('hide');");
-            sb.Append(@"</script>");
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "delHideModalScript", sb.ToString(), false);
-
-
-        }
-
-        private void executeDelete(string code)
-        {
-            string cnstr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            try
-            {
-
-
-                string updatecmd = "delete from tblCountry where Code=@code";
-                SqlCommand addCmd = new SqlCommand(updatecmd, con);
-                addCmd.Parameters.AddWithValue("@code", code);
-                addCmd.ExecuteNonQuery();
-                con.Close();
-
-            }
-            catch (SqlException me)
-            {
-                System.Console.Write(me.Message);
-            }
-
-        }
+       
     }
 }

@@ -92,8 +92,8 @@
 			</div>
 				<div class="form-group">
 			<div class="input-group mb-3">
-				 <span class="input-group-text bg-transparent"><i class="ti-save-alt"></i></span>
-              	<asp:FileUpload  ID ="profile" runat="server" />
+				 	Select Profile   
+              <asp:FileUpload  ID ="profile" runat="server" />
              </div>
 			</div>
 				<div class="row">

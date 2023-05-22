@@ -19,9 +19,9 @@ namespace DrProject
         SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
-
             doclist();
             deptlist();
+
         }
         protected void doclist()
         {
@@ -33,8 +33,8 @@ namespace DrProject
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows == true)
                 {
-                    DataList1.DataSource = dr;
-                    DataList1.DataBind();
+                    doctorlist.DataSource = dr;
+                    doctorlist.DataBind();
 
                 }
 
@@ -53,8 +53,8 @@ namespace DrProject
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows == true)
                 {
-                    DataList2.DataSource = dr;
-                    DataList2.DataBind();
+                   departmentlist.DataSource = dr;
+                    departmentlist.DataBind();
 
                 }
 

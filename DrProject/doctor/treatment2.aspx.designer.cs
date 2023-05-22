@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DrProject
+namespace DrProject.doctor
 {
 
 
-    public partial class index
+    public partial class treatment2
     {
 
         /// <summary>
@@ -24,21 +24,30 @@ namespace DrProject
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// doctorlist control.
+        /// appointment_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList doctorlist;
+        protected global::System.Web.UI.WebControls.TextBox appointment_id;
 
         /// <summary>
-        /// departmentlist control.
+        /// start_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList departmentlist;
+        protected global::System.Web.UI.WebControls.TextBox start_date;
+
+        /// <summary>
+        /// btnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }

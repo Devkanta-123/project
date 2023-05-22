@@ -227,7 +227,7 @@ tempor.
 <div class="section-header text-center">
 <h3 class="header-title">Meet our Doctors</h3>
   <div class="box-header no-border p-0">				
-					<asp:DataList ID="DataList1"  runat="server" RepeatDirection="Horizontal" RepeatColumns="6">
+					<asp:DataList ID="doctorlist"  runat="server" RepeatDirection="Horizontal" RepeatColumns="6">
 				<ItemTemplate>
 					<div style="width:200px; text-align:center">
 						
@@ -267,17 +267,16 @@ tempor.
 <div class="row">
 <div class="row">
 <div class="col-12">
-	<asp:DataList ID="DataList2"  runat="server" RepeatDirection="Horizontal" RepeatColumns="6">
+	<h3 class="header-title">Departments</h3>
+	<asp:DataList ID="departmentlist"  runat="server" RepeatDirection="Horizontal" RepeatColumns="6">
 				<ItemTemplate>
 					<div style="width:200px; text-align:center">
 						
 						<asp:Image ID="Image1" runat="server" ImageUrl='<%# Bind("dept_pic", "{0}" ) %>' class="img-fluid" />	
 						<br/>
 						 
-					Name: <asp:Label ID="docname"  class="pt-5 fs-14 mb-0 fw-800 text-success" runat="server" Text='<%# Eval("dept_name") %>'></asp:Label>,
-						<asp:Label ID="degn" class="pt-5 fs-14 mb-0 fw-800 text-warning"  runat="server" Text='<%# Eval("dept_name")%>'></asp:Label>
-						<br/>
-						Status: <asp:Label ID="deptname" class="pt-5 fs-14 mb-0 fw-800 text-info"  runat="server" Text='<%# Eval("status")%>'></asp:Label>
+					Name: <asp:Label ID="docname"  class="pt-5 fs-14 mb-0 fw-800 text-success" runat="server" Text='<%# Eval("dept_name") %>'></asp:Label>
+						
 						<br/>
 					
 						<br/>

@@ -379,7 +379,7 @@
     <Content Include="doctor\profiles\kk.jpg" />
     <Content Include="doctor\sidepanel.html" />
     <Content Include="doctor\treatment.aspx" />
-    <Content Include="Global.asax" />
+    <Content Include="doctor\treatment2.aspx" />
     <Content Include="images\logo.png" />
     <Content Include="index.aspx" />
     <Content Include="invoice.aspx" />
@@ -744,7 +744,6 @@
     <Compile Include="alert.aspx.designer.cs">
       <DependentUpon>alert.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="datalist.aspx.cs">
       <DependentUpon>datalist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -787,8 +786,12 @@
     <Compile Include="doctor\treatment.aspx.designer.cs">
       <DependentUpon>treatment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
+    <Compile Include="doctor\treatment2.aspx.cs">
+      <DependentUpon>treatment2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="doctor\treatment2.aspx.designer.cs">
+      <DependentUpon>treatment2.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -804,8 +807,6 @@
     <Compile Include="invoice.aspx.designer.cs">
       <DependentUpon>invoice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerModel.cs" />
-    <Compile Include="Models\CustomerModelDal.cs" />
     <Compile Include="patient\book_appoint.aspx.cs">
       <DependentUpon>book_appoint.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -870,7 +871,6 @@
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\TreatmentController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\assets\icons\cryptocoins-master\cryptocoins.ttf" />
@@ -942,8 +942,6 @@
     <Content Include="images\auth-bg\kl.pdf" />
     <Content Include="images\auth-bg\lll.pdf" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\index.cshtml" />
-    <Content Include="Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

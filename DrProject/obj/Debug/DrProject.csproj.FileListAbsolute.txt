@@ -120,4 +120,17 @@ C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.csproj.CoreCompi
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.csproj.CopyComplete
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.dll
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.pdb
+C:\Users\konsams\Medusind\Project\DrProject\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.Helpers.dll
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.Mvc.dll
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.Razor.dll
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.WebPages.Deployment.dll
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.WebPages.dll
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.WebPages.Razor.dll
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.Helpers.xml
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.Mvc.xml
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.Razor.xml
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.WebPages.xml
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.WebPages.Deployment.xml
+C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.WebPages.Razor.xml
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.csprojAssemblyReference.cache
