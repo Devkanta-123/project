@@ -27,8 +27,6 @@ namespace DrProject
             if (!IsPostBack)
             {
                 getDept();
-
-            
             }
 
             if (Session["user"] == null)
