@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="treatment.aspx.cs" Inherits="DrProject.doctor.treatment1" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,6 +13,34 @@
 	<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
 	  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico"/>
+	 <link href="~/css/CSS.css" rel="stylesheet" type="text/css" /> 
+<script src="~/scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.blockUI.js" type="text/javascript"></script>
+<script type = "text/javascript">
+    function BlockUI(elementID) {
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        prm.add_beginRequest(function() {
+            $("#" + elementID).block({ message: '<table align = "center"><tr><td>' +
+     '<img src="images/1.gif"/></td></tr></table>',
+                css: {},
+                overlayCSS: { backgroundColor: '#000000', opacity: 0.6
+                }
+            });
+        });
+        prm.add_endRequest(function() {
+            $("#" + elementID).unblock();
+        });
+    }
+    $(document).ready(function() {
+
+        BlockUI("<%=pnlAddEdit.ClientID %>");
+        $.blockUI.defaults.css = {};
+    });
+    function Hidepopup() {
+        $find("popup").hide();
+        return false;
+    }
+</script> 
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
 
@@ -375,21 +403,86 @@
 												<div class="box-body">
 					<div class="">
 					
-	  <asp:GridView ID="GridView1" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">  
-                <Columns>  
-                    <asp:BoundField DataField="appointment_id" HeaderText="Id" />  
-                    <asp:BoundField DataField="appoint_date" HeaderText="DateName" />  
-<%--                    <asp:BoundField DataField="status" HeaderText="Job" />  
-                    <asp:BoundField DataField="dept_pic" HeaderText="EmpSalary" /> --%>
-                    <asp:TemplateField>  
-                        <ItemTemplate>  
-                            <asp:LinkButton ID="btnEdit" CssClass="btn btn-primary btn-sm"  CommandName="EditButton" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  runat="server"><span class="badge badge-pill badge-danger"/>Approved</asp:LinkButton>
+	<asp:ScriptManager ID="ScriptManager1" runat="server">
+</asp:ScriptManager>
+<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+<ContentTemplate>
+<asp:GridView ID="GridView1" runat="server"  Width = "700px"
+AutoGenerateColumns = "false"  AlternatingRowStyle-BackColor = "#C2D69B"  
+HeaderStyle-BackColor = "green" AllowPaging ="true"
+OnPageIndexChanging = "OnPaging" 
+PageSize = "10" >
+<Columns>
+<asp:BoundField DataField = "appointment_id" HeaderText = "Appointment_id " HtmlEncode = "true" />
+<asp:BoundField DataField = "start_date" HeaderText = "Date"  HtmlEncode = "true" />
+<asp:BoundField DataField = "end_date" HeaderText = "Date"  HtmlEncode = "true" />
+<asp:BoundField DataField = "fees" HeaderText = "Fees"  HtmlEncode = "true"/> 
+<%--<asp:BoundField DataField = "issues" HeaderText = "Problems"  HtmlEncode = "true"/> --%>
+<asp:TemplateField ItemStyle-Width = "30px"  HeaderText = "C">
+   <ItemTemplate>
+       <asp:LinkButton ID="lnkEdit" runat="server" Text = "Edit" OnClick = "Edit"></asp:LinkButton>
+   </ItemTemplate>
+</asp:TemplateField>
+</Columns> 
+<AlternatingRowStyle BackColor="#C2D69B"  />
+</asp:GridView>
+<asp:Button ID="btnAdd" runat="server" Text="Add" OnClick = "Add" />
 
-                         <asp:Button    runat="server" Width="60" Text="Edit"  />
-                        </ItemTemplate>  
-                    </asp:TemplateField>  
-                </Columns>  
-            </asp:GridView> 
+<asp:Panel ID="pnlAddEdit" runat="server" CssClass="modalPopup" style = "display:none">
+<asp:Label Font-Bold = "true" ID = "Label5" runat = "server" Text = "Appointment Details" ></asp:Label>
+<br />
+<table align = "center">
+<tr>
+<td>
+<asp:Label ID = "Label6" runat = "server" Text = "Appointment ID" ></asp:Label>
+</td>
+<td>
+<asp:TextBox ID="txtappointmentID" Width = "40px" MaxLength = "5" runat="server"></asp:TextBox>
+</td>
+</tr>
+<tr>
+<td>
+<asp:Label ID = "Label7" runat = "server" Text = "Startdate" ></asp:Label>
+</td>
+<td>
+<asp:TextBox ID="txtstartdate" type="date" runat="server"></asp:TextBox>    
+</td>
+</tr>
+<tr>
+<td>
+<asp:Label ID = "Label8" runat = "server" Text = "End Dates" ></asp:Label>
+</td>
+<td>
+<asp:TextBox ID="txtend_dates"  type="date" runat="server"></asp:TextBox>
+</td>
+	<td>
+<asp:Label ID = "Label9" runat = "server" Text = "Fees" ></asp:Label>
+</td>
+<td>
+<asp:TextBox ID="treatment_fees" runat="server"></asp:TextBox>
+</td>
+</tr>
+<tr>
+<td>
+<asp:Button ID="btnSave" runat="server" Text="Save" OnClick = "Save" CssClass="btn-primary-light" />
+</td>
+<td>
+<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClientClick = "return Hidepopup()"/>
+</td>
+</tr>
+</table>
+</asp:Panel>
+<asp:LinkButton ID="lnkFake" runat="server"></asp:LinkButton>
+<cc1:ModalPopupExtender ID="popup" runat="server" DropShadow="false"
+PopupControlID="pnlAddEdit" TargetControlID = "lnkFake"
+BackgroundCssClass="modalBackground">
+</cc1:ModalPopupExtender>
+</ContentTemplate> 
+<Triggers>
+<asp:AsyncPostBackTrigger ControlID = "GridView1" />
+<asp:AsyncPostBackTrigger ControlID = "btnSave" />
+</Triggers> 
+</asp:UpdatePanel> 
 				
 					</div>              
 				</div>

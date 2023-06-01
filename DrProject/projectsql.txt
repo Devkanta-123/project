@@ -104,3 +104,61 @@ Country VARCHAR (200) not null
 );
 
 
+
+
+
+
+
+
+
+
+
+use TrainingDB
+
+select * from customers
+
+select * from patient
+select * from appointment
+select * from doctor
+select * from   update appointment  set fees='0'
+treatment
+select a.appointment_id,a.appoint_date,a.start_date,a.end_date,a.fees,d.emailid from appointment a inner join doctor d on a.appoint_docid = d.id where d.emailid= 'binesh56@gmail.com' and a.status='approved'
+
+alter table appointment add treatment_status VARCHAR(300)
+alter table customers add ContactName varchar(200),CompanyName VARCHAR(200)
+
+
+CREATE  PROCEDURE [dbo].[startTreatments]
+      @appointment_id NCHAR(5),
+      @start_date NVARCHAR(30),
+      @end_date NVARCHAR(40),
+	  @fees int
+	
+
+AS
+BEGIN
+      SET NOCOUNT ON;
+    IF EXISTS(SELECT * FROM appointment WHERE appointment_id = @appointment_id)
+    BEGIN
+            UPDATE [appointment]
+            SET [start_date] = @start_date
+               ,[end_date] = @end_date,
+			   [fees] = @fees,
+			   [treatment_status] = 'Process'
+            WHERE appointment_id = @appointment_id
+    END
+    SELECT [appointment_id]
+          ,[start_date]
+          ,[end_date],
+		  [fees],
+		  [treatment_status]
+      FROM appointment 
+          
+END
+
+
+
+exec startTreatment
+IF OBJECT_ID('startTreatments') IS NOT NULL DROP PROCEDURE startTreatments
+GO
+
