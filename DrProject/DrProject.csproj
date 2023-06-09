@@ -365,6 +365,7 @@
     <Content Include="datalist.aspx" />
     <Content Include="DataPass.aspx" />
     <Content Include="DataPass2.aspx" />
+    <Content Include="datatables.aspx" />
     <Content Include="doctor\dashboard.aspx" />
     <Content Include="doctor\DoctorLogin.aspx" />
     <Content Include="doctor\profiles\1.jpg" />
@@ -770,6 +771,13 @@
     </Compile>
     <Compile Include="DataPass2.aspx.designer.cs">
       <DependentUpon>DataPass2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="datatables.aspx.cs">
+      <DependentUpon>datatables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="datatables.aspx.designer.cs">
+      <DependentUpon>datatables.aspx</DependentUpon>
     </Compile>
     <Compile Include="doctor\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>

@@ -1,0 +1,832 @@
+using jsreport.Types;
+using Microsoft.Win32;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using OpenQA.Selenium.Support.UI;
+using Microsoft.Office.Interop;
+using System.Data.SqlClient;
+using System.Configuration;
+
+namespace Medicare_Orlando
+{
+    public class Medicare
+    {
+        string cnstr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+        SqlConnection con = new SqlConnection();
+        SqlDataAdapter da = new SqlDataAdapter();
+        DataSet ds = new DataSet();
+        SqlCommand cmd = new SqlCommand();
+
+        string ChromeVersion;
+        string patientMedicareNumber;
+        string patientFullName;
+        string DOS;
+        string checkeftnumber, checkdate, cptcode;
+        string status;
+        public string NPI;
+        public string PMN;
+        public string PN;
+        public string ICN;
+        public string region;
+        public string PADD;
+        public string patientfirstName;
+        public string patientlastName;
+        public string binaficiary_name;
+        public string bill_amount;
+        public string allowed_amount;
+        public string deductible_amount;
+        public string provider_paid_Amount;
+        public string payments_issued;
+        public string date_received;
+        public string process_date;
+        public string eft_number;
+        public string check_date;
+        public string table_date;
+        public string reason_remark;
+        public string POS;
+        public string date;
+        public string TableName;
+        public string hastag;
+        public string reasonsRemarks;
+        public string reasons;
+        public string reasonscode;
+        public string remarks;
+        public string eobpath;
+        public int retrivedValue = 0;
+        public string insuranceName;
+        public string clinicName;
+        public string SSN;
+        public string patientdateofbirth;
+        public string app_date;
+        public string comments;
+        public string patients_flag;
+        public string patients_status;
+        public DateTime processed_date;
+        public  string ExpatientOID;
+        public IWebDriver driver;
+        string currentWindow = string.Empty;
+        SurroundingClass chrome = new SurroundingClass(); //chrome is an object of SurroundingClass
+        common Common = new common();//Common is an object of CommonClass
+        DataTable excelOutput = new DataTable();
+        public void StartProcess() // Main Process
+        {
+            OpenChromeDriver();
+            Login();
+
+        }
+
+        public void OpenChromeDriver()
+        {
+
+            try
+            {
+                var pathChrome = Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe", "", null/* TODO Change to default(_) if this is not a reference type */);
+                ChromeVersion = FileVersionInfo.GetVersionInfo(pathChrome.ToString()).FileVersion;
+                int chrome = Convert.ToInt32(ChromeVersion.Substring(0, ChromeVersion.IndexOf('.')));
+                if (chrome < 100)
+                {
+                    MessageBox.Show("Please Update the chrome Version", "Chrome Version Validtion For Denticon Extarctor",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                string direcPath = @"C:\DDMIDriver";
+
+                if (!Directory.Exists(direcPath))
+                {
+                    Directory.CreateDirectory(direcPath);
+                    if (!Directory.Exists(direcPath + @"\V" + ChromeVersion.Substring(0, ChromeVersion.IndexOf(".")) + ""))
+                        Directory.CreateDirectory(direcPath + @"\V" + ChromeVersion.Substring(0, ChromeVersion.IndexOf(".")) + "");
+                }
+                else if (!Directory.Exists(direcPath + @"\V" + ChromeVersion.Substring(0, ChromeVersion.IndexOf(".")) + ""))
+                    Directory.CreateDirectory(direcPath + @"\V" + ChromeVersion.Substring(0, ChromeVersion.IndexOf(".")) + "");
+                try  // commented by deepak
+                {
+                    if (!System.IO.File.Exists(direcPath + @"\V" + ChromeVersion.Substring(0, ChromeVersion.IndexOf(".")) + "" + @"\chromedriver.exe"))
+                        System.IO.File.Copy(@"\\10.29.31.24\Inhouse Application Drivers\Chrome Drivers\V" + ChromeVersion.Substring(0, ChromeVersion.IndexOf(".")) + @"\chromedriver.exe", direcPath + @"\V" + ChromeVersion.Substring(0, ChromeVersion.IndexOf(".")) + "" + @"\chromedriver.exe");
+                    var chromeDriverService1 = ChromeDriverService.CreateDefaultService(direcPath + @"\V" + ChromeVersion.Substring(0, ChromeVersion.IndexOf(".")) + "" + @"\");
+                    chromeDriverService1.HideCommandPromptWindow = false;
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddUserProfilePreference("plugins.always_open_pdf_externally", true);
+                    options.AddArguments("chrome.switches", "plugins.plugins_disabled");
+                    options.AddUserProfilePreference("plugins.always_open_pdf_externally", true);
+                    options.AddArguments("chrome.switches", "--disable-extensions");
+                    options.AddArguments("--disable-save-password");
+                    options.AddArguments("disable-infobars");
+
+                    // options.AddUserProfilePreference("plugins.always_open_pdf_externally", True)
+                    driver = new ChromeDriver(chromeDriverService1, options);
+                }
+
+
+                // If ChromeVersion.StartsWith("59") Or ChromeVersion.StartsWith("60") Or ChromeVersion.StartsWith("61") Then
+                // DisablePlugins59(driver)
+                // End If
+                catch (Exception ex)
+                {
+                    if (ex.Message.ToString().Contains("The driver can be downloaded"))
+                    {
+                    }
+                }
+                driver.Manage().Window.Maximize();
+                //StatusLog("Ended Execution of OpenChromeDriver function");
+            }
+            catch (Exception ex)
+            {
+                // LogError(ex, reportoid + "OpenChromeDriver ");
+                throw ex;
+            }
+
+        }
+
+
+        public bool Login()
+        {
+            var path = "C:\\Users\\konsams\\Desktop\\InputTesting.xlsx";
+            string fileName = path.Substring(path.LastIndexOf("\\") + 1).Trim();
+            DataTable dt = ReadFile(path);
+            int FileOID = insertFileProcess(fileName, 31, dt.Rows.Count);
+            InsertPatientsDataFiles(dt,FileOID);
+            DataTable dtr = new DataTable();
+            dtr = getDataByFileOID(FileOID, cnstr);
+            
+            foreach (DataRow row in dtr.Rows)
+            {
+                string username = "CVPMed22"; // Username 
+                string password = "Bv5s&s4C"; // Password
+                patientMedicareNumber = row["PatientSSN"].ToString().Trim();
+                patientFullName = row["PatientName"].ToString().Trim();
+                ExpatientOID = row["ExPatientOID"].ToString().Trim();
+                DOS = row["AppDate"].ToString().Trim();
+                DOS = DOS.Substring(0, 10);
+                DOS = DOS.Replace("-", "/");
+
+                List<string> patient = patientFullName.Split(',').ToList();
+                if (patient.Count == 2) //if the patients have only fname and lname
+                {
+                    patientfirstName = patient[1].ToString();
+                    patientlastName = patient[0].ToString();
+
+                }
+                if (patient.Count > 2) //if the patients have  fname middlename and  lname
+                {
+                    patientlastName = patient[0].ToString();
+                    patientfirstName = patient[2].ToString();
+                }
+                try
+                {
+                    chrome.NavigateURL("https://www.wpsgha.com/wps/portal/mac/site/home", driver);// open the websites
+                    Common.WaitTextGoogle(driver, "Get the right info.", "", "", "");
+                    if (driver.FindElement(By.TagName("body")).Text.Contains("Get the right info."))
+                    {
+
+                        driver.FindElement(By.Id("J5_B")).Click(); //click part B Pop up form
+                        driver.FindElement(By.Id("wrapper-user-properties")).Click(); // click Login Button
+                        Common.WaitTextGoogle(driver, "View AMA License", "ama-modal", "", "");
+                        if (driver.FindElement(By.TagName("body")).Text.Contains("View AMA License"))
+                        {
+
+                            driver.FindElement(By.Id("ama-accept")).Click(); //Click Accept button
+                            Refresh(driver);
+                        }
+                        Common.WaitTextGoogle(driver, "By logging into WPS Government Health Administrators Portal, you agree to abide by all terms and conditions of the Terms of Use for Transactional Areas.", "", "", "");
+                        if (driver.FindElement(By.TagName("body")).Text.Contains("By logging into WPS Government Health Administrators Portal, you agree to abide by all terms and conditions of the Terms of Use for Transactional Areas."))
+                        {
+                            chrome.SetValueByID("username", username, driver);
+                            chrome.SetValueByID("password", password, driver);
+
+                        }
+                        Common.WaitTextGoogle(driver, "Login", "", "", "");
+                        if (driver.FindElement(By.TagName("body")).Text.Contains("Login"))
+                        {
+                            Refresh(driver);
+                            driver.FindElement(By.Id("loginSubmit")).Click();
+                            Refresh(driver);
+                        }
+
+                        AlreadyLogin();
+                        Refresh(driver);
+                        Refresh(driver);
+
+                        //Common.WaitTextGoogle(driver, "Security Acknowledgement Banner", "", "", "");
+                        //chrome.ClickByID("securityBannerAgreeBtn", driver);
+                        Common.WaitTextGoogle(driver, "My Dashboard", "", "", "");
+                        ///html/body/div[4]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]/div/div/ul/li[2]/ul/li[4]/ul/li[1]/div/a
+                        ////html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]/div/div/ul/li[3]/ul/li[3]/ul/li[1]/div/a
+                        chrome.ClickByXPath("/html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]/div/div/ul/li[3]/ul/li[3]/ul/li[1]/div/a", driver); //Click on Claim Inquiry/Entry
+
+                        //Refresh(driver);
+                        PatientsInputData();
+                        Common.WaitTextGoogle(driver, "Claim Results", "", "", "");
+                        ClaimsLatestDate();
+                        Refresh(driver);
+                        IWebElement tableRow3 = driver.FindElement(By.XPath("/html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/div/div[4]/div/div[3]/div[1]/div[4]/div[1]/div[3]")); //Deductible Amount box XfullPath
+                        IList<IWebElement> tableElements5;
+                        var dataList2 = new List<String>();
+                        tableElements5 = tableRow3.FindElements(By.TagName("div"));
+                        foreach (IWebElement rows in tableElements5)
+                        {
+                            string datacontains = rows.Text;
+                            datacontains = datacontains.Replace("\r\n", " ");
+                            if (datacontains.Contains("$"))
+                            {
+                                deductible_amount = datacontains.Substring(datacontains.IndexOf("$")).Replace(datacontains.Substring(datacontains.LastIndexOf("$")) + 6, "").Trim();
+
+                            }
+                        }
+
+                        ///html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/div/div[4]/div/div[3]/div[1]/div[4]/div[2]
+                        IWebElement tableRow4 = driver.FindElement(By.XPath("/html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/div/div[4]/div/div[3]/div[1]/div[4]/div[2]/div/div")); //Deductible Amount box XfullPath
+                        IList<IWebElement> tableElements6;
+                        var dataList3 = new List<String>();
+
+                        tableElements6 = tableRow4.FindElements(By.TagName("div"));
+                        foreach (IWebElement rows in tableElements6)
+                        {
+                            string datacontains = rows.Text;
+                            if (datacontains.Contains("Check/EFT Number:"))
+                            {
+                                // checkeftnumber = datacontains.Substring(datacontains.LastIndexOf(":") + 10, 6).Trim();
+                                checkeftnumber = datacontains.Substring(datacontains.LastIndexOf("/") + 13, 9).Trim();
+                            }
+                            if (datacontains.Contains("Check Date:"))
+                            {
+                                checkdate = datacontains.Substring(datacontains.IndexOf("/") - 2, 10).Trim();
+                            }
+
+                        }
+                        IWebElement tableRow1 = driver.FindElement(By.XPath("/html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/div/div[4]/div/div[3]/div[1]/div[10]/div[1]/div/div[2]/div[1]"));
+                        IList<IWebElement> tableElements3;
+
+                        var dataList = new List<String>();
+
+                        tableElements3 = tableRow1.FindElements(By.TagName("tr"));
+
+                        foreach (IWebElement rows in tableElements3)
+                        {
+                            string datacontains = rows.Text;
+                            datacontains = datacontains.Replace("\r\n", " ");
+                            string[] array = datacontains.Split(' ');
+                            if (array[2].Length == 5) { cptcode = array[2]; }
+                            if (array[3].Length == 5) { cptcode = array[3]; }
+
+
+                            if (datacontains.Contains("$"))
+                            {
+
+                                date = datacontains.Substring(datacontains.LastIndexOf("/") - 5, 10).Trim();
+                                bill_amount = datacontains.Substring(datacontains.IndexOf("$") +1).Replace(datacontains.Substring(datacontains.LastIndexOf("$")), "").Trim();
+                                allowed_amount = datacontains.Substring(datacontains.LastIndexOf("$") + 1).Replace(datacontains.Substring(datacontains.LastIndexOf(".") + 4), "").Trim();
+                                reasonsRemarks = datacontains.Substring(datacontains.LastIndexOf(".")+3).Replace(datacontains.Substring(datacontains.LastIndexOf("M")), "").Trim();
+                                //string[] array1 = reasonsRemarks.Split(' ');
+                                //reasons = array1[0].Trim();
+                                //reasonscode = array1[1].Trim();
+                                //remarks = array1[2].Trim();
+                                List<string> reasonsNRemarks = reasonsRemarks.Split(' ').ToList();
+                                if (reasonsNRemarks.Count == 2)
+                                {
+                                    reasons = reasonsNRemarks[0].Trim();
+                                    reasonscode = reasonsNRemarks[1].Trim();
+                                }
+                                if (reasonsNRemarks.Count > 2)
+                                {
+                                    reasons = reasonsNRemarks[0].Trim();
+                                    reasonscode = reasonsNRemarks[1].Trim();
+                                    remarks = reasonsNRemarks[2].Trim();
+
+                                }
+
+
+                            }
+                        }
+
+                        IWebElement tableRow2 = driver.FindElement(By.XPath("/html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/div/div[4]/div/div[3]/div[1]/div[3]/div/div/div/div[3]")); //status box XfullPath
+
+                        IList<IWebElement> tableElements4;
+
+                        var dataList1 = new List<String>();
+                        tableElements4 = tableRow2.FindElements(By.TagName("div"));
+                        foreach (IWebElement rows in tableElements4)
+                        {
+                            string datacontains = rows.Text;
+                            if (datacontains.Contains("APPROVED") || datacontains.Contains("DENIED") || datacontains.Contains("REJECTED"))
+                            {
+
+                                status = datacontains;
+                                eobpath = "";
+                            }
+                        }
+                        //SavingPDF();
+                        /* Common.WaitTextGoogle(driver, "Download Remit", "", "", "");*/
+                        //chrome.ClickByID("downRemit", driver);
+                        // Extractdata();
+
+                        //Common.WaitTextGoogle(driver, "My Transactions", "", "", "");
+                        //chrome.ClickByXpath("/html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]/div/div/ul/li[2]/ul/li[1]/div/a", driver);
+                        //Refresh(driver);
+                        //EligibilityData();
+                        //Common.WaitTextGoogle(driver, "Print", "", "", "");
+                        //chrome.ClickByID("printPatientEligibility", driver);
+                        //Common.WaitTextGoogle(driver, "Logout", "", "", "");
+                        //chrome.ClickByID("user-menu-logout", driver);
+                        ExcelOutputColumns();
+                        InsertRecordsToDatabase();
+                        updatePatientDetail(FileOID);
+                        GenerateExcelFiles();
+                        System.Threading.Thread.Sleep(2000);
+                        //MessageBox.Show("Extraction Completed");
+                    }
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        public void InsertPatientsDataFiles(DataTable dt, int fileIOD)
+        {
+
+            foreach (DataRow row in dt.Rows)
+            {
+                try
+                {
+                    try
+                    {
+
+                        patientFullName = row["Patient Full Name Style LF"].ToString().Trim();
+                    }
+                    catch (Exception ex)
+                    {
+                        patientFullName = " ";
+                    }
+
+
+                    try
+                    {
+
+                        patientdateofbirth = row["Patient _Date of Birth"].ToString().Trim();
+                    }
+                    catch (Exception ex)
+                    {
+                        patientdateofbirth = " ";
+                    }
+
+                    try
+                    {
+
+                        insuranceName = row["Payer Name"].ToString().Trim();
+                    }
+                    catch (Exception ex)
+                    {
+                        insuranceName = " ";
+                    }
+                    try
+                    {
+
+                        clinicName = row["Unit Name"].ToString().Trim();
+                    }
+                    catch (Exception ex)
+                    {
+                        clinicName = " ";
+                    }
+                    try
+                    {
+
+                        SSN = row["Insurance Profile Primary Member ID"].ToString().Trim();
+                    }
+                    catch (Exception ex)
+                    {
+                        SSN = " ";
+                    }
+                    try
+                    {
+
+                        app_date = row["Date of Service"].ToString().Trim();
+                    }
+                    catch (Exception ex)
+                    {
+                        app_date = " ";
+                    }
+                    try
+                    {
+
+                        processed_date = DateTime.Now;
+                    }
+                    catch (Exception ex)
+                    {
+                        processed_date = DateTime.Now;
+                    }
+                    con = new SqlConnection(cnstr);
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand("AA_InsertPatientDetails_MedicareOrlando", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        da = new SqlDataAdapter(cmd);
+                        cmd.Parameters.AddWithValue("@InsuranceName",insuranceName);
+                        cmd.Parameters.AddWithValue("@PatientName",patientFullName);
+                        cmd.Parameters.AddWithValue("@DOB",patientdateofbirth);
+                        cmd.Parameters.AddWithValue("@SSN",SSN);
+                        cmd.Parameters.AddWithValue("@Appdate",app_date);
+                        cmd.Parameters.AddWithValue("@ExFileOID", fileIOD);
+                        cmd.Parameters.AddWithValue("@ClinicName", clinicName);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+        }
+       
+       
+        public void InsertRecordsToDatabase()
+        {
+            if (status == "APPROVED")
+            {
+                try
+                {
+                    con = new SqlConnection(cnstr);
+                    con.Open();
+                    //excelOutput.Rows.Add(patientFullName, patientMedicareNumber, date, bill_amount, allowed_amount, cptcode, deductible_amount, checkdate, checkeftnumber);
+                    cmd = new SqlCommand("insert into AA_NoResponseOp " + " (dos,cptcode,billamount,allowedamount,deductible,checknumber, eobpath,checkdate,claimreceiveddate,claimstatus,patientname,memberid) " +
+                      "values('" + date + "','" + cptcode + "','" + bill_amount + "','" + allowed_amount + "','" + deductible_amount + "','" + checkeftnumber + "','" + eobpath + "','" + checkdate + "','" + status + "','" + patientFullName + "','" + patientMedicareNumber + "')", con);
+                    int res = cmd.ExecuteNonQuery();
+                    if (res > 0)
+                    {
+                        comments = "Extracted";
+                        patients_flag = "C";
+                        patients_status = status;
+                    }
+                    else
+                    {
+                        comments = "Not Extracted";
+                        patients_flag = "F";
+
+                    }
+                    con.Close();
+                   
+                    Console.WriteLine("Data saved");
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+            if (status =="REJECTED" || status == "DENIED")
+            {
+                try
+                {
+                    con = new SqlConnection(cnstr);
+                    con.Open();
+                    cmd = new SqlCommand("insert into AA_NoResponseOp " + " (dos,cptcode,billamount,allowedamount,deductible,checknumber,checkdate,deniedreason,denieddate,remarkcode,claimstatus,patientname,memberid) " +
+                     "values('" + date + "','" + cptcode + "','" + bill_amount + "','" + allowed_amount + "','" + deductible_amount + "','" + checkeftnumber + "','" + checkdate + "','" + reasons + "','" + checkdate + "','" + reasonscode + "','" + status + "','" + patientFullName + "','" + patientMedicareNumber + "')", con);
+
+                    int res = cmd.ExecuteNonQuery();
+                    if (res > 0)
+                    {
+                        comments = "Extracted";
+                        patients_flag = "C";
+                        patients_status = status;
+                    }
+                    else
+                    {
+                        comments = "Not Extracted";
+                        patients_flag = "F";
+                       
+                    }
+                    //int ExPatientOID =updatePatientDetail();
+                    //updatePatientDetail(FileOID);
+                    con.Close();
+                   
+                   
+
+                 
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+
+        }
+        public  void updatePatientDetail(int FileOID)
+        {
+
+            con = new SqlConnection(cnstr);
+            con.Open();
+            string strQuery = "update GoldenForm_ExPatientDetail Set Remarks = '" + comments + "',PatientFlag = '" + patients_flag+ "',ProcessedDate = getdate() where ExPatientOID = "+ ExpatientOID + " and ExFileOID = " + FileOID + "";
+            SqlCommand sqlCommand = new SqlCommand(strQuery, con);
+            sqlCommand.ExecuteNonQuery();
+            con.Close();
+        }
+        public void ExcelOutputColumns()
+        {
+
+            try {
+                excelOutput.Columns.Clear();
+                excelOutput.Columns.Add("Patients Name");
+                excelOutput.Columns.Add("Member ID");
+                excelOutput.Columns.Add("Date of Service");
+                excelOutput.Columns.Add("Bill Amount");
+                excelOutput.Columns.Add("Allowed Amount");
+                excelOutput.Columns.Add("CPT Code");
+                excelOutput.Columns.Add("Deductible");
+                excelOutput.Columns.Add("Check Date");
+                excelOutput.Columns.Add("Claim #/ICN");
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+        private void GenerateExcelFiles()
+            {
+            Generate(excelOutput, patientFullName);
+           }
+
+        public void Generate(DataTable tablelist, string excelFilename)
+        {
+            Microsoft.Office.Interop.Excel.Application objexcelapp = new Microsoft.Office.Interop.Excel.Application();
+            objexcelapp.Application.Workbooks.Add(Type.Missing);
+            objexcelapp.Columns.AutoFit();
+            for (int i = 1; i < tablelist.Columns.Count + 1; i++)
+            {
+                Microsoft.Office.Interop.Excel.Range xlRange = (Microsoft.Office.Interop.Excel.Range)objexcelapp.Cells[1, i];
+                xlRange.Font.Bold = -1;
+                xlRange.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+                xlRange.Borders.Weight = 1d;
+                xlRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                objexcelapp.Cells[1, i] = tablelist.Columns[i - 1].ColumnName;
+            }
+            /*For storing Each row and column value to excel sheet*/
+            for (int i = 0; i < tablelist.Rows.Count; i++)
+            {
+                for (int j = 0; j < tablelist.Columns.Count; j++)
+                {
+                    if (tablelist.Rows[i][j] != null)
+                    {
+                        Microsoft.Office.Interop.Excel.Range xlRange = (Microsoft.Office.Interop.Excel.Range)objexcelapp.Cells[i + 2, j + 1];
+                        xlRange.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+                        xlRange.Borders.Weight = 1d;
+                        objexcelapp.Cells[i + 2, j + 1] = tablelist.Rows[i][j].ToString();
+                    }
+                }
+            }
+            objexcelapp.Columns.AutoFit(); // Auto fix the columns size
+            System.Windows.Forms.Application.DoEvents();
+            if (Directory.Exists("C:\\ExcelOutput\\")) // Folder dic
+            {
+                objexcelapp.ActiveWorkbook.SaveCopyAs("C:\\ExcelOutput\\" + excelFilename + ".xlsx");
+            }
+            else
+            {
+                Directory.CreateDirectory("C:\\ExcelOutput\\");
+                objexcelapp.ActiveWorkbook.SaveCopyAs("C:\\ExcelOutput\\" + excelFilename + ".xlsx");
+            }
+            objexcelapp.ActiveWorkbook.Saved = true;
+            System.Windows.Forms.Application.DoEvents();
+            
+        }
+       
+        public bool SavingPDF()
+        {
+            try
+            {
+                Common.WaitTextGoogle(driver, "Download Remit", "", "", "");
+                chrome.ClickByID("downRemit", driver);
+                string pdfdownloadpath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads\J5B.pdf";
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Medicare_Orlando_files";
+                //string outputpath = path + "\\" + patientFullName + "".pdf;
+                string str = path + "\\" + patientFullName + "_" + status.Trim() + ".pdf";
+                if (!File.Exists(str))
+                {
+                    File.Move(pdfdownloadpath, str);
+                }
+                if (File.Exists(pdfdownloadpath))
+                {
+                    File.Delete(pdfdownloadpath);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                status = "No";
+                reasonsRemarks = "No Extraction performs";
+                return false;
+            }
+        }
+      
+        public void ClaimsLatestDate()
+        {
+
+            IWebElement tableRow = driver.FindElement(By.XPath("/html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/div/div[4]/div/div[2]/div/div[2]/div[6]/div[3]/div"));
+            IList<IWebElement> tableElements1;
+            var textList = new List<String>();
+            var dateList = new List<String>();
+            tableElements1 = tableRow.FindElements(By.TagName("tr"));
+            string processDate;
+            foreach (IWebElement rows in tableElements1)
+            {
+                string linecontainsText = rows.Text;
+                if (linecontainsText.Contains("J5B"))
+                {
+                    processDate = linecontainsText.Substring(linecontainsText.LastIndexOf("/") - 5, 10).Trim();
+                    dateList.Add(processDate);
+                }
+
+            }
+            DateTime lastestMaxDate;
+            DateTime maxDate = DateTime.MaxValue;
+            lastestMaxDate = dateList.Select(d => DateTime.TryParse(d, out maxDate)).Select(d => maxDate).Max();
+            string latestDate = lastestMaxDate.ToString("MM/dd/yyyy").Replace("-", "/");
+            IList<IWebElement> tableElements2;
+
+            tableElements2 = tableRow.FindElements(By.TagName("tr"));
+            foreach (IWebElement rows2 in tableElements2)
+
+            {
+                string linecontainsText = rows2.Text;
+                if (linecontainsText.Contains(latestDate))
+                {
+                    string claimNo = linecontainsText.Substring(linecontainsText.LastIndexOf("J5B") + 4, 13);
+                    chrome.ClickByLinkText(claimNo, driver);
+                }
+
+        
+
+
+
+            }
+
+
+
+        }
+        public static string GetConnectionString(string fName)
+        {
+            try
+            {
+                string Connectionstring = string.Empty;
+
+                if (fName.ToLower().EndsWith(".xlsx"))
+                    Connectionstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fName + ";Extended Properties=\"Excel 12.0;HDR=Yes;IMEX=1;TypeGuessRows=0;ImportMixedTypes=Text\"";
+                else if (fName.ToLower().EndsWith(".xls"))
+                    Connectionstring = "provider=Microsoft.Jet.OLEDB.4.0;data source=" + fName + ";Extended Properties=\"Excel 8.0;IMEX=1;HDR=Yes;TypeGuessRows=0;ImportMixedTypes=Text\"";
+
+                return Connectionstring;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static DataTable ReadFile(string filepath)
+        {
+            string ConnectionString = string.Empty;
+            ConnectionString = GetConnectionString(filepath);
+            OleDbConnection conn = new OleDbConnection(ConnectionString);
+            var dtExcelData = new System.Data.DataTable();
+
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                    conn.Open();
+                string qry1 = string.Empty;
+                qry1 = "Select * from [Sheet1$]";
+                OleDbCommand cmdData = new OleDbCommand(qry1, conn);
+                OleDbDataAdapter daData = new OleDbDataAdapter(cmdData);
+                daData.Fill(dtExcelData);
+
+
+                for (int rowcounter = dtExcelData.Rows.Count - 1; rowcounter >= 0; rowcounter += -1)
+                {
+                    int emptycolumncount = 0;
+                    DataRow row = dtExcelData.Rows[rowcounter];
+                    foreach (var rowitem in row.ItemArray)
+                    {
+                        if (rowitem == null | rowitem == DBNull.Value | rowitem.Equals(""))
+                            emptycolumncount += 1;
+                    }
+
+                    if (emptycolumncount == dtExcelData.Columns.Count)
+                        dtExcelData.Rows.Remove(row);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+
+            return dtExcelData;
+        }
+        public void Refresh(IWebDriver driver)
+        {
+            if (driver.FindElement(By.TagName("body")).Text.Contains("This site can’t be reached") ||
+                  driver.FindElement(By.TagName("body")).Text.Contains("This page isn’t working")
+                  || driver.FindElement(By.TagName("body")).Text.Contains("ERROR") || driver.FindElement(By.TagName("body")).Text.Contains("Not Found") || driver.FindElement(By.TagName("body")).Text.Contains("404") || driver.FindElement(By.TagName("body")).Text.Contains("Session Timed Out"))
+            {
+                driver.Navigate().Refresh();
+                System.Threading.Thread.Sleep(2000);
+            }
+        }
+        public int insertFileProcess(string fileName,int extID,int patientCount)
+        { 
+
+            con = new SqlConnection(cnstr);
+            con.Open();
+            using (SqlCommand cmd = new SqlCommand("AA_InsertFileToBeProcessed", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                da = new SqlDataAdapter(cmd);
+                cmd.Parameters.AddWithValue("@FileName", fileName);
+                cmd.Parameters.AddWithValue("@ExtractorOID", extID);
+                cmd.Parameters.AddWithValue("@TotalPatient", patientCount);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                int ExFileOID = 0;
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    //retrivedValue = Convert.ToInt32(row["TotalPatient"]);
+                    ExFileOID = Convert.ToInt32(row["ExFileOID"]);
+                }
+
+                return ExFileOID;
+
+            }
+
+
+          
+               
+        }
+        public static DataTable getDataByFileOID(int FileOID, string conString )
+        {
+            DataTable dts = new DataTable();
+            string strQuery = "select *  from GoldenForm_ExPatientDetail with (nolock) where ExFileOID = " + FileOID + " and PatientFlag='N' ";
+            SqlConnection cn = new SqlConnection();
+            cn.ConnectionString = conString;
+            cn.Open();
+            SqlCommand sqlCommand = new SqlCommand(strQuery, cn);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+            sqlDataAdapter.Fill(dts);
+            cn.Close();
+            return dts;
+        }
+
+        public void PatientsInputData() 
+        {
+            Common.WaitTextGoogle(driver, "Service Location (NPI)", "", "", "");
+            chrome.SetValueByID("wps-hicn", patientMedicareNumber, driver);//Filled MedicareNumber Fom Excel Datasheets
+            chrome.SetValueByID("startingDateOfService", DOS, driver); // Filled Start Date
+            chrome.SetValueByID("endDateOfService", DOS, driver); // Filled End Date
+            chrome.ClickByID("checkClaim", driver);// Click Search Button
+            Refresh(driver);
+         
+
+        }
+        public void AlreadyLogin()
+        {
+            if (chrome.CheckForText("You are already logged in from another client.", driver))
+            {
+                Refresh(driver);
+                chrome.ClickByXpath("/html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div/div/div/div/div[2]/div/div[4]/div[1]/div/div[1]/div[2]/a[1]/span", driver);// Click  Remove Existing Login Button 
+                System.Threading.Thread.Sleep(3000);
+                //Refresh(driver);
+               
+            }
+        } 
+        public void EligibilityData()
+           {
+                Common.WaitTextGoogle(driver, "Service Location (NPI)*", "", "", "");
+                 chrome.SetValueByXPath("/html/body/div[3]/article/div[1]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/div/div[4]/div[1]/div[2]/form/div[1]/div[2]/div/input", patientMedicareNumber, driver);
+                 chrome.SetValueByID("firstName",patientfirstName , driver);
+                 chrome.SetValueByID("lastName", patientlastName, driver);
+                 Common.WaitTextGoogle(driver,"Check Eligibility","","","");
+                 chrome.ClickByID("checkEligibility", driver);
+         }
+   }
+ }
