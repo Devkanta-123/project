@@ -196,8 +196,8 @@ namespace DrProject.doctor
         {
 
 
-                    cmd = new SqlCommand("insert into availability " + " (doc_id,Time,fees) " +
-                     "values('" + id.Text + "','" + timing.Text + "','" + fees.Text + "')", con);
+                    cmd = new SqlCommand("insert into availability " + " (doc_id,Time,fees,date) " +
+                     "values('" + id.Text + "','" + timing.Text + "','" + fees.Text + "','"+days.Text+"')", con);
 
                     cmd.ExecuteNonQuery();
                     con.Close();

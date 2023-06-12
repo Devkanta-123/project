@@ -85,7 +85,7 @@
 	  <div class="container-full">
        	<section class="content">
 			<div class="row">			  
-				<div class="col-lg-6 col-12">
+				<div class="col-lg-12 col-12">
 					  <div class="box">
 						<div class="box-header with-border">
 						<h4><i class="ti-clipboard "></i> Appointment Info</h4>
@@ -96,7 +96,7 @@
 							
 								
 								<div class="row">
-								  <div class="col-md-6">
+								  <div class="col-md-4">
 									<div class="form-group">
 									  <label class="form-label">Choose Department</label>
 										   
@@ -108,7 +108,7 @@
 									 
 									</div>
 								  </div>
-								  <div class="col-md-6">
+								  <div class="col-md-4">
 									<div class="form-group">
 										
 									  <label class="form-label">Doctors</label>
@@ -120,10 +120,7 @@
                 </asp:DropDownList>  
 									</div>
 								  </div>
-								</div>
-								
-								<div class="row">
-								  <div class="col-md-6">
+                                       <div class="col-md-4">
 										<div class="form-group">
 									  <label class="form-label">Timing</label>
 									
@@ -135,7 +132,21 @@
          
 									</div>
 								  </div>
-								  <div class="col-md-6">
+								</div>
+								
+								<div class="row">
+								  <div class="col-md-4">
+										<div class="form-group">
+									  <label class="form-label">Availabe Days</label>
+									
+										           
+                <asp:DropDownList ID="DropDownList5" runat="server" AppendDataBoundItems="true" DataTextField="date"   
+                    DataValueField="date" CssClass="form-control">
+                </asp:DropDownList>  
+         
+									</div>
+								  </div>
+								  <div class="col-md-4">
 								<div class="form-group">
 									  <label class="form-label">Choose Date</label>
                                         
@@ -146,17 +157,39 @@
 										
 								  </div>
 								  </div>
+									<div class="col-md-4">
+										<div class="form-group">
+									  <label class="form-label">Fees</label>  
+                <asp:DropDownList ID="DropDownList4" runat="server" AppendDataBoundItems="true" DataTextField="fees"   
+                    DataValueField="fees" CssClass="form-control">  
+                </asp:DropDownList>  
+         
+									</div>
+								  </div>
 								</div>
+
+									<div class="row">
+								  
+								  <div class="col-md-6">
+								<%--<div class="form-group">
+									  <label class="form-label">Choose Date</label>
+                                        
+									   <asp:TextBox ID="TextBox1" runat="server" type="date" class="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="date" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
+										<asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage=" Date  should be Greater than current dates.." ForeColor="Red"
+    ControlToValidate="date" Operator="GreaterThanEqual" Type="Date" Display="Dynamic" />
+										
+								  </div>--%>
+								  </div>
+								</div>
+
 								<div class="row">
 								  <div class="col-md-6">
 							<div class="form-group">
 								  <label class="form-label">Issues</label>
 								  <asp:TextBox ID="issues" runat="server"  class="form-control"></asp:TextBox>
 								</div>
-                                     <div class="form-group">
-								  <label class="form-label">Issues</label>
-								
-								</div>
+                                     
 								  </div>
 								  </div>
 								  <div class="col-md-6">
@@ -164,12 +197,6 @@
 								</div>
 								
 							
-								<%--<div class="form-group">
-								  <label class="form-label">Select File</label>
-								  <label class="file">
-									<input type="file" id="file">
-								  </label>
-								</div>--%>
 								
 							</div>
 							<!-- /.box-body -->
@@ -181,8 +208,7 @@
 								
 							</div>  
 					
-					  </div>
-					  <!-- /.box -->			
+					  </div>		
 				</div>  
 				</div>  
 				

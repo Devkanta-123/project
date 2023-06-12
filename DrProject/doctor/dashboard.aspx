@@ -345,7 +345,26 @@
 								 <asp:Textbox ID="fees" runat="server"  class="form-control"/>
 								</div>
 								</div>
-								 
+								 	 
+									  <div class="col-md-6">
+									<div class="form-group">
+									  <label class="form-label">Available Day</label>
+						<asp:DropDownList ID="days" runat="server"  class="form-control" >
+                        <asp:ListItem>Mon to Tue</asp:ListItem>
+                        <asp:ListItem>Mon to Wed</asp:ListItem>
+                        <asp:ListItem>Mon to Thur</asp:ListItem>
+                        <asp:ListItem>Mon to Wed</asp:ListItem>
+                        <asp:ListItem>Wed to Fri</asp:ListItem>
+                        <asp:ListItem>Wed to Thur</asp:ListItem>
+                        <asp:ListItem>Thur to Fri</asp:ListItem>
+                        <asp:ListItem>Mon to Fri</asp:ListItem>
+                       
+                     
+               
+                     
+                    </asp:DropDownList>
+									</div>
+									</div>
 								
 			                  
 		               </div>

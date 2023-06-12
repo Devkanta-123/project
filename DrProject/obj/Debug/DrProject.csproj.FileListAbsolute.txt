@@ -134,3 +134,6 @@ C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.WebPages.xml
 C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.WebPages.Deployment.xml
 C:\Users\konsams\Medusind\Project\DrProject\bin\System.Web.WebPages.Razor.xml
 C:\Users\konsams\Medusind\Project\DrProject\obj\Debug\DrProject.csprojAssemblyReference.cache
+C:\Users\konsams\Medusind\Project\DrProject\bin\Newtonsoft.Json.dll
+C:\Users\konsams\Medusind\Project\DrProject\bin\Razorpay.dll
+C:\Users\konsams\Medusind\Project\DrProject\bin\Newtonsoft.Json.xml

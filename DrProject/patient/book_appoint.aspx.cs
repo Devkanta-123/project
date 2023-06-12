@@ -33,8 +33,6 @@ namespace DrProject.patient
                 con.ConnectionString = "Data Source = 192.168.10.18; database = TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF'";
                 con.Close();
                 callData();
-         
-
                 if (ds.Tables[0].Rows[0]["profile"].ToString().Length > 1)
                 {
                     profile.ImageUrl = ds.Tables[0].Rows[0]["profile"].ToString();
@@ -96,9 +94,13 @@ namespace DrProject.patient
             sda.Fill(dt);
             DropDownList3.DataSource = dt;
             DropDownList3.DataBind();
+            DropDownList4.DataSource = dt;
+            DropDownList4.DataBind();
+            DropDownList5.DataSource = dt;
+            DropDownList5.DataBind();
 
         }
-
+        
         protected void bookAppoint_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF'");
@@ -119,7 +121,7 @@ namespace DrProject.patient
             else 
             {
                 SqlConnection con1 = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF'");
-                SqlCommand cmd = new SqlCommand("insert into appointment " + " (appoint_dept ,appoint_docId,appoint_date,appoint_TIME,issues,patientId,status) values('" + DropDownList1.Text + "','" + DropDownList2.Text + "','" + date.Text + "','" + DropDownList3.Text + "','" + issues.Text + "','"+patient_id.Text+ "','book')", con1);
+                SqlCommand cmd = new SqlCommand("insert into appointment " + " (appoint_dept ,appoint_docId,appoint_date,appoint_TIME,issues,patientId,status,fees) values('" + DropDownList1.Text + "','" + DropDownList2.Text + "','" + date.Text + "','" + DropDownList3.Text + "','" + issues.Text + "','"+patient_id.Text+ "','book','"+DropDownList4.Text+"')", con1);
                 con1.Open();
                 cmd.ExecuteNonQuery();
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "alert",
