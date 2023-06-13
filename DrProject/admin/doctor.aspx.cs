@@ -31,15 +31,11 @@ namespace DrProject.admin
             }
             else
             {
-
                 con.Close();
                 callData();
                 countdoctor();
                 countdept();
                 countpatients();
-
-
-
             }
         }
 

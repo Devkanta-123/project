@@ -100,7 +100,6 @@ namespace DrProject.patient
             DropDownList5.DataBind();
 
         }
-        
         protected void bookAppoint_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF'");
@@ -110,6 +109,7 @@ namespace DrProject.patient
             query.Parameters.AddWithValue("@Adept", DropDownList1.Text);
             query.Parameters.AddWithValue("@AdocID", DropDownList2.Text);
             query.Parameters.AddWithValue("@atime", DropDownList3.Text);
+            string fee = DropDownList4.Text;
             DataTable dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count > 0)
@@ -129,7 +129,6 @@ namespace DrProject.patient
             }
 
         }
-      
         protected void logout_Click(object sender, EventArgs e)
         {
             Session.Abandon();

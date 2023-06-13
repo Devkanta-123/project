@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Text;
+using System.Web.UI.DataVisualization.Charting;
 
 namespace DrProject
 {
@@ -23,11 +24,19 @@ namespace DrProject
         protected void Page_Load(object sender, EventArgs e)
         {
             CompareValidator1.ValueToCompare = DateTime.Today.ToShortDateString();
-
             if (!IsPostBack)
             {
+                string query = "select distinct dept_name from app_dept";
+                DataTable dt = GetData(query);
+                ddlCountries.DataSource = dt;
+                ddlCountries.DataTextField = "dept_name";
+                ddlCountries.DataValueField = "dept_name";
+                ddlCountries.DataBind();
+                ddlCountries.Items.Insert(0, new ListItem("Select Department", ""));
                 getDept();
             }
+
+          
 
             if (Session["user"] == null)
             {
@@ -41,12 +50,43 @@ namespace DrProject
                 countdoctor();
                 countdept();
                 countpatient();
-                RecentPatient();
+           
 
             }
         }
-      
-       
+        protected void ddlCountries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Chart1.Visible = ddlCountries.SelectedValue != "";
+            //select d.fname,p.fullname, count(appointment_id) from appointment a  inner join doctor d on a. appoint_docid = d. id inner join patient p  on a.patientId = p.id where fname = 'Shahuls'   group by fullname,fname  
+            string query = string.Format("select d.fname,count(d.id) from app_dept de inner join doctor d  on de.id = d.dept  where de.dept_name = '{0}'   group by fname", ddlCountries.SelectedValue);
+            DataTable dt = GetData(query);
+            string[] x = new string[dt.Rows.Count];
+            int[] y = new int[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                x[i] = dt.Rows[i][0].ToString();
+                y[i] = Convert.ToInt32(dt.Rows[i][1]);
+            }
+            Chart1.Series[0].Points.DataBindXY(x, y);
+            Chart1.Series[0].ChartType = SeriesChartType.Pie;
+            Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+            Chart1.Legends[0].Enabled = true;
+        }
+
+        private static DataTable GetData(string query)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand(query);
+            String constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            SqlDataAdapter sda = new SqlDataAdapter();
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = con;
+            sda.SelectCommand = cmd;
+            sda.Fill(dt);
+            return dt;
+        }
+
         public void countpatient()
          {
 
@@ -68,30 +108,7 @@ namespace DrProject
             department.DataBind();
             department.Items.Insert(0, new ListItem("Select Department", "0"));
         }
-        private void RecentPatient()
-        {
-            using (SqlConnection con = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF' "))
-            {
-                using (SqlCommand cmd = new SqlCommand("select top 3 fullname as FullName,emailid as Email , address as Address ,phone as Phone, age as Age   from patient order by id desc"))
-                {
-                    SqlDataAdapter dt = new SqlDataAdapter();
-                    try
-                    {
-                        cmd.Connection = con;
-                        con.Open();
-                        dt.SelectCommand = cmd;
-                        DataTable dTable = new DataTable();
-                        dt.Fill(dTable);
-                        fetchpatient.DataSource = dTable;
-                        fetchpatient.DataBind();
-                    }
-                    catch (Exception)
-                    {
-                        
-                    }
-                }
-            }
-        }
+  
 
         public void callData()
         {

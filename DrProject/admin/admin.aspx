@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="admin.aspx.cs" Inherits="DrProject.Admin" %>
 
-<!DOCTYPE html>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -142,27 +144,42 @@
 								</div>
 							</div>
 						</div>
+
 						
 
 								<div class="col-12">
-						  <div class="box">
+						      <div class="box">
 							<div class="box-header with-border">
-							  <h4 class="box-title">Recently Registered Patients</h4>
-							  <div class="box-controls pull-right">
-								<div class="lookup lookup-circle lookup-right">
+							  <h4 class="box-title">Doctors</h4>
+							 <div class="box-controls pull-right">
 								
-								</div>
+								  
+											<asp:DropDownList ID="ddlCountries" runat="server"  CssClass="form-control"
+        onselectedindexchanged="ddlCountries_SelectedIndexChanged" AutoPostBack = "true">
+    </asp:DropDownList>
+								 
 							  </div>
 							</div>
-							<div class="box-body no-padding">
 					
-											<asp:GridView ID="fetchpatient" runat="server"  class="table mb-0  table-responsive">
-                                                
-                                                </asp:GridView>
-											
-								</div>
+        <asp:Chart ID="Chart1" runat="server" Height="350px" Width="300px" Visible = "false">
+            <Titles>
+                <asp:Title ShadowOffset="3" Name="Items" />
+            </Titles>
+            <Legends>
+                <asp:Legend Alignment="Center" Docking="Bottom" IsTextAutoFit="False" Name="Default" LegendStyle="Row" />
+            </Legends>
+            <Series>
+                <asp:Series Name="Default" />
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1" BorderWidth="0" />
+            </ChartAreas>
+        </asp:Chart>
+   
 								
-							  
+
+
+						  
 							<div class="box-footer bg-light py-10 with-border">
 							  
 							</div>
@@ -317,10 +334,9 @@
 
     </form>
 
-   <script src="/js/vendors.min.js"></script>
+   <script type="text/javascript" src="/js/vendors.min.js"></script>
 	<script src="/js/pages/chat-popup.js"></script>
     <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
-	
 	<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
 	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
 	

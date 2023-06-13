@@ -60,13 +60,22 @@ namespace DrProject
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// fetchpatient control.
+        /// ddlCountries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView fetchpatient;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCountries;
+
+        /// <summary>
+        /// Chart1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
 
         /// <summary>
         /// fname control.

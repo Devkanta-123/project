@@ -30,14 +30,11 @@ namespace DrProject
             con.Open();
             cmd = new SqlCommand("insert into  orders1 " + " (product_name,qty) " +
                 "values('" + TextBox1.Text + "','" + TextBox2.Text + "')", con);
-
                 cmd.ExecuteNonQuery();
-            test = int.Parse(TextBox2.Text);
-           
+            test = int.Parse(TextBox2.Text);  
             SqlCommand cmd1 = new SqlCommand("update stock set total_stock = total_stock - " + test +" ",con);
             cmd1.ExecuteNonQuery();
             con.Close();
-
                 string message = "Successfully";
                 string script = "window.onload = function(){ alert('";
                 script += message;
@@ -46,9 +43,6 @@ namespace DrProject
                 script += Request.Url.AbsoluteUri;
                 script += "'; }";
                 ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
-
-            
-
         }
     }
 }
