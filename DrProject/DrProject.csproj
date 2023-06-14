@@ -703,6 +703,7 @@
     <Content Include="patient\register.aspx" />
     <Content Include="patient\sidepanel.html" />
     <Content Include="patient\paytm.aspx" />
+    <Content Include="paypal.aspx" />
     <Content Include="Pie.aspx" />
     <Content Include="print.aspx" />
     <Content Include="scripts\jquery-1.3.2.min.js" />
@@ -900,6 +901,13 @@
     </Compile>
     <Compile Include="patient\paytm.aspx.designer.cs">
       <DependentUpon>paytm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="paypal.aspx.cs">
+      <DependentUpon>paypal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="paypal.aspx.designer.cs">
+      <DependentUpon>paypal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pie.aspx.cs">
       <DependentUpon>Pie.aspx</DependentUpon>

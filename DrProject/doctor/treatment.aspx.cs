@@ -7,12 +7,22 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-
+using Razorpay.Api;
+using System.Net;
 
 namespace DrProject.doctor
 {
     public partial class treatment1 : System.Web.UI.Page
     {
+        public string orderId;
+        public string orderIds;
+        public string name;
+        public string product;
+        public string email;
+        public string contact;
+        public string addressn;
+      
+
         string cnstr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
         SqlConnection con = new SqlConnection();
         SqlDataAdapter da = new SqlDataAdapter();
@@ -26,6 +36,7 @@ namespace DrProject.doctor
               
                 this.DocList();
                 this.BindData();
+             
             }
             if (Session["user"] == null)
             {
@@ -50,14 +61,16 @@ namespace DrProject.doctor
                 }
             }
         }
+      
         private void BindData()
         {
             string strQuery = "select a.appointment_id,a.appoint_date,a.start_date,a.end_date,a.fees,d.emailid from appointment a inner join doctor d on a.appoint_docid = d.id where d.emailid= '" + Session["user"] + "' and a.status='approved' ";
             SqlCommand cmd = new SqlCommand(strQuery);
             GridView1.DataSource = GetData(cmd);
             GridView1.DataBind();
+         
         }
-
+     
         private DataTable GetData(SqlCommand cmd)
         {
             DataTable dt = new DataTable();
@@ -81,7 +94,7 @@ namespace DrProject.doctor
             GridView1.DataBind();
         }
 
-        protected void Edit(object sender, EventArgs e)
+        public void Edit(object sender, EventArgs e)
         {
             using (GridViewRow row = (GridViewRow)((LinkButton)sender).Parent.Parent)
             {
@@ -90,6 +103,7 @@ namespace DrProject.doctor
                 txtstartdate.Text = row.Cells[1].Text;
                 txtend_dates.Text = row.Cells[2].Text;
                 treatment_fees.Text = row.Cells[3].Text;
+              
                 popup.Show();
             }
         }

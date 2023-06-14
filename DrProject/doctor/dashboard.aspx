@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dashboard.aspx.cs" Inherits="DrProject.doctor.dashboard" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="dashboard.aspx.cs" Inherits="DrProject.doctor.dashboard" %>
 
 <!DOCTYPE html>
 

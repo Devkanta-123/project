@@ -6,7 +6,8 @@
 <head runat="server">
     <title></title>
     	<link rel="stylesheet" href="/css/vendors_css.css" />
-	  
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 	<!-- Style-->  
 	<link rel="stylesheet" href="/css/style.css"/>
 	<link rel="stylesheet" href="/css/skin_color.css"/>
@@ -696,7 +697,7 @@ BackgroundCssClass="modalBackground">
     </form>
 
 	
->
+
 	<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
 	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
    <script src="/js/vendors.min.js"></script>

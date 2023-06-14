@@ -1,127 +1,20 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="appointment.aspx.cs" Inherits="DrProject.patient.appointment" %>
-
-
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="paypal.aspx.cs" Inherits="DrProject.paypal" %>
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" href="/css/vendors_css.css" />
-
-
-    <!-- Style-->
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/skin_color.css" />
-    <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico" />
-    	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<style>
+</style>
 </head>
-<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
-	  <form id="form1" runat="server">  
- 	  <header class="main-header">
-	<div class="d-flex align-items-center logo-box justify-content-start">	
-		<!-- Logo -->
-		<a href="dashboard.aspx" class="logo">
-		  <!-- logo-->
-		 
-		  <div class="logo-lg">
-			  <span class="light-logo"><img src="/images/medusind.png" alt="logo"/></span>
-			
-		  </div>
-		</a>	
-	</div>  
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-	  <div class="app-menu">
-		<ul class="header-megamenu nav">
-			<li class="btn-group nav-item">
-				<a href="#" class="waves-effect waves-light nav-link push-btn btn-primary-light" data-toggle="push-menu" role="button">
-					<i class="icon-Menu"><span class="path1"></span><span class="path2"></span></i>
-			    </a>
-			</li>
-			<li class="btn-group d-lg-inline-flex d-none">
-				<div class="app-menu">
-					
-				</div>
-			</li>
-		</ul> 
-	  </div>
-		
-      <div class="navbar-custom-menu r-side">
-        <ul class="nav navbar-nav">			
-		
-			<li class="dropdown user user-menu">
-				<a href="#" class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent p-0 no-shadow" data-bs-toggle="dropdown" title="User">
-					<div class="d-flex pt-1">
-						<div class="text-end me-15">
-							<div class="text-end me-10">
-					      <asp:Label ID ="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary" ></asp:Label>
-							</div>
-							<div class="text-end me-10">
-								<asp:Label ID ="Label3" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-success" ></asp:Label>
-							</div>
-							
-							
-
-						</div>
-						
-						<div class="d-flex justify-content-between align-items-center">
-                  <asp:Image ID="profile" runat="server" class="me-10 avatar rounded-circle"  />  
-										
-							</div>
-					</div>
-				</a>
-				
-			</li> 
-
-				<asp:Label ID ="patient_id" Visible="false" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-success" ></asp:Label>
-						
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-	  		<!--#include file = "sidepanel.html" -->
-	     <div class="content-wrapper">
-	  <div class="container-full">
-       	<section class="content">
-			<div class="row">			  
-				<div class="col-lg-12 col-12">
-					  <div class="box">
-						<div class="box-header with-border">
-						<h4><i class="ti-clipboard "></i>Your  Appointment Info</h4>
-						</div>
-						<asp:GridView ID="yourappointment" runat="server" AutoGenerateColumns="false"   EmptyDataText="No records founds."  CssClass="table table-bordered table-hover display nowrap margin-top-4 w-p100 table-responsive" Width="40px">
-    <Columns>
-        <asp:BoundField DataField="appointment_id" HeaderText="Appoinmment ID" />
-        <asp:BoundField DataField="appoint_date" HeaderText="Appointment Date" />
-        <asp:BoundField DataField="appoint_time" HeaderText="Appointment Time" />
-        <asp:BoundField DataField="status" HeaderText=" Appointment Status" />
-        <asp:BoundField DataField="fname" HeaderText="Doctor Name"/>
-        <asp:BoundField DataField="fees" HeaderText="Consultation Fees"/>
-		<asp:TemplateField ItemStyle-Width = "30px"  HeaderText = "C">
-   <ItemTemplate>
-     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-center">
-				pay
-				  </button>
-				  
-   </ItemTemplate>
-</asp:TemplateField>
-    </Columns>
-</asp:GridView>		
-	<div class="modal center-modal fade" id="modal-center" tabindex="-1">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<h5 class="modal-title">Payment </h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		  </div>
-		  <div class="modal-body">
-			        <div class="card">
+<body>
+    <form id="form1" runat="server">
+       <div class="row">
+    <div class="col-lg-6 mx-auto">
+        <div class="card">
             <div class="card-header">
                 <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
                     <!-- Credit card form tabs -->
@@ -180,6 +73,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-footer"><button type="button" class="subscribe btn btn-primary btn-block shadow-sm">Confirm Payment</button></div>
                         </form>
                     </div>
                     <!-- End -->
@@ -231,40 +125,13 @@
                 </div>
             </div>
         </div>
-
-		  </div>
-		  <div class="modal-footer modal-footer-uniform">
-			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary float-end">Save changes</button>
-		  </div>
-		</div>
-	  </div>
-	</div>
-				</div>  
-				</div>  
-				</div> 
-			   				  
-		
-			   </section>
-				</div>  
-				
- 		 
-    <div>  
-   </div>  
-</form> 
-    	
-		<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
-	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
-   <script src="/js/vendors.min.js"></script>
-	<script src="/js/pages/chat-popup.js"></script>
-    <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
-	<script src="/js/pages/chart-widgets.js"></script>
-    <script src="/js/pages/chartjs-int.js"></script>
-		<script src="js/pages/dashboard2.js"></script>
-	    <script src="/js/jquery.easing.min.js"></script>
-	 <script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.bundle.min.js"></script>
-
-
+    </div>
+</div>
+    </form>
+    <script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
+    </script>
 </body>
 </html>

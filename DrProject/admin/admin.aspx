@@ -335,10 +335,10 @@
     </form>
 
    <script type="text/javascript" src="/js/vendors.min.js"></script>
-	<script src="/js/pages/chat-popup.js"></script>
-    <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
-	<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
-	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
+	<script  type="text/javascript" src="/js/pages/chat-popup.js"></script>
+    <script type="text/javascript"  src="/css/assets/icons/feather-icons/feather.min.js"></script>
+	<script   type="text/javascript" src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	<script   type="text/javascript" src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
 	
 
 
