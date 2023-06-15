@@ -53,6 +53,10 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="paytm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\paytm.dll</HintPath>
+    </Reference>
     <Reference Include="Razorpay, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Razorpay.3.0.2\lib\net45\Razorpay.dll</HintPath>
     </Reference>
@@ -106,6 +110,7 @@
     <Content Include="admin\panel.html" />
     <Content Include="admin\Report.aspx" />
     <Content Include="alert.aspx" />
+    <Content Include="bin\paytm.dll" />
     <Content Include="css\assets\css\owl.carousel.css" />
     <Content Include="css\assets\css\owl.theme.default.min.css" />
     <Content Include="css\assets\css\style.css" />
@@ -401,7 +406,12 @@
     <Content Include="js\pages\jquery.easing.js" />
     <Content Include="js\pages\jquery.easing.min.js" />
     <Content Include="model.aspx" />
+    <Content Include="online\chechkout.aspx" />
+    <Content Include="online\payment.aspx" />
+    <Content Include="online\PaytmCallBack.aspx" />
+    <Content Include="online\RazorPay.aspx" />
     <Content Include="patient\appointment.aspx" />
+    <Content Include="patient\booked_appointment.aspx" />
     <Content Include="patient\book_appoint.aspx" />
     <Content Include="patient\dropdown.aspx" />
     <Content Include="form.aspx" />
@@ -703,6 +713,7 @@
     <Content Include="patient\register.aspx" />
     <Content Include="patient\sidepanel.html" />
     <Content Include="patient\paytm.aspx" />
+    <Content Include="patient\test.aspx" />
     <Content Include="paypal.aspx" />
     <Content Include="Pie.aspx" />
     <Content Include="print.aspx" />
@@ -839,12 +850,47 @@
     <Compile Include="model.aspx.designer.cs">
       <DependentUpon>model.aspx</DependentUpon>
     </Compile>
+    <Compile Include="online\chechkout.aspx.cs">
+      <DependentUpon>chechkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="online\chechkout.aspx.designer.cs">
+      <DependentUpon>chechkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="online\payment.aspx.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="online\payment.aspx.designer.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="online\PaytmCallBack.aspx.cs">
+      <DependentUpon>PaytmCallBack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="online\PaytmCallBack.aspx.designer.cs">
+      <DependentUpon>PaytmCallBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="online\RazorPay.aspx.cs">
+      <DependentUpon>RazorPay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="online\RazorPay.aspx.designer.cs">
+      <DependentUpon>RazorPay.aspx</DependentUpon>
+    </Compile>
     <Compile Include="patient\appointment.aspx.cs">
       <DependentUpon>appointment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="patient\appointment.aspx.designer.cs">
       <DependentUpon>appointment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patient\booked_appointment.aspx.cs">
+      <DependentUpon>booked_appointment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient\booked_appointment.aspx.designer.cs">
+      <DependentUpon>booked_appointment.aspx</DependentUpon>
     </Compile>
     <Compile Include="patient\book_appoint.aspx.cs">
       <DependentUpon>book_appoint.aspx</DependentUpon>
@@ -901,6 +947,13 @@
     </Compile>
     <Compile Include="patient\paytm.aspx.designer.cs">
       <DependentUpon>paytm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patient\test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient\test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="paypal.aspx.cs">
       <DependentUpon>paypal.aspx</DependentUpon>

@@ -85,10 +85,10 @@
 	  <div class="container-full">
        	<section class="content">
 			<div class="row">			  
-				<div class="col-lg-12 col-12">
-					  <div class="box">
-						<div class="box-header with-border">
-						<h4><i class="ti-clipboard "></i> Appointment Info</h4>
+				<div class="col-12 col-lg-12">
+				<div class="box">
+				  <div class="box-header bg-success">
+						<h4><i class="ti-clipboard "></i> Book Your Appointment </h4>
 						</div>
 						<!-- /.box-header -->
 					
@@ -137,9 +137,7 @@
 								<div class="row">
 								  <div class="col-md-4">
 										<div class="form-group">
-									  <label class="form-label">Availabe Days</label>
-									
-										           
+									  <label class="form-label">Availabe Days</label>							           
                 <asp:DropDownList ID="DropDownList5" runat="server" AppendDataBoundItems="true" DataTextField="date"   
                     DataValueField="date" CssClass="form-control">
                 </asp:DropDownList>  
@@ -170,23 +168,14 @@
 
 									<div class="row">
 								  
-								  <div class="col-md-6">
-								<%--<div class="form-group">
-									  <label class="form-label">Choose Date</label>
-                                        
-									   <asp:TextBox ID="TextBox1" runat="server" type="date" class="form-control"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="date" Display="Dynamic" ErrorMessage="Required" ForeColor="Red"></asp:RequiredFieldValidator>
-										<asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage=" Date  should be Greater than current dates.." ForeColor="Red"
-    ControlToValidate="date" Operator="GreaterThanEqual" Type="Date" Display="Dynamic" />
-										
-								  </div>--%>
-								  </div>
+								
 								</div>
 
 								<div class="row">
 								  <div class="col-md-6">
 							<div class="form-group">
-								  <label class="form-label">Issues</label>
+								  <label class="form-label">Your Problems / Symtoms</label>
+								
 								  <asp:TextBox ID="issues" runat="server"  class="form-control"></asp:TextBox>
 								</div>
                                      
@@ -206,7 +195,7 @@
 								</button>
                                 <asp:Button ID="bookAppoint" runat="server" Text="BOOK" OnClick="bookAppoint_Click"  class="btn btn-primary" /> 
 								
-							</div>  
+							    </div>  
 					
 					  </div>		
 				</div>  

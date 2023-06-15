@@ -26,13 +26,10 @@ namespace DrProject
 
                  
                     product = "Dr Suresh Appointment";
-                
                     contact = "9366535583";
-                
                     Session["product"] = product;
                     Session["totalprice"] = "1500";
                     Dictionary<string, object> input = new Dictionary<string, object>();
-
                     int am = 1500;
                     //string orderss = Session["OrderId"].ToString();
                     string orderss = System.DateTime.Now.Ticks.ToString();

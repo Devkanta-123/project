@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace DrProject.patient
 {
-    public partial class appointment : System.Web.UI.Page
+    public partial class booked_appointment : System.Web.UI.Page
     {
         string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
         SqlConnection con = new SqlConnection();
@@ -28,7 +28,7 @@ namespace DrProject.patient
             }
             if (!this.IsPostBack)
             {
-                BindGrid();
+                this.BindGrid();
             }
 
             else
@@ -37,22 +37,14 @@ namespace DrProject.patient
                 con.ConnectionString = "Data Source = 192.168.10.18; database = TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF'";
                 con.Close();
                 callData();
-                if (ds.Tables[0].Rows[0]["profile"].ToString().Length > 1)
-                {
-                    profile.ImageUrl = ds.Tables[0].Rows[0]["profile"].ToString();
-                }
-                else
-                {
-                    profile.ImageUrl = "/images/default.jpg";
-                }
-            }
 
+            }
 
         }
         private void BindGrid()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "select a.appointment_id,a.status,a.appoint_date,a.appoint_time,a.fees,a.payment_status,d.fname from appointment a inner join patient p on p.id=a.patientId inner join doctor d on a.appoint_docId = d.id where p.emailid=  '" + Session["user"] + "' ";
+            string query = "select a.appointment_id,a.status,a.appoint_date,a.appoint_time,a.payment_status,a.payment_status,d.fname,d.profile from appointment a inner join patient p on p.id=a.patientId inner join doctor d on a.appoint_docId = d.id";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
@@ -60,11 +52,70 @@ namespace DrProject.patient
                     using (DataTable dt = new DataTable())
                     {
                         sda.Fill(dt);
-                        yourappointment.DataSource = dt;
-                        yourappointment.DataBind();
+                        GridView1.DataSource = dt;
+                        GridView1.DataBind();
                     }
                 }
             }
+        }
+
+
+        protected void OnRowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            this.BindGrid();
+        }
+
+        protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+           
+        }
+
+        protected void OnRowCancelingEdit(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+           
+        }
+
+        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridView1.EditIndex)
+            {
+                (e.Row.Cells[6].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label status = (Label)e.Row.FindControl("lblNewstatus");
+                    if (status.Text == "approved")
+                    {
+                        status.CssClass = "badge badge-pill badge-info";
+                    }
+                    else if (status.Text == "On Leave")
+                    {
+                        status.CssClass = "badge badge-pill badge-warning";
+                    }
+                    Label payment_status = (Label)e.Row.FindControl("lblpaymentstatus");
+
+                    if (payment_status.Text == "pending")
+                    {
+                        payment_status.CssClass = "badge badge-pill badge-danger";
+                    }
+                    else if (payment_status.Text == "paid")
+                    {
+                        payment_status.CssClass = "badge badge-pill badge-success";
+                    }
+
+                }
+            }
+        }
+
+        protected void OnPaging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            this.BindGrid();
         }
         public void callData()
         {
@@ -75,21 +126,13 @@ namespace DrProject.patient
             Label2.Text = ds.Tables[0].Rows[0]["emailid"].ToString();
             Label3.Text = ds.Tables[0].Rows[0]["fullname"].ToString();
             patient_id.Text = ds.Tables[0].Rows[0]["id"].ToString();
-
         }
 
         protected void payment_Click(object sender, EventArgs e)
         {
-            
-
-        }
-
-       
-        protected void Button1_Click1(object sender, EventArgs e)
-        {
             con = new SqlConnection(constr);
             con.Open();
-            cmd = new SqlCommand("update appointment set payment_status ='paid' where patiendId = '" + patient_id + "'  ", con);
+            cmd = new SqlCommand("update appointment set payment_status ='paid' where patientId = '" + patient_id.Text + "' ", con);
             cmd.ExecuteNonQuery();
             con.Close();
             string message = "Payment Success";
@@ -102,7 +145,4 @@ namespace DrProject.patient
             ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
         }
     }
-
-       
- 
 }

@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="appointment.aspx.cs" Inherits="DrProject.patient.appointment" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="booked_appointment.aspx.cs" Inherits="DrProject.patient.booked_appointment" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -6,7 +7,7 @@
     <title></title>
     <link rel="stylesheet" href="/css/vendors_css.css" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/skin_color.css" />
+    <link rel="stylesheet" href="/css/skin_color.css"/>
     <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico" />
     	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
@@ -14,8 +15,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
-	  <form id="form1" runat="server">  
- 	  <header class="main-header">
+    <form id="form1" runat="server">
+        	  <header class="main-header">
 	<div class="d-flex align-items-center logo-box justify-content-start">	
 		<!-- Logo -->
 		<a href="dashboard.aspx" class="logo">
@@ -26,7 +27,6 @@
 			
 		  </div>
 		</a>	
-	    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Button" />
 	</div>  
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top">
@@ -80,44 +80,113 @@
     </nav>
   </header>
 
-	  		<!--#include file = "sidepanel.html" -->
+    		<!--#include file = "sidepanel.html" -->
 	     <div class="content-wrapper">
 	  <div class="container-full">
        	<section class="content">
 			<div class="row">			  
-			 <div class="col-12 col-lg-8">
-				<div class="box">
+			 <div class="col-10 col-lg-10">
+					<div class="box-body">
 				  <div class="box-header bg-primary">
 						<h4><i class="ti-clipboard "></i>  Your  Appointment Info</h4>
 						</div>
-						<asp:GridView ID="yourappointment" runat="server" AutoGenerateColumns="false"   EmptyDataText="No records founds."  CssClass="table table-bordered table-hover display nowrap margin-top-4 w-p100 table-responsive" Width="40px">
-    <Columns>
-        <asp:BoundField DataField="appointment_id" HeaderText="Appoinmment ID" />
-        <asp:BoundField DataField="appoint_date" HeaderText="Appointment Date" />
-        <asp:BoundField DataField="appoint_time" HeaderText="Appointment Time" />
-        <asp:BoundField DataField="status" HeaderText=" Appointment Status" />
-        <asp:BoundField DataField="fname" HeaderText="Doctor Name"/>
-        <asp:BoundField DataField="fees" HeaderText="Consultation Fees"/>
-        <asp:BoundField DataField="payment_status" HeaderText="Payment Status"/>
-		<asp:TemplateField ItemStyle-Width = "30px"  HeaderText = "C">
+							<asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+			<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+
+            <ContentTemplate>
+
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowDataBound="OnRowDataBound"
+                    DataKeyNames="appointment_id" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+                    PageSize="2" AllowPaging="true"   OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
+                OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive" width="1000px">
+                    <Columns>
+						<asp:ImageField DataImageUrlField="profile" HeaderText="Profile" ControlStyle-CssClass="rounded-circle bg-info"></asp:ImageField>    
+                        <asp:TemplateField HeaderText="Doctor Name" >
+                            <ItemTemplate>
+                                <asp:Label ID="lblName" runat="server"   Text='<%# Eval("fname") %>'></asp:Label>
+
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtName" runat="server" class="form-control"   autocomplete="off"  Text ='<%# Eval("fname") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+						
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Apointment Date">
+                            <ItemTemplate>
+                                <asp:Label ID="lblCountry" runat="server"  Text='<%# Eval("appoint_date") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtLname" runat="server" class="form-control"   autocomplete="off"  Text='<%# Eval("appoint_date") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+						
+                        </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Appointment Time" ItemStyle-Width="150">
+                            <ItemTemplate>
+                                <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("appoint_time") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtEmail" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("appoint_time") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+						
+                        </asp:TemplateField>
+						  <asp:TemplateField HeaderText="Appointment Status" ItemStyle-Width="150">
+                            <ItemTemplate>
+                                <asp:Label ID="lblNewstatus" runat="server" Text='<%# Eval("status") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="Designation" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("status") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+					
+                        </asp:TemplateField>
+						 <asp:TemplateField HeaderText="Payment Status" ItemStyle-Width="150">
+                            <ItemTemplate>
+                                <asp:Label ID="lblpaymentstatus" runat="server" Text='<%# Eval("payment_status") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="PaymentStatus" runat="server"   autocomplete="off"  class="form-control" Text='<%# Eval("payment_status") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+					
+                        </asp:TemplateField>
+								
+                        <asp:CommandField  HeaderText="Actions"  ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" 
+                            ItemStyle-Width="150"  EditText="<i aria-hidden='true' class='ti-marker-alt'></i>" DeleteText="<i aria-hidden='true' class='ti-trash'></i>"
+CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" UpdateText="<i aria-hidden='true' class='ti-check-box'></i>"/>
+						<asp:TemplateField ItemStyle-Width = "30px"  HeaderText = "C">
    <ItemTemplate>
-     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-center">
-				pay
+	    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">
+					Pay now
 				  </button>
-				  
    </ItemTemplate>
-</asp:TemplateField>
-    </Columns>
-</asp:GridView>		
-	<div class="modal center-modal fade" id="modal-center" tabindex="-1">
+</asp:TemplateField>			
+                    </Columns>
+				
+                </asp:GridView>
+               
+            </ContentTemplate>
+
+        </asp:UpdatePanel>
+					
+                    <div class="col-lg-4 col-12">
+			  <div class="box">
+				<div class="box-body">
+				  <h4 class="box-title">Alert with time</h4>
+				   <p class="m-0">(Click on image)</p> 
+				  <img src="../images/alert/alert6.png" alt="alert" class="model_img img-fluid" id="sa-close">              
+				</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box -->
+			</div>
+  <div class="modal center-modal fade" id="modal-center" tabindex="-1">
 	  <div class="modal-dialog">
 		<div class="modal-content">
 		  <div class="modal-header">
-			<h5 class="modal-title">Payment </h5>
+			<h5 class="modal-title">Payment Modules</h5>
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		  </div>
 		  <div class="modal-body">
-			        <div class="card">
+			  	        <div class="card">
             <div class="card-header">
                 <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
                     <!-- Credit card form tabs -->
@@ -143,14 +212,14 @@
                                 <label for="username">
                                     <h6>Card Owner</h6>
                                 </label>
-                                <input type="text" name="username" placeholder="Card Owner Name" required class="form-control" />
+                                <input type="text" name="username" autocomplete="off"       placeholder="Card Owner Name" required class="form-control" />
                             </div>
                             <div class="form-group">
                                 <label for="cardNumber">
                                     <h6>Card number</h6>
                                 </label>
                                 <div class="input-group">
-                                    <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control" required />
+                                    <input type="text" name="cardNumber" autocomplete="off" placeholder="Valid card number" class="form-control" required />
                                     <div class="input-group-append">
                                         <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span>
                                     </div>
@@ -164,7 +233,7 @@
                                                 <h6>Expiration Date</h6>
                                             </span>
                                         </label>
-                                        <div class="input-group"><input type="number" placeholder="MM" name="" class="form-control" required /> <input type="number" placeholder="YY" name="" class="form-control" required /></div>
+                                        <div class="input-group"><input type="number" autocomplete="off"  placeholder="MM" name="" class="form-control" required /> <input type="number" placeholder="YY" name="" class="form-control" required /></div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -172,7 +241,7 @@
                                         <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
                                             <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
                                         </label>
-                                        <input type="text" required class="form-control" />
+                                        <input type="password" required autocomplete="off"  class="form-control" />
                                     </div>
                                 </div>
                             </div>
@@ -231,92 +300,27 @@
 		  </div>
 		  <div class="modal-footer modal-footer-uniform">
 			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary float-end">Save changes</button>
+			  <asp:Button ID="payment" runat="server" Text="Button" OnClick="payment_Click" />
 		  </div>
 		</div>
 	  </div>
 	</div>
+
+
+
 				</div>  
 				</div>  
-                <div class="col-12 col-lg-4">
-				<div class="box">
-				  <div class="box-header bg-success">
-					<h4 class="box-title">Discount</h4>
-				  </div>
-				  <div class="box-body">
-					<p>If you have any discount vouchers/coupans, apply here. If you don't have any, click <a href="javascript:void(0);" class="text-link">here</a> to get one.</p>
-					<form class="form-inline mt-20">
-						<div class="input-group w-p100">
-							<input type="text" class="form-control">
-							<button type="button" class="btn btn-danger">Apply</button>
-							<!-- /btn-group -->
-						</div>
-					</form>
-
-				  </div>
-				</div>			 
-
-				<div class="box">
-				  <div class="box-header bg-info">
-					<h4 class="box-title">Cart Summary</h4>
-				  </div>
-
-				  <div class="box-body">
-					<div class="table-responsive">
-						<table class="table simple mb-0">
-							<tbody>
-								<tr>
-									<td>Total</td>
-									<td class="text-end fw-700">$3240</td>
-								</tr>
-								<tr>
-									<td>Coupan Discount</td>
-									<td class="text-end fw-700"><span class="text-danger me-15">50%</span>-$1620</td>
-								</tr>
-								<tr>
-									<td>Delivery Charges</td>
-									<td class="text-end fw-700">$50</td>
-								</tr>
-								<tr>
-									<td>Tax</td>
-									<td class="text-end fw-700">$18</td>
-								</tr>
-								<tr>
-									<th class="bt-1">Payable Amount</th>
-									<th class="bt-1 text-end fw-900 fs-18">$1688</th>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				  </div>
-				  <div class="box-footer">	
-					<button class="btn btn-danger">Cancel Order</button>
-					<button class="btn btn-primary pull-right">Place Order</button>
-				  </div>
-				</div> 
-
-				<div class="box">
-				  <div class="box-header bg-dark">
-					<h4 class="box-title">Support</h4>
-				  </div>
-
-				  <div class="box-body">
-					<h4 class="fw-500"><i class="ti-mobile"></i> +1800 123 1234 <span class="text-info">(Toll Free)</span></h4>
-					<p>Contact us for any queries. We are avalible 24x7x365.</p>
-				  </div>
-				</div>
-
-			  </div>
-				</div> 
+				</div>  
+              
 			   				  
 		
 			   </section>
+				</div>  
 				</div>  
 				
  		 
     <div>  
    </div>  
-</form> 
     	
 		<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
 	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
@@ -329,7 +333,10 @@
 	    <script src="/js/jquery.easing.min.js"></script>
 	 <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.bundle.min.js"></script>
+         <script src="~/css/assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js"></script>
 
-
-</body>
+              
+</form> 
+    	
+		</body>
 </html>
