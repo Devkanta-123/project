@@ -44,7 +44,7 @@ namespace DrProject.patient
         private void BindGrid()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "select a.appointment_id,a.status,a.appoint_date,a.appoint_time,a.payment_status,a.payment_status,d.fname,d.profile from appointment a inner join patient p on p.id=a.patientId inner join doctor d on a.appoint_docId = d.id";
+            string query = "select a.appointment_id,a.status,a.appoint_date,a.appoint_time,a.payment_status,a.payment_status,d.fname,d.profile from appointment a inner join patient p on p.id=a.patientId inner join doctor d on a.appoint_docId = d.id where p.emailid= '" + Session["user"] + "'  and a.payment_status = 'pending' ";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
@@ -130,19 +130,20 @@ namespace DrProject.patient
 
         protected void payment_Click(object sender, EventArgs e)
         {
+            System.Threading.Thread.Sleep(8000);
+            this.payment_confirmed();
+          
+        }
+        private void payment_confirmed()
+        {
             con = new SqlConnection(constr);
             con.Open();
             cmd = new SqlCommand("update appointment set payment_status ='paid' where patientId = '" + patient_id.Text + "' ", con);
             cmd.ExecuteNonQuery();
             con.Close();
-            string message = "Payment Success";
-            string script = "window.onload = function(){ alert('";
-            script += message;
-            script += "');";
-            script += "window.location = '";
-            script += Request.Url.AbsoluteUri;
-            script += "'; }";
-            ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert",
+               "Swal.fire('Payment Sucessfull..', 'Thanks for your services..', 'success')", true);
+
         }
     }
 }

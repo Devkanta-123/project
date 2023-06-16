@@ -26,7 +26,7 @@
 			
 		  </div>
 		</a>	
-	    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Button" />
+	 
 	</div>  
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top">

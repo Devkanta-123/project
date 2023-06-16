@@ -11,7 +11,7 @@ namespace DrProject.patient
 {
 
 
-    public partial class appointment
+    public partial class dashboard2
     {
 
         /// <summary>
@@ -60,12 +60,12 @@ namespace DrProject.patient
         protected global::System.Web.UI.WebControls.Label patient_id;
 
         /// <summary>
-        /// yourappointment control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView yourappointment;
+        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }

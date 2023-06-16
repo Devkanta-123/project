@@ -8,6 +8,7 @@
     <!-- Style-->
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/skin_color.css" />
+    	<link rel="stylesheet" href="/css/custom.css "/>
     <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico" />
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
@@ -243,6 +244,9 @@
                 </div>
             </div>
     </form>
+    	<script src="/js/template.js"></script>
+	<script src="/js/pages/dashboard4.js"></script>
+	<script src="/js/pages/calendar.js"></script>
     <script src="/js/vendors.min.js"></script>
     <script src="/js/pages/chat-popup.js"></script>
     <script src="/css/assets/icons/feather-icons/feather.min.js"></script>

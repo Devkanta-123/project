@@ -168,7 +168,7 @@ namespace DrProject
             else if (profile.HasFile)
             {
                 {
-                    string strpass = encryptpass(password.Text);
+                   string strpass = encryptpass(password.Text);
                     string filename = profile.PostedFile.FileName;
                     string filepath = "~/doctor/profiles/" + profile.FileName;
                     profile.PostedFile.SaveAs(Server.MapPath("~/doctor/profiles/") + filename);
@@ -176,7 +176,7 @@ namespace DrProject
                      "values('" + fname.Text + "','" + lname.Text + "','" + emailid.Text + "','" + strpass + "','" + designation.Text + "','" + department.Text + "','" + phno.Text + "','" + dob.Text + "','" + address.Text + "','" + experience.Text + "','" + filepath + "','" + status.Text + "')", con);
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    string message = "Your details have been saved successfully.";
+                    string message = "New Doctor has been added...";
                     string script = "window.onload = function(){ alert('";
                     script += message;
                     script += "');";

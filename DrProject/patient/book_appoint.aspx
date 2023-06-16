@@ -176,7 +176,7 @@
 							<div class="form-group">
 								  <label class="form-label">Your Problems / Symtoms</label>
 								
-								  <asp:TextBox ID="issues" runat="server"  class="form-control"></asp:TextBox>
+								  <asp:TextBox ID="issues" runat="server"  class="form-control"  autocomplete="off" ></asp:TextBox>
 								</div>
                                      
 								  </div>

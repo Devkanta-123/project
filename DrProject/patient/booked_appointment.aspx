@@ -5,17 +5,86 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+        <style type="text/css">
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: black;
+            z-index: 99;
+            filter: alpha(opacity=80);
+            -moz-opacity: 0.8;
+            min-height: 100%;
+            width: 100%;
+            border-radius:3px;
+        }
+
+        .loading {
+            font-family:Garamond (serif);
+            font-size: 12pt;
+            width: 400px;
+            height: 200px;
+            display: none;
+            position: fixed;
+            background-color: white;
+            z-index: 999;
+            border-radius:7px;
+        }
+
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        table {
+            border: 1px solid #ccc;
+        }
+
+            table th {
+                background-color: #F7F7F7;
+                color: #333;
+                font-weight: bold;
+            }
+
+            table th, table td {
+                padding: 5px;
+                border-color: #ccc;
+            }
+    </style>
     <link rel="stylesheet" href="/css/vendors_css.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/skin_color.css"/>
     <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico" />
-    	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+     <script type="text/javascript">
+        function ShowProgress() {
+            setTimeout(function () {
+                var modal = $('<div />');
+                modal.addClass("modal");
+                $('body').append(modal);
+                var loading = $(".loading");
+                loading.show();
+                var top = Math.max($(window).height() / 2 - loading[0].offsetHeight / 2, 0);
+                var left = Math.max($(window).width() / 2 - loading[0].offsetWidth / 2, 0);
+                loading.css({ top: top, left: left });
+            }, 200);
+        }
+        $('form').live("submit", function () {
+            ShowProgress();
+        });
+     </script>
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
     <form id="form1" runat="server">
+         <div class="loading" align="center">
+       Transaction is processing Please don't  Refresh this Pages<br />
+            <br />
+            <img src="2.gif" alt="" />
+        </div>
         	  <header class="main-header">
 	<div class="d-flex align-items-center logo-box justify-content-start">	
 		<!-- Logo -->
@@ -86,7 +155,7 @@
        	<section class="content">
 			<div class="row">			  
 			 <div class="col-10 col-lg-10">
-					<div class="box-body">
+				<div class="box">
 				  <div class="box-header bg-primary">
 						<h4><i class="ti-clipboard "></i>  Your  Appointment Info</h4>
 						</div>
@@ -101,18 +170,18 @@
                     PageSize="2" AllowPaging="true"   OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
                 OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive" width="1000px">
                     <Columns>
-						<asp:ImageField DataImageUrlField="profile" HeaderText="Profile" ControlStyle-CssClass="rounded-circle bg-info"></asp:ImageField>    
-                        <asp:TemplateField HeaderText="Doctor Name" >
+						<asp:ImageField DataImageUrlField="profile" HeaderText="Dr.Profile" ControlStyle-CssClass="rounded-circle bg-info"></asp:ImageField>    
+                        <asp:TemplateField HeaderText="Dr Name" >
                             <ItemTemplate>
                                 <asp:Label ID="lblName" runat="server"   Text='<%# Eval("fname") %>'></asp:Label>
 
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtName" runat="server" class="form-control"   autocomplete="off"  Text ='<%# Eval("fname") %>' Width="140"></asp:TextBox>
+                                <asp:TextBox ID="txtName" runat="server" class="form-control"   autocomplete="off"  Text ='<%# Eval("fname") %>' Width="200"></asp:TextBox>
                             </EditItemTemplate>
 						
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Apointment Date">
+                        <asp:TemplateField HeaderText="Apppoint Date">
                             <ItemTemplate>
                                 <asp:Label ID="lblCountry" runat="server"  Text='<%# Eval("appoint_date") %>'></asp:Label>
                             </ItemTemplate>
@@ -121,7 +190,7 @@
                             </EditItemTemplate>
 						
                         </asp:TemplateField>
-                         <asp:TemplateField HeaderText="Appointment Time" ItemStyle-Width="150">
+                         <asp:TemplateField HeaderText="Appoint Time" ItemStyle-Width="150">
                             <ItemTemplate>
                                 <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("appoint_time") %>'></asp:Label>
                             </ItemTemplate>
@@ -152,10 +221,10 @@
                         <asp:CommandField  HeaderText="Actions"  ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" 
                             ItemStyle-Width="150"  EditText="<i aria-hidden='true' class='ti-marker-alt'></i>" DeleteText="<i aria-hidden='true' class='ti-trash'></i>"
 CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" UpdateText="<i aria-hidden='true' class='ti-check-box'></i>"/>
-						<asp:TemplateField ItemStyle-Width = "30px"  HeaderText = "C">
+						<asp:TemplateField ItemStyle-Width = "70px"  HeaderText = "PAY">
    <ItemTemplate>
 	    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal-center">
-					Pay now
+				 <i class="fas fa-mobile-alt mr-2"></i>	Pay now
 				  </button>
    </ItemTemplate>
 </asp:TemplateField>			
@@ -166,18 +235,7 @@ CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" Updat
             </ContentTemplate>
 
         </asp:UpdatePanel>
-					
-                    <div class="col-lg-4 col-12">
-			  <div class="box">
-				<div class="box-body">
-				  <h4 class="box-title">Alert with time</h4>
-				   <p class="m-0">(Click on image)</p> 
-				  <img src="../images/alert/alert6.png" alt="alert" class="model_img img-fluid" id="sa-close">              
-				</div>
-				<!-- /.box-body -->
-			  </div>
-			  <!-- /.box -->
-			</div>
+			
   <div class="modal center-modal fade" id="modal-center" tabindex="-1">
 	  <div class="modal-dialog">
 		<div class="modal-content">
@@ -291,8 +349,6 @@ CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" Updat
                             Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order.
                         </p>
                     </div>
-                    <!-- End -->
-                    <!-- End -->
                 </div>
             </div>
         </div>
@@ -300,28 +356,19 @@ CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" Updat
 		  </div>
 		  <div class="modal-footer modal-footer-uniform">
 			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-			  <asp:Button ID="payment" runat="server" Text="Button" OnClick="payment_Click" />
+			  <asp:Button ID="payment" runat="server" Text="Pay" OnClick="payment_Click"  CssClass="btn btn-success"/>
 		  </div>
 		</div>
 	  </div>
 	</div>
-
-
-
 				</div>  
 				</div>  
 				</div>  
-              
-			   				  
-		
 			   </section>
 				</div>  
-				</div>  
-				
- 		 
+				</div> 	 
     <div>  
-   </div>  
-    	
+   </div>  	
 		<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
 	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
    <script src="/js/vendors.min.js"></script>
