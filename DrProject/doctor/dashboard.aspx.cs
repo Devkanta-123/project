@@ -103,7 +103,7 @@ namespace DrProject.doctor
             GridViewRow row = GridView1.Rows[e.RowIndex];
             int appointment_id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);;
             string status = (row.FindControl("newstatus") as DropDownList).Text;
-            string query = "UPDATE  appointment SET status=@Ustatus WHERE  appointment_id =@ApID";
+            string query = "UPDATE  appointment SET status=@Ustatus , app_status_code = 2 WHERE  appointment_id =@ApID";
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {

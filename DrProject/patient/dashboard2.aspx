@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-
 	<link rel="stylesheet" href="css/custom.css "/>
     <link rel="stylesheet" href="/css/vendors_css.css" />
     <link rel="stylesheet" href="/css/style.css" />

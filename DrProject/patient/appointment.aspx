@@ -4,7 +4,103 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" href="/css/vendors_css.css" />
+        <style type="text/css">
+    .progress
+    {
+        width: 100%;
+        list-style: none;
+        list-style-image: none;
+        margin: 20px 0 20px 0;
+        padding: 0;
+    }
+            
+    .progress li
+    {
+        float: left;
+        text-align: center;
+        position: relative;
+    }
+            
+    .progress .name
+    {
+        display: block;
+        vertical-align: bottom;
+        text-align: center;
+        margin-bottom: 1em;
+        color: black;
+        opacity: 0.3;
+    }
+            
+    .progress .step
+    {
+        color: black;
+        border: 3px solid silver;
+        border-radius: 50%;
+        line-height: 1.2;
+        width: 1.2em;
+        height: 1.2em;
+        display: inline-block;
+        z-index: 0;
+    }
+            
+    .progress .step span
+    {
+        opacity: 0.3;
+    }
+            
+    .progress .active .name, .progress .active .step span
+    {
+        opacity: 1;
+    }
+            
+    .progress .step:before
+    {
+        content: "";
+        display: block;
+        background-color: blue;
+        height: 0.4em;
+        width: 50%;
+        position: absolute;
+        bottom: 0.6em;
+        left: 0;
+        z-index: -1;
+    }
+            
+    .progress .step:after
+    {
+        content: "";
+        display: block;
+        background-color: blue;
+        height: 0.4em;
+        width: 50%;
+        position: absolute;
+        bottom: 0.6em;
+        right: 0;
+        z-index: -1;
+    }
+            
+    .progress li:first-of-type .step:before
+    {
+        display: none;
+    }
+            
+    .progress li:last-of-type .step:after
+    {
+        display: none;
+    }
+            
+    .progress .done .step, .progress .done .step:before, .progress .done .step:after, .progress .active .step, .progress .active .step:before
+    {
+        background-color: lightgreen;
+    }
+            
+    .progress .done .step, .progress .active .step
+    {
+        border: 3px solid lightblue;
+    }
+ 
+</style>
+
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/skin_color.css" />
     <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico" />
@@ -12,6 +108,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
 	  <form id="form1" runat="server">  
@@ -95,160 +192,33 @@
         <asp:BoundField DataField="appointment_id" HeaderText="Appoinmment ID" />
         <asp:BoundField DataField="appoint_date" HeaderText="Appointment Date" />
         <asp:BoundField DataField="appoint_time" HeaderText="Appointment Time" />
-        <asp:BoundField DataField="status" HeaderText=" Appointment Status" />
         <asp:BoundField DataField="fname" HeaderText="Doctor Name"/>
         <asp:BoundField DataField="fees" HeaderText="Consultation Fees"/>
         <asp:BoundField DataField="payment_status" HeaderText="Payment Status"/>
-		<asp:TemplateField ItemStyle-Width = "30px"  HeaderText = "C">
-   <ItemTemplate>
-     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-center">
-				pay
-				  </button>
-				  
-   </ItemTemplate>
-</asp:TemplateField>
     </Columns>
 </asp:GridView>		
-	<div class="modal center-modal fade" id="modal-center" tabindex="-1">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<h5 class="modal-title">Payment </h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		  </div>
-		  <div class="modal-body">
-			        <div class="card">
-            <div class="card-header">
-                <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
-                    <!-- Credit card form tabs -->
-                    <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
-                        <li class="nav-item">
-                            <a data-toggle="pill" href="#credit-card" class="nav-link active"> <i class="fas fa-credit-card mr-2"></i> Credit Card </a>
-                        </li>
-                        <li class="nav-item">
-                            <a data-toggle="pill" href="#paypal" class="nav-link"> <i class="fab fa-paypal mr-2"></i> Paypal </a>
-                        </li>
-                        <li class="nav-item">
-                            <a data-toggle="pill" href="#net-banking" class="nav-link"> <i class="fas fa-mobile-alt mr-2"></i> Net Banking </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- End -->
-                <!-- Credit card form content -->
-                <div class="tab-content">
-                    <!-- credit card info-->
-                    <div id="credit-card" class="tab-pane fade show active pt-3">
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="username">
-                                    <h6>Card Owner</h6>
-                                </label>
-                                <input type="text" name="username" placeholder="Card Owner Name" required class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <label for="cardNumber">
-                                    <h6>Card number</h6>
-                                </label>
-                                <div class="input-group">
-                                    <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control" required />
-                                    <div class="input-group-append">
-                                        <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label>
-                                            <span class="hidden-xs">
-                                                <h6>Expiration Date</h6>
-                                            </span>
-                                        </label>
-                                        <div class="input-group"><input type="number" placeholder="MM" name="" class="form-control" required /> <input type="number" placeholder="YY" name="" class="form-control" required /></div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group mb-4">
-                                        <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
-                                            <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
-                                        </label>
-                                        <input type="text" required class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- End -->
-                    <!-- Paypal info -->
-                    <div id="paypal" class="tab-pane fade pt-3">
-                        <h6 class="pb-2">Select your paypal account type</h6>
-                        <div class="form-group">
-                            <label class="radio-inline"> <input type="radio" name="optradio" checked /> Domestic </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5" />International </label>
-                        </div>
-                        <p>
-                            <button type="button" class="btn btn-primary"><i class="fab fa-paypal mr-2"></i> Log into my Paypal</button>
-                        </p>
-                        <p class="text-muted">
-                            Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order.
-                        </p>
-                    </div>
-                    <!-- End -->
-                    <!-- bank transfer info -->
-                    <div id="net-banking" class="tab-pane fade pt-3">
-                        <div class="form-group">
-                            <label for="Select Your Bank">
-                                <h6>Select your Bank</h6>
-                            </label>
-                            <select class="form-control" id="ccmonth">
-                                <option value="" selected disabled>--Please select your Bank--</option>
-                                <option>Bank 1</option>
-                                <option>Bank 2</option>
-                                <option>Bank 3</option>
-                                <option>Bank 4</option>
-                                <option>Bank 5</option>
-                                <option>Bank 6</option>
-                                <option>Bank 7</option>
-                                <option>Bank 8</option>
-                                <option>Bank 9</option>
-                                <option>Bank 10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <p>
-                                <button type="button" class="btn btn-primary"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</button>
-                            </p>
-                        </div>
-                        <p class="text-muted">
-                            Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order.
-                        </p>
-                    </div>
-                    <!-- End -->
-                    <!-- End -->
-                </div>
-            </div>
-        </div>
 
-		  </div>
-		  <div class="modal-footer modal-footer-uniform">
-			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary float-end">Save changes</button>
-		  </div>
-		</div>
-	  </div>
-	</div>
 				</div>  
 				</div>  
                 <div class="col-12 col-lg-4">
 				<div class="box">
 				  <div class="box-header bg-success">
-					<h4 class="box-title">Discount</h4>
+					<h4 class="box-title">Trace your Appointment</h4>
 				  </div>
 				  <div class="box-body">
-					<p>If you have any discount vouchers/coupans, apply here. If you don't have any, click <a href="javascript:void(0);" class="text-link">here</a> to get one.</p>
+
 					<form class="form-inline mt-20">
 						<div class="input-group w-p100">
-							<input type="text" class="form-control">
-							<button type="button" class="btn btn-danger">Apply</button>
+						
+							     <asp:TextBox runat="server" ID="txtOrderId" class="form-control"  placeholder="Appointment ID.."/>
+                     <asp:Button ID="btnStatus" class="btn btn-danger"  Text="Check Status" runat="server" />
+						<ol class="progress">
+    <li><span class="name">Booked</span> <span class="step"><span>1</span></span> </li>
+    <li><span class="name">Approved</span> <span class="step"><span>2</span></span></li>
+    <li><span class="name">OngoingTreatment</span> <span class="step"><span>3</span></span></li>
+    <li><span class="name">Completed</span> <span class="step"><span>3</span></span></li>
+   
+</ol>
 							<!-- /btn-group -->
 						</div>
 					</form>
@@ -256,55 +226,8 @@
 				  </div>
 				</div>			 
 
-				<div class="box">
-				  <div class="box-header bg-info">
-					<h4 class="box-title">Cart Summary</h4>
-				  </div>
 
-				  <div class="box-body">
-					<div class="table-responsive">
-						<table class="table simple mb-0">
-							<tbody>
-								<tr>
-									<td>Total</td>
-									<td class="text-end fw-700">$3240</td>
-								</tr>
-								<tr>
-									<td>Coupan Discount</td>
-									<td class="text-end fw-700"><span class="text-danger me-15">50%</span>-$1620</td>
-								</tr>
-								<tr>
-									<td>Delivery Charges</td>
-									<td class="text-end fw-700">$50</td>
-								</tr>
-								<tr>
-									<td>Tax</td>
-									<td class="text-end fw-700">$18</td>
-								</tr>
-								<tr>
-									<th class="bt-1">Payable Amount</th>
-									<th class="bt-1 text-end fw-900 fs-18">$1688</th>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				  </div>
-				  <div class="box-footer">	
-					<button class="btn btn-danger">Cancel Order</button>
-					<button class="btn btn-primary pull-right">Place Order</button>
-				  </div>
-				</div> 
-
-				<div class="box">
-				  <div class="box-header bg-dark">
-					<h4 class="box-title">Support</h4>
-				  </div>
-
-				  <div class="box-body">
-					<h4 class="fw-500"><i class="ti-mobile"></i> +1800 123 1234 <span class="text-info">(Toll Free)</span></h4>
-					<p>Contact us for any queries. We are avalible 24x7x365.</p>
-				  </div>
-				</div>
+				
 
 			  </div>
 				</div> 
@@ -329,7 +252,44 @@
 	    <script src="/js/jquery.easing.min.js"></script>
 	 <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.bundle.min.js"></script>
-
+    <script type="text/javascript">
+    $(function () {
+        $('[id*=btnStatus]').on('click', function () {
+            var id = $('[id*=txtOrderId]').val();
+            $.ajax({
+                type: "POST",
+                url: "appointment.aspx/GetStatus",
+                data: '{appointID: "' + id + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $('ol li').removeClass();
+                    var status = response.d;
+                    var i;
+                    $('ol li').each(function (index, item) {
+                        if ($(this).find('.name').html() == status) {
+                            i = index;
+                        }
+                    });
+                    $('ol li').each(function (index, item) {
+                        if (i == index) {
+                            $(this).addClass("active");
+                        } else if (i > index) {
+                            $(this).addClass("done");
+                        } else {
+                            $(this).removeClass;
+                        }
+                    });
+                }, failure: function (response) {
+                    alert(response.responseText);
+                }, error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+            return false;
+        });
+    });
+    </script>
 
 </body>
 </html>

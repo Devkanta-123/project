@@ -6,22 +6,10 @@
 <head runat="server">
     <title></title>
     	<link rel="stylesheet" href="/css/vendors_css.css" />
-    <%--	<link rel="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/>
-	<script src="~/js/jquery-3.6.4.min.js"></script>
-	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
-	
-        <script>
-            $(document).ready(function () {
-                $("#GridView1").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
-        });
-        </script>--%>
-	
-	  
+	  <script src="/js/jquery-3.6.4.min.js"></script>  
 	<!-- Style-->  
 	<link rel="stylesheet" href="/css/style.css"/>
 	<link rel="stylesheet" href="/css/skin_color.css"/>
-	
 	  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico"/>
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
@@ -58,21 +46,15 @@
 			</li>
 		</ul> 
 	  </div>
-		
       <div class="navbar-custom-menu r-side">
         <ul class="nav navbar-nav">			
-			<!-- User Account-->
 			<li class="dropdown user user-menu">
-			
-			
 				<a href="#" class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent p-0 no-shadow" data-bs-toggle="dropdown" title="User">
 					<div class="d-flex pt-1">
 						<div class="text-end me-15">
 							<div class="text-end me-10">
 					      <asp:Label ID ="Label2" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-primary" ></asp:Label>
 							</div>
-							
-
 						</div>
 						
 						<div class="d-flex justify-content-between align-items-center">
@@ -81,11 +63,7 @@
 							</div>
 					</div>
 				</a>
-			</li>	
-			  
-          <!-- Control Sidebar Toggle Button -->
-        
-			
+			</li>
         </ul>
       </div>
     </nav>
@@ -154,29 +132,30 @@
 					</div>
 					</div>
 					</div>
-		  
-			  <div class="box">
+		 <div class="col-12 col-lg-10">
+				  <div class="box">
 				<h4 class="box-title">Doctor Lists</h4>
 				<!-- /.box-header -->
+					   <div class="box-controls pull-right">
+								<div class="lookup lookup-circle lookup-right">
+								  <input type="text" id="txtSearch" name="txtSearch"  placeholder="Search records.. " autocomplete="off"/>
+								</div>
+							  </div>
 				<div class="box-body">
-					<div class="">
-					
+					<div class="">				
 	<asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
 			<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-
             <ContentTemplate>
-
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowDataBound="OnRowDataBound"
                     DataKeyNames="id" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
-                    PageSize="2" AllowPaging="true"   OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
+                    PageSize="3" AllowPaging="true"   OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
                 OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive" Width="1020px">
                     <Columns>
 						<asp:ImageField DataImageUrlField="profile" HeaderText="Profile" ControlStyle-CssClass="rounded-circle bg-info"></asp:ImageField>    
                         <asp:TemplateField HeaderText="First Name"   ItemStyle-Width="150" >
                             <ItemTemplate>
                                 <asp:Label ID="lblName" runat="server"   Text='<%# Eval("fname") %>'></asp:Label>
-
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:TextBox ID="txtName" runat="server" class="form-control"   autocomplete="off"  Text ='<%# Eval("fname") %>' Width="140"></asp:TextBox>
@@ -220,7 +199,7 @@
 <asp:ListItem>On Leave</asp:ListItem>
 </asp:DropDownList>
 </EditItemTemplate>
-							  <HeaderStyle CssClass="bg-primary" />
+			  <HeaderStyle CssClass="bg-primary" />
                         </asp:TemplateField>
 						
                         <asp:CommandField  HeaderText="Actions"  ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" 
@@ -230,18 +209,13 @@ CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" Updat
                     </Columns>
 					 <HeaderStyle CssClass="bg-danger" />
                 </asp:GridView>
-               
             </ContentTemplate>
-
         </asp:UpdatePanel>
-						
-				
 					</div>  
-					
-				</div>
 				<!-- /.box-body -->
 			  </div>
 			  <!-- /.box -->          
+			</div>
 			</div>
 
 					</div>
@@ -250,17 +224,52 @@ CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" Updat
 		  </div>
 		
 
-
-
     </form>
-
    <script src="/js/vendors.min.js"></script>
 	<script src="/js/pages/chat-popup.js"></script>
     <script src="/css/assets/icons/feather-icons/feather.min.js"></script>
 	
 	<script src="/css/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
 	<script src="/css/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
-	
+	<script language="javascript" type="text/javascript">  
+    $.expr[":"].containsNoCase = function (el, i, m) {  
+        var search = m[3];  
+        if (!search) return false;  
+        return eval("/" + search + "/i").test($(el).text());  
+    };  
+  
+    $(document).ready(function () {  
+        $('#txtSearch').keyup(function () {  
+            if ($('#txtSearch').val().length > 1) {  
+                $('#GridView1 tr').hide();  
+                $('#GridView1 tr:first').show();  
+                $('#GridView1 tr td:containsNoCase(\'' + $('#txtSearch').val() + '\')').parent().show();  
+            }  
+            else if ($('#txtSearch').val().length == 0) {  
+                resetSearchValue();  
+            }  
+  
+            if ($('#searchGridView tr:visible').length == 1) {  
+                $('.norecords').remove();  
+                $('#GridView1').append('<tr class="norecords"><td colspan="6" class="Normal" style="text-align: center">No records were found</td></tr>');  
+            }  
+        });  
+  
+        $('#txtSearch').keyup(function (event) {  
+            if (event.keyCode == 27) {  
+                resetSearchValue();  
+            }  
+        });  
+    });  
+  
+    function resetSearchValue() {  
+        $('#txtSearch').val('');  
+        $('#GridView1 tr').show();  
+        $('.norecords').remove();  
+        $('#txtSearch').focus();  
+    }  
+  
+    </script>
 
 
 

@@ -161,4 +161,9 @@ END
 exec startTreatment
 IF OBJECT_ID('startTreatments') IS NOT NULL DROP PROCEDURE startTreatments
 GO
-
+**********************************
+ CREATE PROCEDURE spdoctorList
+AS
+BEGIN
+    SELECT * FROM doctor
+END

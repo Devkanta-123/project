@@ -36,6 +36,9 @@ namespace DrProject.admin
                 countdoctor();
                 countdept();
                 countpatients();
+               GridView1.DataSource = SearchDoctors();
+                GridView1.DataBind();
+
             }
         }
 
@@ -110,6 +113,20 @@ namespace DrProject.admin
                     }
                 }
             }
+        }
+        public DataTable SearchDoctors()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+             cmd = new SqlCommand();
+            SqlConnection con = new SqlConnection(constr);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spdoctorList";
+            cmd = new SqlCommand(cmd.CommandText, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd.CommandText, con);
+
+            DataTable employees = new DataTable();
+            adapter.Fill(employees);
+            return employees;
         }
 
 

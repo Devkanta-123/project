@@ -25,8 +25,6 @@ namespace DrProject.patient
             {
                 Response.Redirect("PatientLogin.aspx");
             }
-          
-
           else
             {
 
@@ -115,19 +113,18 @@ namespace DrProject.patient
             if (dt.Rows.Count > 0)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "alert",
-               "Swal.fire('Choosen Date and Time already book ', 'Try different date and time.. ', 'error')", true);
+               "Swal.fire('Choosen Date and Time already book ', 'Try different date or time.. ', 'error')", true);
 
             }
             else 
             {
                 SqlConnection con1 = new SqlConnection(@"Data Source=192.168.10.18;database=TrainingDB; user id = TrainingDB_User; password = 'X1;xbhpUN#a5eGHt4ohF'");
-                SqlCommand cmd = new SqlCommand("insert into appointment " + " (appoint_dept ,appoint_docId,appoint_date,appoint_TIME,issues,patientId,status,fees) values('" + DropDownList1.Text + "','" + DropDownList2.Text + "','" + date.Text + "','" + DropDownList3.Text + "','" + issues.Text + "','"+patient_id.Text+ "','book','"+DropDownList4.Text+"')", con1);
+                SqlCommand cmd = new SqlCommand("insert into appointment " + " (appoint_dept ,appoint_docId,appoint_date,appoint_TIME,issues,patientId,status,fees,payment_status,app_status_code) values('" + DropDownList1.Text + "','" + DropDownList2.Text + "','" + date.Text + "','" + DropDownList3.Text + "','" + issues.Text + "','"+patient_id.Text+ "','book','"+DropDownList4.Text+"','pending',1)", con1);
                 con1.Open();
                 cmd.ExecuteNonQuery();
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "alert",
                 "Swal.fire('Booking Succesfull', 'We will let you know soon.....', 'success')", true);
             }
-
         }
         protected void logout_Click(object sender, EventArgs e)
         {

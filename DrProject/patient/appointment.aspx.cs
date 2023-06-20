@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.Services;
 
 namespace DrProject.patient
 {
@@ -52,7 +53,7 @@ namespace DrProject.patient
         private void BindGrid()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "select a.appointment_id,a.status,a.appoint_date,a.appoint_time,a.fees,a.payment_status,d.fname from appointment a inner join patient p on p.id=a.patientId inner join doctor d on a.appoint_docId = d.id where p.emailid=  '" + Session["user"] + "' ";
+            string query = "select a.appointment_id,a.payment_status,a.appoint_date,a.appoint_time,a.fees,d.fname from appointment a inner join patient p on p.id=a.patientId inner join doctor d on a.appoint_docId = d.id where p.emailid=  '" + Session["user"] + "' ";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
@@ -77,14 +78,6 @@ namespace DrProject.patient
             patient_id.Text = ds.Tables[0].Rows[0]["id"].ToString();
 
         }
-
-        protected void payment_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
-       
         protected void Button1_Click1(object sender, EventArgs e)
         {
             con = new SqlConnection(constr);
@@ -101,8 +94,51 @@ namespace DrProject.patient
             script += "'; }";
             ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
         }
+        private static DataTable AppointmentMaster()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+            string query = "select * from appointment ";
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
+                {
+                    using (DataTable dt = new DataTable())
+                    {
+                        sda.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        private static DataTable AppointmentStatus()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("StatusId", typeof(int));
+            dt.Columns.Add("Status", typeof(string));
+            dt.Rows.Add(1, "Booked");
+            dt.Rows.Add(2, "Approved");
+            dt.Rows.Add(3, "OngoingTreatment");
+            dt.Rows.Add(4, "Completed");
+            return dt;
+        }
+
+        [WebMethod]
+        public static string GetStatus(string appointID)
+        {
+            string status = (from om in AppointmentMaster().AsEnumerable()
+                             join os in AppointmentStatus().AsEnumerable() on om["app_status_code"] equals os["StatusId"]
+                             where om["appointment_id"].ToString() == appointID
+                             select os["Status"]).FirstOrDefault().ToString();
+            return status;
+        }
+
+
     }
 
+  }
        
- 
-}
+   
+
+
+

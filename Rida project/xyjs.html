@@ -1,0 +1,26 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script>
+function even() {
+  let n1 = Number(document.getElementById("x").value);
+  let n2 = Number(document.getElementById("y").value);
+  if (n1 > n2) [n1,n2] = [n2,n1];
+  n1 = 2*Math.ceil(n1/2);
+  n2 = 2*Math.floor(n2/2);
+  if (n1 > n2) return 0;
+  return (n1 + n2) * ((n2 - n1) / 2 + 1) / 2;
+}
+</script>
+</head>
+<body>
+
+<input type="text" id="x" placeholder="Enter the value of x" > <br><br>
+<input type="text" id="y" placeholder="Enter the value of y" > <br><br>
+<button onclick="alert(even())">Click me !</button>
+
+</body>
+</html>

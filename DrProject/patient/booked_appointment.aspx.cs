@@ -58,8 +58,6 @@ namespace DrProject.patient
                 }
             }
         }
-
-
         protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
@@ -91,12 +89,17 @@ namespace DrProject.patient
                     Label status = (Label)e.Row.FindControl("lblNewstatus");
                     if (status.Text == "approved")
                     {
-                        status.CssClass = "badge badge-pill badge-info";
+                        status.CssClass = "badge badge-pill badge-success";
                     }
-                    else if (status.Text == "On Leave")
+                    else if (status.Text == "book")
                     {
                         status.CssClass = "badge badge-pill badge-warning";
                     }
+                    else if (status.Text == "cancel")
+                    {
+                        status.CssClass = "badge badge-pill badge-danger";
+                    }
+
                     Label payment_status = (Label)e.Row.FindControl("lblpaymentstatus");
 
                     if (payment_status.Text == "pending")
