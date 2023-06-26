@@ -172,8 +172,8 @@ namespace DrProject
                     string filename = profile.PostedFile.FileName;
                     string filepath = "~/doctor/profiles/" + profile.FileName;
                     profile.PostedFile.SaveAs(Server.MapPath("~/doctor/profiles/") + filename);
-                    cmd = new SqlCommand("insert into doctor " + " (fname,lname,emailid,password,designation,dept,phno,dob,address,experience,profile,status) " +
-                     "values('" + fname.Text + "','" + lname.Text + "','" + emailid.Text + "','" + strpass + "','" + designation.Text + "','" + department.Text + "','" + phno.Text + "','" + dob.Text + "','" + address.Text + "','" + experience.Text + "','" + filepath + "','" + status.Text + "')", con);
+                    cmd = new SqlCommand("insert into doctor " + " (fname,lname,emailid,password,designation,dept,phno,dob,address,experience,profile,status,qualification) " +
+                     "values('" + fname.Text + "','" + lname.Text + "','" + emailid.Text + "','" + strpass + "','" + designation.Text + "','" + department.Text + "','" + phno.Text + "','" + dob.Text + "','" + address.Text + "','" + experience.Text + "','" + filepath + "','" + status.Text + "','" + qualifications.Text + "')", con);
                     cmd.ExecuteNonQuery();
                     con.Close();
                     string message = "New Doctor has been added...";

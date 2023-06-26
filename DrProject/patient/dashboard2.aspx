@@ -65,7 +65,8 @@
 						</div>
 						
 						<div class="d-flex justify-content-between align-items-center">
-                  <asp:Image ID="profile" runat="server" class="me-10 avatar rounded-circle"  />  
+   
+					<asp:Label ID="email" runat="server" visibility="true"  class="pt-5 fs-14 mb-0 fw-800 text-success"></asp:Label>
 										
 							</div>
 					</div>
@@ -73,7 +74,7 @@
 				
 			</li> 
 
-				<asp:Label ID ="patient_id" Visible="false" runat="server" class="pt-5 fs-14 mb-0 fw-800 text-success" ></asp:Label>
+				
 						
         </ul>
       </div>
@@ -91,17 +92,19 @@
 					<div class="row">
 						<div class="col-xxxl-3 col-xl-4 col-lg-12  col-12">
 							<div class="box-body">
+								 <asp:Repeater ID="bodyinformation" runat="server">  
+                                <ItemTemplate>  
 								<div class="media-list">
 									<div class="media p-0 bar-0 mb-30">
 									  	<a class="align-self-start ms-0" href="#"><img class="avatar avatar-xl bg-white shadow rounded-circle pull-up" src="../images/svg-icon/medical/lungs.png" alt="..."></a>
 									  	<div class="media-body align-self-center">
 											<p class="mb-0">
 											  	<a class="hover-success fs-16" href="#">Lungs</a>
-											  	<span class="float-end text-fade"> <asp:Label ID="Label1" runat="server"  Text="90%"></asp:Label></span>
+											  	<span class="float-end text-fade">  <%# Eval("lungs") %></span>
 											</p>
 											<div class="w-p100">
 												<div class="progress progress-sm mb-0 mt-5">
-													<div class="progress-bar bg-lightgreen" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" style="width: 80%"></div>
+													<div class="progress-bar bg-lightgreen" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" style="width:  <%# Eval("lungs") %>"></div>
 												</div>
 											</div>
 									  	</div>
@@ -112,11 +115,11 @@
 									  	<div class="media-body align-self-center">
 											<p class="mb-0">
 											  	<a class="hover-success fs-16" href="#">Stomach</a>
-											  	<span class="float-end text-fade">99%</span>
+											  	<span class="float-end text-fade"> <%# Eval("stomach") %></span>
 											</p>
 											<div class="w-p100">
 												<div class="progress progress-sm mb-0 mt-5">
-													<div class="progress-bar bg-lightgreen" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: 99%"></div>
+													<div class="progress-bar bg-lightgreen" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: <%# Eval("stomach") %>"></div>
 												</div>
 											</div>
 									  	</div>
@@ -127,11 +130,11 @@
 									  	<div class="media-body align-self-center">
 											<p class="mb-0">
 											  	<a class="hover-success fs-16" href="#">Liver</a>
-											  	<span class="float-end text-fade">95%</span>
+											  	<span class="float-end text-fade"> <%# Eval("liver") %></span>
 											</p>
 											<div class="w-p100">
 												<div class="progress progress-sm mb-0 mt-5">
-													<div class="progress-bar bg-lightgreen" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
+													<div class="progress-bar bg-lightgreen" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%# Eval("liver") %>"></div>
 												</div>
 											</div>
 									  	</div>
@@ -142,11 +145,11 @@
 									  	<div class="media-body align-self-center">
 											<p class="mb-0">
 											  	<a class="hover-success fs-16" href="#">Heart</a>
-											  	<span class="float-end text-fade">89%</span>
+											  	<span class="float-end text-fade"> <%# Eval("heart") %></span>
 											</p>
 											<div class="w-p100">
 												<div class="progress progress-sm mb-0 mt-5">
-													<div class="progress-bar bg-lightgreen" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 89%"></div>
+													<div class="progress-bar bg-lightgreen" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:  <%# Eval("heart") %>"></div>
 												</div>
 											</div>
 									  	</div>
@@ -157,15 +160,17 @@
 									  	<div class="media-body align-self-center">
 											<p class="mb-0">
 											  	<a class="hover-success fs-16" href="#">Brain</a>
-											  	<span class="float-end text-fade">85%</span>
+											  	<span class="float-end text-fade"> <%# Eval("brain") %></span>
 											</p>
 											<div class="w-p100">
 												<div class="progress progress-sm mb-0 mt-5">
-													<div class="progress-bar bg-lightgreen" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 85%"></div>
+													<div class="progress-bar bg-lightgreen" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%# Eval("brain") %>"></div>
 												</div>
 											</div>
 									  	</div>
 									</div>
+									 </ItemTemplate>  
+                                     </asp:Repeater> 
 								</div>
 							</div>
 						</div>
@@ -182,32 +187,34 @@
 												<div class="col-xxxl-5 col-xl-6 col-lg-5 col-md-5 col-sm-5">
 													<div class="align-items-start mb-20">
 														<p class="m-0"><span class="badge badge-sm bg-lightgreen p-1 w-20"></span></p>
-														<p class="mb-0">45% <span class="text-fade ms-10"> Oxygen</span></p>
+														<p class="mb-0"> <%# Eval("oxygen") %><span class="text-fade ms-10"> Oxygen</span></p>
 													</div>
 													<div class="align-items-start mb-20">
 														<p class="m-0"><span class="badge badge-sm bg-lightorange p-1 w-20"></span></p>
-														<p class="mb-0">20% <span class="text-fade ms-10"> Carbon</span></p>
+														<p class="mb-0"> <%# Eval("carbon") %><span class="text-fade ms-10"> Carbon</span></p>
 													</div>
 													<div class="align-items-start mb-5">
 														<p class="m-0"><span class="badge badge-sm bg-lilac p-1 w-20"></span></p>
-														<p class="mb-0">16% <span class="text-fade ms-0 ms-xl-10"> Hydrogen</span></p>
+														<p class="mb-0"> <%# Eval("hydrogen") %><span class="text-fade ms-0 ms-xl-10"> Hydrogen</span></p>
 													</div>
 												</div>
 												<div class="col-xxxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-5">
 													<div class="align-items-start mb-20">
 														<p class="m-0"><span class="badge badge-sm bg-Tacha p-1 w-20"></span></p>
-														<p class="mb-0">10% <span class="text-fade ms-10"> Nitrogen</span></p>
+														<p class="mb-0"> <%# Eval("nitrogen") %><span class="text-fade ms-10"> Nitrogen</span></p>
 													</div>
 													<div class="align-items-start mb-20">
 														<p class="m-0"><span class="badge badge-sm bg-purple p-1 w-20"></span></p>
-														<p class="mb-0">7% <span class="text-fade ms-10"> Calcium</span></p>
+														<p class="mb-0"> <%# Eval("calcium") %> <span class="text-fade ms-10"> Calcium</span></p>
 													</div>
+
 													<div class="align-items-start mb-5">
 														<p class="m-0"><span class="badge badge-sm bg-shadow-green p-1 w-20"></span></p>
-														<p class="mb-0">5% <span class="text-fade ms-10"> Other</span></p>
+														<p class="mb-0"> <%# Eval("other") %> <span class="text-fade ms-10"> Other</span></p>
 													</div>
 												</div>
 											</div>
+
 										</div>
 									</div>
 								</div>

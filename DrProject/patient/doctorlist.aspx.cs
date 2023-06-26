@@ -37,11 +37,7 @@ namespace DrProject.patient
                 {
                     DataList1.DataSource = dr;
                     DataList1.DataBind();
-
                 }
-
-
-         
             }
         }
 

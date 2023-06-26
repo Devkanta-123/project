@@ -23,7 +23,6 @@
 		<!-- Logo -->
 		<a href="admin.aspx" class="logo">
 		  <!-- logo-->
-		 
 		  <div class="logo-lg">
 			  <span class="light-logo"><img src="/images/medusind.png" alt="logo"/></span>
 			

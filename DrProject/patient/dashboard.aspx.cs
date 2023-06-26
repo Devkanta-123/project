@@ -66,7 +66,6 @@ namespace DrProject.patient
             Label12.Text = ds.Tables[0].Rows[0]["weight"].ToString();
             Label10.Text = ds.Tables[0].Rows[0]["height"].ToString();
             Label11.Text = ds.Tables[0].Rows[0]["bmi"].ToString();
-
             Label6.Text = ds.Tables[0].Rows[0]["phone"].ToString();
             profile2.ImageUrl = ds.Tables[0].Rows[0]["profile"].ToString();
         }

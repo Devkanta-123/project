@@ -306,12 +306,19 @@
                         <asp:ListItem>On leave</asp:ListItem>
                     </asp:DropDownList>
 									</div>
+						 <div class="form-group">
+								  <label class="form-label">Qualifications</label>
+									<asp:TextBox ID="qualifications" runat="server"  class="form-control" placeholder="Qualifications..." AutoComplete="off" ></asp:TextBox>
+								</div>
 								  </div>
-		               </div>
+		               
+			    <div class="col-md-6">
 			                   <div class="form-group">
 								  <label class="form-label">Select Profile</label>
 								 <asp:FileUpload ID="profile" runat="server" />
 								</div>
+					 
+					</div>
 		  <div class="modal-footer modal-footer-uniform">
 			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 			

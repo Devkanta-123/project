@@ -42,30 +42,21 @@ namespace DrProject.patient
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// profile control.
+        /// email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image profile;
+        protected global::System.Web.UI.WebControls.Label email;
 
         /// <summary>
-        /// patient_id control.
+        /// bodyinformation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label patient_id;
-
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Repeater bodyinformation;
     }
 }
