@@ -408,6 +408,9 @@
     <Content Include="js\pages\jquery.easing.min.js" />
     <Content Include="model.aspx" />
     <Content Include="online\1.gif" />
+    <Content Include="online\Default.aspx" />
+    <Content Include="online\RazorPayCheckout.aspx" />
+    <Content Include="online\RazorpayPayment.aspx" />
     <Content Include="patient\2.gif" />
     <Content Include="online\giphy.gif" />
     <Content Include="online\loader.gif" />
@@ -418,7 +421,6 @@
     <Content Include="patient\booked_appointment.aspx" />
     <Content Include="patient\book_appoint.aspx" />
     <Content Include="patient\dashboard2.aspx" />
-    <Content Include="patient\dropdown.aspx" />
     <Content Include="form.aspx" />
     <Content Include="images\1.jpg" />
     <Content Include="images\150x100.png" />
@@ -715,10 +717,10 @@
     <Content Include="patient\doctorlist.aspx" />
     <Content Include="patient\images\loadingAnim.gif" />
     <Content Include="patient\PatientLogin.aspx" />
+    <Content Include="patient\pay.aspx" />
     <Content Include="patient\register.aspx" />
     <Content Include="patient\sidepanel.html" />
     <Content Include="patient\paytm.aspx" />
-    <Content Include="patient\test.aspx" />
     <Content Include="paypal.aspx" />
     <Content Include="Pie.aspx" />
     <Content Include="print.aspx" />
@@ -863,6 +865,13 @@
     <Compile Include="model.aspx.designer.cs">
       <DependentUpon>model.aspx</DependentUpon>
     </Compile>
+    <Compile Include="online\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="online\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="online\payment.aspx.cs">
       <DependentUpon>payment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -883,6 +892,20 @@
     </Compile>
     <Compile Include="online\RazorPay.aspx.designer.cs">
       <DependentUpon>RazorPay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="online\RazorPayCheckout.aspx.cs">
+      <DependentUpon>RazorPayCheckout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="online\RazorPayCheckout.aspx.designer.cs">
+      <DependentUpon>RazorPayCheckout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="online\RazorpayPayment.aspx.cs">
+      <DependentUpon>RazorpayPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="online\RazorpayPayment.aspx.designer.cs">
+      <DependentUpon>RazorpayPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="patient\appointment.aspx.cs">
       <DependentUpon>appointment.aspx</DependentUpon>
@@ -912,13 +935,6 @@
     <Compile Include="patient\dashboard2.aspx.designer.cs">
       <DependentUpon>dashboard2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="patient\dropdown.aspx.cs">
-      <DependentUpon>dropdown.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="patient\dropdown.aspx.designer.cs">
-      <DependentUpon>dropdown.aspx</DependentUpon>
-    </Compile>
     <Compile Include="form.aspx.cs">
       <DependentUpon>form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -947,6 +963,13 @@
     <Compile Include="patient\PatientLogin.aspx.designer.cs">
       <DependentUpon>PatientLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="patient\pay.aspx.cs">
+      <DependentUpon>pay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient\pay.aspx.designer.cs">
+      <DependentUpon>pay.aspx</DependentUpon>
+    </Compile>
     <Compile Include="patient\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -960,13 +983,6 @@
     </Compile>
     <Compile Include="patient\paytm.aspx.designer.cs">
       <DependentUpon>paytm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="patient\test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="patient\test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="paypal.aspx.cs">
       <DependentUpon>paypal.aspx</DependentUpon>

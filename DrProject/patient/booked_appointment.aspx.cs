@@ -44,7 +44,7 @@ namespace DrProject.patient
         private void BindGrid()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "select a.appointment_id,a.status,a.appoint_date,a.appoint_time,a.payment_status,a.payment_status,d.fname,d.profile from appointment a inner join patient p on p.id=a.patientId inner join doctor d on a.appoint_docId = d.id where p.emailid= '" + Session["user"] + "'  and a.payment_status = 'pending' ";
+            string query = "select a.appointment_id,a.status,a.appoint_date,a.appoint_time,a.payment_status,a.payment_status,a.fees,d.fname,d.profile from appointment a inner join patient p on p.id=a.patientId inner join doctor d on a.appoint_docId = d.id where p.emailid= '" + Session["user"] + "'  and a.payment_status = 'pending' ";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
@@ -83,7 +83,7 @@ namespace DrProject.patient
         {
             if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridView1.EditIndex)
             {
-                (e.Row.Cells[6].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
+                (e.Row.Cells[7].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     Label status = (Label)e.Row.FindControl("lblNewstatus");
@@ -114,7 +114,10 @@ namespace DrProject.patient
                 }
             }
         }
-
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("paytm.aspx?Amount={0}", fees.Text));
+        }
         protected void OnPaging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
@@ -133,20 +136,15 @@ namespace DrProject.patient
 
         protected void payment_Click(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(8000);
-            this.payment_confirmed();
-          
-        }
-        private void payment_confirmed()
-        {
             con = new SqlConnection(constr);
             con.Open();
             cmd = new SqlCommand("update appointment set payment_status ='paid' where patientId = '" + patient_id.Text + "' ", con);
             cmd.ExecuteNonQuery();
             con.Close();
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert",
-               "Swal.fire('Payment Sucessfull..', 'Thanks for your services..', 'success')", true);
-
+            Response.Redirect(string.Format("paytm.aspx?Amount={0}&Description={1}",fees.Text,descriptions.Text));
+          
         }
     }
+        
+    
 }

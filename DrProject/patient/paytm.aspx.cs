@@ -13,7 +13,7 @@ namespace DrProject
         public string orderId;
         public string orderIds;
         public string name;
-        public string product;
+        public string description;
         public string email;
         public string contact;
         public string addressn;
@@ -24,14 +24,13 @@ namespace DrProject
                 try
                 {
 
-                 
-                    product = "Dr Suresh Appointment";
+
+                    description = Request.QueryString["Description"].ToString();
                     contact = "9366535583";
-                    Session["product"] = product;
                     Session["totalprice"] = "1500";
                     Dictionary<string, object> input = new Dictionary<string, object>();
-                    int am = 1500;
-                    //string orderss = Session["OrderId"].ToString();
+                    
+                    int am = Int32.Parse(Request.QueryString["Amount"].ToString());
                     string orderss = System.DateTime.Now.Ticks.ToString();
                     orderIds = orderss;
                     //

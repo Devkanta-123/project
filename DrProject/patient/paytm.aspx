@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site1.Master"  CodeBehind="paytm.aspx.cs" Inherits="DrProject.paytm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <form   action="dashboard.aspx" method="post" name="razorpayForm">
+    <form action="booked_appointment.aspx" method="post" name="razorpayForm">
             <input id="razorpay_payment_id" type="hidden" name="razorpay_payment_id" />
             <input id="razorpay_order_id" type="hidden" name="razorpay_order_id" />
             <input id="razorpay_signature" type="hidden" name="razorpay_signature" />
@@ -10,15 +10,30 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <br />
     <br />
-    <center> <button class="gem-button gem-button-size-tiny gem-button-style-outline gem-button-text-weight-normal gem-button-border-2 gem-button-empty" id="rzp-button1" style="    width: 108px;">Pay Now</button></center>
+    <link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/skin_color.css" />
+     <div class="content-wrapper">
+	  <div class="container-full">
+    	<section class="content">
+     <div class="box">
+			<div class="box-header with-border">
+			
+                <button class="btn btn-primary"  id="rzp-button1" >Pay With Razorpay</button>
+                <button class="btn btn-warning"><a href="dashboard.aspx">Back</button>
+			</div>
+			</div>
+            </section>
+          </div>
+			</div>
+
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
             var orderId = "<%=orderId%>"
             var options = {
-                "name": "<%=product%>",
-                "description": "<%=product%>",
+                "name": "<%=description%>",
+                "description": "<%=description%>",
                 "order_id": orderId,
-                "prefill": {
+                "data-prefill": {
                     "name": "<%=name%>",
                     "email": "<%=email%>",
                     "contact": "<%=contact%>",

@@ -103,7 +103,6 @@ namespace DrProject.doctor
                 txtstartdate.Text = row.Cells[1].Text;
                 txtend_dates.Text = row.Cells[2].Text;
                 treatment_fees.Text = row.Cells[3].Text;
-              
                 popup.Show();
             }
         }

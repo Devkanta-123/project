@@ -11,17 +11,8 @@ namespace DrProject.online
 {
 
 
-    public partial class payment
+    public partial class RazorpayPayment
     {
-
-        /// <summary>
-        /// Head1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
 
         /// <summary>
         /// form1 control.
@@ -31,24 +22,6 @@ namespace DrProject.online
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// txtOrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrder;
-
-        /// <summary>
-        /// txtCustomer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomer;
 
         /// <summary>
         /// txtName control.
@@ -69,13 +42,13 @@ namespace DrProject.online
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// txtMobileNumber control.
+        /// txtContact control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMobileNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtContact;
 
         /// <summary>
         /// txtAmount control.
@@ -87,12 +60,12 @@ namespace DrProject.online
         protected global::System.Web.UI.WebControls.TextBox txtAmount;
 
         /// <summary>
-        /// Button1 control.
+        /// txtProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox txtProduct;
     }
 }
